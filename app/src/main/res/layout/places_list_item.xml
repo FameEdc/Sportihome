@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/block_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/place_img"
+            android:background="#AAA"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <RelativeLayout
+            android:layout_alignBottom="@+id/place_img"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp">
+
+            <TextView
+                android:id="@+id/price"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@color/opaque_black"
+                android:layout_width="100dp"
+                android:padding="5dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:background="@color/blue"
+                android:layout_toRightOf="@+id/price"
+                android:layout_width="5dp"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:padding="5dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@+id/block_img">
+
+        <ImageView
+            android:id="@+id/sas"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:maxLines="1"
+            android:maxLength="23"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/sas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_below="@+id/name"
+            android:layout_toEndOf="@+id/sas"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                android:id="@+id/sports"
+                android:textSize="30dp"
+                app:font="@string/font_name_fontsports"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:theme="@style/RatingBar"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1.0"
+            style="?android:attr/ratingBarStyleSmall"
+            android:rating="3" />
+
+        <TextView
+            android:id="@+id/rating_count"
+            android:text="(0)"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/avatar"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/white"
+        android:layout_below="@+id/block_img"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-25dp"
+        android:layout_marginRight="25dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/default_avatar"
+        />
+
+
+</RelativeLayout>
+
+
