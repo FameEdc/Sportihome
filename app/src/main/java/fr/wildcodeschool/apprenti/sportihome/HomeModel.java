@@ -5,19 +5,17 @@ package fr.wildcodeschool.apprenti.sportihome;
  */
 
 public class HomeModel {
-    private Price price;
     private int travellers;
     private String propertyType;
+    private PriceModel price;
 
     public HomeModel() {
     }
 
-    public Price getPrice() {
-        return price;
-    }
-
-    public void setPrice(Price price) {
-        this.price = price;
+    public HomeModel(int travellers, String propertyType, PriceModel price) {
+        setTravellers(travellers);
+        setPropertyType(propertyType);
+        setPrice(price);
     }
 
     public int getTravellers() {
@@ -34,5 +32,13 @@ public class HomeModel {
 
     public void setPropertyType(String propertyType) {
         this.propertyType = propertyType;
+    }
+
+    public PriceModel getPrice() {
+        return price;
+    }
+
+    public void setPrice(PriceModel price) {
+        this.price = price;
     }
 }

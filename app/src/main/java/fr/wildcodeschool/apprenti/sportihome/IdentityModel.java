@@ -7,8 +7,16 @@ package fr.wildcodeschool.apprenti.sportihome;
 public class IdentityModel {
     private String firstName;
     private String lastName;
+    private String birthday;
+    private String mobilePhone;
+    private String phone;
 
     public IdentityModel() {
+    }
+
+    public IdentityModel(String firstName, String lastName){
+        setFirstName(firstName);
+        setLastName(lastName);
     }
 
     public String getFirstName() {
@@ -25,5 +33,29 @@ public class IdentityModel {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

@@ -1,28 +1,36 @@
 package fr.wildcodeschool.apprenti.sportihome;
 
-import java.util.Date;
-
 /**
  * Created by chantome on 23/11/2016.
  */
 
 public class CommentModel {
-    private UserModel owner;
+    private String _id;
     private String date;
+    private OwnerModel owner;
     private String comment;
     private int cleanness;
     private int location;
     private int valueForMoney;
 
-    public CommentModel() {
+    public CommentModel(){}
+
+    public CommentModel(String _id, String date, OwnerModel owner, String comment, int cleanness, int location, int valueForMoney) {
+        set_id(_id);
+        setDate(date);
+        setOwner(owner);
+        setComment(comment);
+        setCleanness(cleanness);
+        setLocation(location);
+        setValueForMoney(valueForMoney);
     }
 
-    public UserModel getOwner() {
-        return owner;
+    public String get_id() {
+        return _id;
     }
 
-    public void setOwner(UserModel owner) {
-        this.owner = owner;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getDate() {
@@ -31,6 +39,14 @@ public class CommentModel {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public OwnerModel getOwner() {
+        return owner;
+    }
+
+    public void setOwner(OwnerModel owner) {
+        this.owner = owner;
     }
 
     public String getComment() {

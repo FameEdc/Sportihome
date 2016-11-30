@@ -5,13 +5,21 @@ package fr.wildcodeschool.apprenti.sportihome;
  */
 
 public class RateModel {
-    private int numberOfRatings=0;
-    private int overallRating=0;
-    private int cleanness=0;
-    private int location=0;
     private int valueForMoney=0;
+    private int location=0;
+    private int cleanness=0;
+    private int overallRating=0;
+    private int numberOfRatings=0;
 
     public RateModel() {
+    }
+
+    public RateModel(int valueForMoney, int location, int cleanness, int overallRating, int numberOfRatings) {
+        this.valueForMoney = valueForMoney;
+        this.location = location;
+        this.cleanness = cleanness;
+        this.overallRating = overallRating;
+        this.numberOfRatings = numberOfRatings;
     }
 
     public int getNumberOfRatings() {

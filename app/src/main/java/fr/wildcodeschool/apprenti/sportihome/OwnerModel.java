@@ -8,26 +8,26 @@ public class OwnerModel {
     private String _id;
     private String email;
     private int __v;
-    private CommentModel[] comments;
+    private String avatar;
+    //private CommentModel[] comments;//BUTER LUI
     private boolean isAdmin;
-    private RateModel rating;
+    //private RateModel rating;//BUTTER LUI
     private String[] hobbies;
     private String engagement;
     private IdentityModel identity;
     private FacebookModel facebook;
+    private GoogleModel google;
     private boolean isValidate;
     private String creation;
 
     public OwnerModel() {
     }
 
-    public OwnerModel(String _id, String email, int __v, CommentModel[] comments, boolean isAdmin, RateModel rating, String[] hobbies, String engagement, IdentityModel identity, boolean isValidate, String creation) {
+    public OwnerModel(String _id, String email, int __v, boolean isAdmin, String[] hobbies, String engagement, IdentityModel identity, boolean isValidate, String creation) {
         set_id(_id);
         setEmail(email);
         set__v(__v);
-        setComments(comments);
         setAdmin(isAdmin);
-        setRating(rating);
         setHobbies(hobbies);
         setEngagement(engagement);
         setIdentity(identity);
@@ -59,12 +59,12 @@ public class OwnerModel {
         this.__v = __v;
     }
 
-    public CommentModel[] getComments() {
-        return comments;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setComments(CommentModel[] comments) {
-        this.comments = comments;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public boolean isAdmin() {
@@ -73,14 +73,6 @@ public class OwnerModel {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
-    }
-
-    public RateModel getRating() {
-        return rating;
-    }
-
-    public void setRating(RateModel rating) {
-        this.rating = rating;
     }
 
     public String[] getHobbies() {
@@ -129,5 +121,13 @@ public class OwnerModel {
 
     public void setCreation(String creation) {
         this.creation = creation;
+    }
+
+    public GoogleModel getGoogle() {
+        return google;
+    }
+
+    public void setGoogle(GoogleModel google) {
+        this.google = google;
     }
 }
