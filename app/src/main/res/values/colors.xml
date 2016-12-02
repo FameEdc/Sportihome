@@ -6,6 +6,7 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="opaque_black">#80000000</color>
+    <color name="green">#3BDC8F</color>
     <color name="blue">#5FCAFA</color>
     <color name="gold">#ff9534</color>
     <color name="transparent">#00ffffff</color>

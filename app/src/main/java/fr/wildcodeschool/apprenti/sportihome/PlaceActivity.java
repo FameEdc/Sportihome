@@ -1,10 +1,13 @@
 package fr.wildcodeschool.apprenti.sportihome;
 
+
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.v7.app.AppCompatActivity;
 
 public class PlaceActivity extends AppCompatActivity {
+
+    @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

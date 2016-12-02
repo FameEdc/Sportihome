@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sportihome</string>
-    <string name="font_name_fontsports">fontsports</string>
-    <string name="font_name_fontawesome">awesome</string>
+    <string name="sportihome_ux_font">sportihome-ux-font</string>
+    <string name="sports_font">sports-font</string>
     <string name="img_alpiniste">a</string>
     <string name="img_apnee">O</string>
     <string name="img_basketball">b</string>
@@ -47,5 +47,4 @@
     <string name="img_wingsuit">R</string>
     <string name="img_yoga">K</string>
     <string name="img_marker">)</string>
-
 </resources>

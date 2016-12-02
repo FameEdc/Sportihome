@@ -394,4 +394,11 @@ public class ParserJSON extends AppCompatActivity{
             return mPlace;
 
     }
+
+
+
+    /**
+     * Start Parser for SpotsModel
+     */
+
 }

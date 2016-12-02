@@ -94,7 +94,9 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
         }
 
         ratePlace.setRating(rating);
+
         txtRatingCount.setText("("+String.valueOf(countRatings+")"));
+
 
         return rowView;
     }
