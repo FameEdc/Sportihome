@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow_box">
+
+        <RelativeLayout
+            android:id="@+id/block_spot"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:id="@+id/img_spot"
+                android:layout_width="wrap_content"
+                android:layout_height="225dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/imgspot_default"/>
+
+                <TextView
+                    android:id="@+id/spot_color"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="@color/green"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@+id/marker"/>
+
+                <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                    android:id="@+id/marker"
+                    android:background="@color/opaque_black"
+                    android:text="@string/img_marker"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    app:font="@string/sportihome_ux_font"
+
+                    android:layout_alignParentBottom="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/spot_details"
+                android:layout_below="@+id/img_spot"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/title_spot"
+                    android:text="Spot Title"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                    android:id="@+id/sport"
+                    android:text="@string/img_kitesurf"
+                    android:layout_below="@+id/title_spot"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:gravity="left"
+                    app:font="@string/sports_font"/>
+
+                <RatingBar
+                    android:id="@+id/rating_spot"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1.0"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:theme="@style/RatingBar"
+                    android:numStars="5"
+                    android:rating="3"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="15dp"/>
+
+            </RelativeLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/img_avatar"
+                android:src="@drawable/default_avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/white"
+                android:layout_margin="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
