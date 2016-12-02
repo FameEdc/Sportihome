@@ -82,8 +82,8 @@
                 <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
                     android:id="@+id/sports"
                     android:textSize="30dp"
-                    app:font="@string/font_name_fontsports"
-                    android:text=""
+                    app:font="@string/sports_font"
+                    android:text="kkk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

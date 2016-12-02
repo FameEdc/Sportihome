@@ -1,11 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.wildcodeschool.apprenti.sportihome.SpotModel">
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
+        android:theme="@style/RatingBar"
+        android:rating="3.6"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignEnd="@+id/ratingBar2"
+        android:layout_marginEnd="19dp" />
 
     <TextView
-        android:text="Hello World"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Vincent"
+        android:id="@+id/textView"
+        android:layout_below="@+id/profile_image"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_marginTop="7dp" />
 
-</LinearLayout>
+    <TextView
+        android:text="Suisse"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/textView3"
+        android:layout_alignBaseline="@+id/administrative_area_level_1"
+        android:layout_alignBottom="@+id/administrative_area_level_1"
+        android:layout_alignEnd="@+id/imageView4" />
+
+    <TextView
+        android:text="VS, "
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/administrative_area_level_1"
+        android:layout_alignBaseline="@+id/locality"
+        android:layout_alignBottom="@+id/locality"
+        android:layout_toStartOf="@+id/textView3" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Qualité"
+        android:id="@+id/quality"
+        android:layout_below="@+id/ratingBar4"
+        android:layout_alignEnd="@+id/imageView3" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/beauty"
+        android:id="@+id/imageView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/ratingBar3"
+        android:layout_marginStart="19dp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/facility"
+        android:id="@+id/imageView5"
+        android:layout_below="@+id/textView3"
+        android:layout_alignEnd="@+id/ratingBar1" />
+
+    <RatingBar
+        android:id="@+id/ratingBar4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
+        android:theme="@style/RatingBar"
+        android:rating="5"
+        android:layout_toStartOf="@+id/ratingBar3"
+        android:layout_marginEnd="19dp"
+        android:layout_below="@+id/imageView6" />
+
+
+
+    <ImageView
+
+       android:layout_marginRight="10dp"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/row2"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/name"
+        android:id="@+id/imageView7" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:src="@drawable/photoprofil"
+        android:layout_below="@+id/imageView8"
+        android:layout_alignEnd="@+id/textView" />
+
+    <TextView
+        android:text="POINTE DUFOUR (4634 m)"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/name"
+        android:layout_marginBottom="6dp"
+        android:layout_above="@+id/textView"
+        android:layout_alignStart="@+id/quality" />
+
+    <TextView
+        android:text="Zerma, "
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/locality"
+        android:layout_alignTop="@+id/textView"
+        android:layout_toStartOf="@+id/administrative_area_level_1" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/quality"
+        android:id="@+id/imageView3"
+        android:layout_below="@+id/locality"
+        android:layout_toStartOf="@+id/locality" />
+
+    <RatingBar
+        android:id="@+id/ratingBar3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
+        android:theme="@style/RatingBar"
+        android:rating="5"
+        android:layout_alignTop="@+id/ratingBar4"
+        android:layout_toStartOf="@+id/ratingBar1" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beauté"
+        android:id="@+id/beauty"
+        android:layout_alignBaseline="@+id/quality"
+        android:layout_alignBottom="@+id/quality"
+        android:layout_alignStart="@+id/imageView4" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Dificulté"
+        android:id="@+id/dificulty"
+        android:layout_alignTop="@+id/beauty"
+        android:layout_alignEnd="@+id/imageView5"
+        android:layout_marginEnd="6dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
+        android:theme="@style/RatingBar"
+        android:rating="5"
+        android:layout_marginEnd="12dp"
+        android:layout_above="@+id/dificulty"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/resume1"
+        android:text="A propos"
+        android:background="@color/lightgrey"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/dificulty"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/resume"
+        android:text="La Pointe Dufour (4634 m ) se situe dans le massif du Mont Rose en Suisse il est le sommet le plus haut des Alpes après le Mont Blanc. C'est une ascension très longue, qui demande une excellente condition physique et une acclimatation préalable, nous l’avons effectué avec un guide dans de top conditions: soleil, pas de vent - 10° C au sommet.
+"
+        android:background="@color/lightgrey"
+        android:layout_below="@+id/resume1"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/kitesurf"
+        android:id="@+id/imageView6"
+        android:layout_marginTop="13dp"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_alignStart="@+id/profile_image" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Kitesurf"
+        android:id="@+id/sport"
+        android:layout_alignBottom="@+id/beauty"
+        android:layout_alignEnd="@+id/imageView6" />
+
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="165dp"
+        app:srcCompat="@drawable/paysage"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+
+        android:layout_marginLeft="10dp"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/row"
+        android:id="@+id/imageView8"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/sport" />
+
+
+</RelativeLayout>

@@ -1,11 +1,6 @@
 package fr.wildcodeschool.apprenti.sportihome;
 
 
-import java.lang.reflect.Array;
-
-import static android.R.attr.rating;
-
-
 /**
  * Created by Alban on 24/11/16.
  * This is the Spot Model
