@@ -3,8 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--<ExpandableListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ExpandableListView>-->
+
     <ListView
         android:id="@+id/places_list"
+        android:padding="10dp"
+        android:divider="@color/transparent"
+        android:dividerHeight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>

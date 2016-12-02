@@ -46,7 +46,7 @@ public class SearchActivity extends AppCompatActivity{
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
             String jsonStr = sh.makeServiceCall(url);
-            placesList = ParserJSON.places(jsonStr);
+            placesList = ParserJSON.getPlaces(jsonStr);
 
             return null;
         }
