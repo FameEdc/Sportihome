@@ -9,11 +9,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class SearchActivity extends AppCompatActivity{
 
     private ProgressDialog pDialog;
+
     private ListView lvp;
     private ListView lvs;
     private PlacesAdapter adapter;
@@ -22,12 +23,14 @@ public class SearchActivity extends AppCompatActivity{
     private ArrayList<PlaceModel> placesList;
     private ArrayList<Integer> placesSpot;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
         placesList = new ArrayList<PlaceModel>();
+
 /*        placesSpot = new ArrayList<Integer>();
 
         placesSpot.add(1);
@@ -52,6 +55,7 @@ public class SearchActivity extends AppCompatActivity{
 
         new GetPlaces().execute();
 //        new GetSpots().execute();
+
     }
 
     private class GetPlaces extends AsyncTask<Void, Void, Void> {
@@ -84,9 +88,11 @@ public class SearchActivity extends AppCompatActivity{
 
             adapter = new PlacesAdapter(SearchActivity.this, placesList);
 
+
             lvp.setAdapter(adapter);
 
             lvp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(SearchActivity.this,PlaceActivity.class);
@@ -97,6 +103,7 @@ public class SearchActivity extends AppCompatActivity{
             });
         }
     }
+
 
     private class GetSpots extends AsyncTask<Void, Void, Void> {
 
@@ -129,6 +136,7 @@ public class SearchActivity extends AppCompatActivity{
 
         }
     }
+
 }
 
 

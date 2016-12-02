@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 /**
- * Created by Alban on 23/11/16.
+ * Created by Alban and Benjamin on 23/11/16.
  */
 
 public class CustomFontTextView extends TextView {
@@ -41,9 +41,11 @@ public class CustomFontTextView extends TextView {
     }
 
     private Typeface selectTypeface(Context context, String fontName, int textStyle) {
+
         if (fontName.contentEquals(context.getString(R.string.sports_font))) {
             return FontCache.getTypeface("sports-font.ttf", context);
         } else if (fontName.contentEquals(context.getString(R.string.sportihome_ux_font))){
+
             return FontCache.getTypeface("sportihome-ux-font.ttf", context);
         } else {
             // no matching font found

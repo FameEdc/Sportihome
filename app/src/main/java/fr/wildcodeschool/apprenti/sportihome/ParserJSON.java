@@ -396,7 +396,9 @@ public class ParserJSON extends AppCompatActivity{
     }
 
 
+
     /**
      * Start Parser for SpotsModel
      */
+
 }

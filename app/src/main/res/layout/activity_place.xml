@@ -1,6 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/activity_place"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F4F3"
+    tools:context="fr.wildcodeschool.apprenti.sportihome.PlaceActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/block_place"
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+            <ImageView
+                android:id="@+id/place_img"
+                android:layout_width="wrap_content"
+                android:background="@drawable/defaut_img"
+                android:layout_height="280dp" />
+
+        <RelativeLayout
+            android:id="@+id/place_details"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_below="@+id/place_img"
+            android:layout_alignParentStart="true"
+            android:layout_height="100dp">
+
+            <TextView
+                android:id="@+id/name_user"
+                android:layout_width="wrap_content"
+                android:text="Fred"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/img_avatar"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/title_place"
+                android:text="Cosy Kite lodge"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/City"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clohars-Carnoët,"
+                    android:layout_marginRight="5dp"
+                    android:layout_alignStart="@+id/title_place"
+                    android:layout_below="@+id/title_place"
+                    />
+
+                <TextView
+                    android:id="@+id/Region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bretagne, "
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@+id/City"
+                    android:layout_below="@+id/title_place" />
+
+                <TextView
+                    android:id="@+id/State"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="France"
+                    android:layout_toRightOf="@+id/Region"
+                    android:layout_below="@+id/title_place"/>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:rating="5"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/State"
+                android:layout_alignStart="@+id/title_place" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_avatar"
+                android:src="@drawable/fred"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="14dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/place_engagement"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/place_details"
+            android:background="@color/white"
+            android:layout_height="70dp">
+
+            <!-- <TextView
+                android:id="@+id/host_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sports de l'hôte"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@+id/engagement"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                />
+
+            <TextView
+                android:id="@+id/Home_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Appartement"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/host_sport"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
+                />
+
+
+            <TextView
+                android:id="@+id/Home_situation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Privée"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/Home_type"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"/>
+
+
+
+            <TextView
+                android:id="@+id/Home_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voyageurs"
+                android:layout_toRightOf="@+id/Home_situation"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="15dp"
+                />
+                 -->
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/kitesurf"
+                android:id="@+id/sport2"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/sport"
+                android:layout_marginBottom="30dp"/>
+
+            <ImageView
+                android:id="@+id/engagement"
+                android:background="@drawable/stayshareplay"
+                android:layout_marginStart="23dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignTop="@+id/sport"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/paddle"
+                android:id="@+id/sport"
+                android:layout_marginStart="32dp"
+                android:layout_alignTop="@+id/sport2"
+                android:layout_toEndOf="@+id/engagement" />
+
+            <TextView
+                android:text="Sport de l'Hôte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_alignBottom="@+id/engagement"
+                android:layout_alignStart="@+id/sport" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/room"
+                android:id="@+id/home"
+                android:layout_marginLeft="20dp"
+                android:layout_alignTop="@+id/sport2"
+                android:layout_toEndOf="@+id/sport2"
+                android:layout_marginStart="30dp" />
+
+            <TextView
+                android:text="Appartement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_alignBaseline="@+id/textView"
+                android:layout_alignBottom="@+id/textView"
+                android:layout_toEndOf="@+id/sport2"
+                android:layout_marginStart="11dp" />
+
+            <ImageView
+                app:srcCompat="@drawable/travellers"
+                android:id="@+id/travellers"
+                android:layout_height="30dp"
+                android:layout_width="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="27dp"
+                android:layout_alignTop="@+id/home"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:text="2 voyageurs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_alignBaseline="@+id/textView2"
+                android:layout_alignBottom="@+id/textView2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="12dp" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/about_place"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="#f2f4f3"
+        android:layout_below="@+id/block_place"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A propos"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/text_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/about"
+            android:text=" L'appartement a été crée dans une Villa bretonne des caractère située directement sur une jolie plage calme qui offre une vue exceptionnelle le long de la côté, jusqu'a l'île de Groix. Vous apprécierez l'indépendance, le charme, le paysage qui change au gré des marrés et les nombreuses activités à faire autour, kitesurf, surf, paddle, kayak, pêche, rando, VTT, culture, gastronomie et bien plus encore ! Profitez également du grand jardin pour vous détendre au calme, jouer et faire des BBQ. "
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="18dp"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
