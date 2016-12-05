@@ -18,12 +18,29 @@ public class SpotModel {
     private int __v;
     private String modification;
     private CommentModel[] comments;
-    private RateModel rating;
+    private SpotRatingModel rating;
     private AddressModel address;
     private String pictures[];
     private String creation;
 
     public SpotModel(){}
+
+    public SpotModel(String _id, OwnerModel owner, String hobby, String name, double latitude, double longitude, String about, int __v, String modification, CommentModel[] comments, SpotRatingModel rating, AddressModel address, String[] pictures, String creation) {
+        set_id(_id);
+        setOwner(owner);
+        setHobby(hobby);
+        setName(name);
+        setLatitude(latitude);
+        setLongitude(longitude);
+        setAbout(about);
+        set__v(__v);
+        setModification(modification);
+        setComments(comments);
+        setRating(rating);
+        setAddress(address);
+        setPictures(pictures);
+        setCreation(creation);
+    }
 
     public String get_id() {
         return _id;
@@ -105,11 +122,11 @@ public class SpotModel {
         this.comments = comments;
     }
 
-    public RateModel getRating() {
+    public SpotRatingModel getRating() {
         return rating;
     }
 
-    public void setRating(RateModel rating) {
+    public void setRating(SpotRatingModel rating) {
         this.rating = rating;
     }
 

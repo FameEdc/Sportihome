@@ -18,9 +18,9 @@ public class ParserJSON extends AppCompatActivity{
     public static PlaceModel getPlace(String jsonStr){
         if (jsonStr != null) {
             try {
-
-                JSONObject place = new JSONObject();
-                return parserPlace(place);
+                JSONObject place = new JSONObject(jsonStr);
+                PlaceModel maPlace = parserPlace(place);
+                return maPlace;
 
             }catch (final JSONException e){
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -51,6 +51,53 @@ public class ParserJSON extends AppCompatActivity{
                 }
 
                 return placesList;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Couldn't get json from server.");
+        }
+
+        return null;
+    }
+
+    public static SpotModel getSpot(String jsonStr){
+        if (jsonStr != null) {
+            try {
+                JSONObject spot = new JSONObject(jsonStr);
+                SpotModel monSpot = parserSpot(spot);
+                return monSpot;
+
+            }catch (final JSONException e){
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        }
+        else{
+            Log.e(TAG, "Couldn't get json from server.");
+        }
+
+        return null;
+    }
+
+    public static ArrayList<SpotModel> getSpots(String jsonStr){
+        if (jsonStr != null) {
+
+            ArrayList<SpotModel> spotsList = new ArrayList<SpotModel>();
+
+            try {
+                JSONArray jsonArray = new JSONArray(jsonStr);
+
+                // looping through All PLACES OBJ
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    JSONObject spot = jsonArray.getJSONObject(i);
+
+                    spotsList.add(parserSpot(spot));
+
+                }
+
+                return spotsList;
 
             } catch (final JSONException e) {
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -395,10 +442,313 @@ public class ParserJSON extends AppCompatActivity{
 
     }
 
+    private static SpotModel parserSpot(JSONObject spot) throws JSONException{
+        //PLACE - JSON OBJ : "spot_"
+        String spot_id = spot.getString("_id");
+        JSONObject spot_owner = spot.getJSONObject("owner");
+        String spot_hobby = spot.getString("hobby");
+        String spot_name = spot.getString("name");
+        double spot_latitude = spot.getInt("latitude");
+        double spot_longitude = spot.getInt("longitude");
+        String spot_about = spot.getString("about");
+        int spot_v = spot.getInt("__v");
+        String spot_modification = spot.getString("modification");
+        JSONArray spot_comments = spot.getJSONArray("comments");
+        JSONObject spot_rating = spot.getJSONObject("rating");
+        JSONObject spot_address = spot.getJSONObject("address");
+        JSONArray spot_pictures = spot.getJSONArray("pictures");
+        String spot_creation = spot.getString("creation");
 
+        //================
+        //SPOT OWNER - JSON OBJ : "so_"
+        String so_id = spot_owner.getString("_id");
+        String so_email = spot_owner.getString("email");
+        int so_v = spot_owner.getInt("__v");
+        //JSONArray so_comments = place_owner.getJSONArray("comments");
+        boolean so_isAdmin = spot_owner.getBoolean("isAdmin");
+        //JSONArray so_rating = place_owner.getJSONArray("rating");
+        JSONArray so_hobbies = spot_owner.getJSONArray("hobbies");
+        String so_engagement = spot_owner.getString("engagement");
+        JSONObject so_identity = spot_owner.getJSONObject("identity");
+        boolean so_isValidate = spot_owner.getBoolean("isValidate");
+        String so_creation = spot_owner.getString("creation");
 
-    /**
-     * Start Parser for SpotsModel
-     */
+        //SPOT OWNER COMMENTS - JSON ARRAY : soComments
+        //CommentModel[] soComments = new CommentModel[so_comments.length()];//VIDE
+                        /* on sait que soComments est vide mais dans le cas contraire utilise ca idem pour les autres.
+                        if (so_comments.length() != 0){
+                            for (int k=0 ; k < so_comments.length() ; k++){
+                                soComments[k] = new CommentModel();
+                            }
+                        }*/
+
+        //SPOT OWNER RATING - JSON ARRAY : soRatings
+        //RateModel[] soRatings = new RateModel[so_rating.length()];//VIDE
+                        /*
+                        if (so_rating.length() != 0){
+                            for (int k=0 ; k < so_rating.length() ; k++){
+                                JSONObject rate = so_rating.getJSONObject(kk);
+
+                                //PLACE OWNER RATING JSON OBJ : "sor_"
+                                int sor_valueForMoney = rate.getInt("valueForMoney");
+                                int sor_location = rate.getInt("location");
+                                int sor_cleanness = rate.getInt("cleanness");
+                                int sor_overallRating = rate.getInt("overallRating");
+                                int sor_numbersOfRatings = rate.getInt("numberOfRatings");
+
+                                soRatings[k] = new RateModel();
+                            }
+                        }*/
+
+        //SPOT OWNER HOBBIES - JSON ARRAY : soHobbies
+        String[] soHobbies = new String[so_hobbies.length()];
+        for (int j=0 ; j < so_hobbies.length() ; j++){
+            soHobbies[j] = so_hobbies.getString(j);
+        }
+
+        //SPOT OWNER IDENTITY - JSON OBJ : "soi_"
+        String soi_firstName = so_identity.getString("firstName");
+        String soi_lastName = so_identity.getString("lastName");
+
+        IdentityModel mSOIdentity = new IdentityModel(soi_firstName,soi_lastName);
+
+        if (!so_identity.isNull("birthday") && so_identity.has("birthday")){
+            String poi_birthday = so_identity.getString("birthday");
+            mSOIdentity.setBirthday(poi_birthday);
+        }
+        if (!so_identity.isNull("mobilePhone") && so_identity.has("mobilePhone")){
+            String poi_mobilePhone = so_identity.getString("mobilePhone");
+            mSOIdentity.setMobilePhone(poi_mobilePhone);
+        }
+        if (!so_identity.isNull("phone") && so_identity.has("phone")){
+            String poi_phone = so_identity.getString("phone");
+            mSOIdentity.setPhone(poi_phone);
+        }
+
+        OwnerModel mSOwner = new OwnerModel(so_id,so_email,so_v,so_isAdmin,soHobbies,so_engagement,mSOIdentity,so_isValidate,so_creation);
+
+        //SETS
+        if(spot_owner.has("avatar")){
+            String po_avatar = spot_owner.getString("avatar");
+            mSOwner.setAvatar(po_avatar);
+        }
+        else{
+            mSOwner.setAvatar("");
+        }
+
+        //SPOT OWNER FACEBOOK - JSON OBJ : "sof_"
+        FacebookModel mSCFacebook;
+        if (spot_owner.has("facebook")){
+            JSONObject so_facebook = spot_owner.getJSONObject("facebook");
+
+            String sof_id = so_facebook.getString("id");
+            String sof_token = so_facebook.getString("token");
+            String sof_name = so_facebook.getString("name");
+            String sof_email = so_facebook.getString("email");
+
+            //Create object Facebook
+            mSCFacebook = new FacebookModel(sof_id,sof_token,sof_name,sof_email);
+
+            if(so_facebook.has("avatar")){
+                String pof_avatar = so_facebook.getString("avatar");
+                mSCFacebook.setAvatar(pof_avatar);
+            }
+            else{
+                mSCFacebook.setAvatar("");
+            }
+        }
+        else{
+            mSCFacebook = new FacebookModel();
+        }
+        mSOwner.setFacebook(mSCFacebook);
+
+        //SPOT OWNER GOOGLE - JSON OBJ : "sog_"
+        if (spot_owner.has("google")){
+
+            JSONObject so_google = spot_owner.getJSONObject("google");
+
+            String sog_id = so_google.getString("id");
+            String sog_token = so_google.getString("token");
+            String sog_name = so_google.getString("name");
+            String sog_email = so_google.getString("email");
+            //Create object Google
+            GoogleModel mSCGoogle = new GoogleModel(sog_id,sog_token,sog_name,sog_email);
+            mSOwner.setGoogle(mSCGoogle);
+        }
+
+        //===================
+        //SPOT COMMENTS - JSON ARRAY : sComments
+        CommentModel[] sComments = new CommentModel[spot_comments.length()];
+        if (spot_comments.length() != 0){
+            for (int k=0; k < spot_comments.length() ; k++){
+
+                JSONObject comment = spot_comments.getJSONObject(k);
+
+                //SPOT COMMENT - JSON OBJ : "sc_"
+                String sc_id = comment.getString("_id");
+                JSONObject sc_owner = comment.getJSONObject("owner");
+                String sc_date = comment.getString("date");
+                String sc_content = comment.getString("comment");
+                int sc_cleanness = comment.getInt("cleanness");
+                int sc_location = comment.getInt("location");
+                int sc_valueForMoney = comment.getInt("valueForMoney");
+
+                //SPOT COMMENT OWNER - JSON OBJ : "sco_"
+                String sco_id = sc_owner.getString("_id");
+                String sco_email = sc_owner.getString("email");
+                int sco_v = sc_owner.getInt("__v");
+                //JSONArray sco_comments = sc_owner.getJSONArray("comments");
+                boolean sco_isAdmin = sc_owner.getBoolean("isAdmin");
+                //JSONArray pco_rating = sc_owner.getJSONArray("rating");
+                JSONArray sco_hobbies = sc_owner.getJSONArray("hobbies");
+                String sco_engagement = sc_owner.getString("engagement");
+                JSONObject sco_identity = sc_owner.getJSONObject("identity");
+                boolean sco_isValidate = sc_owner.getBoolean("isValidate");
+                String sco_creation = sc_owner.getString("creation");
+
+                //SPOT COMMENT OWNER COMMENTS - JSON ARRAY : scoComments
+                //CommentModel[] scoComments = new CommentModel[sc_content.length()];//VIDE
+                                /*
+                                if (so_comments.length() != 0){
+                                    for (int k=0 ; k < so_comments.length() ; k++){
+                                        scoComments[k] = new CommentModel();
+                                    }
+                                }*/
+
+                //PLACE COMMENT OWNER RATING - JSON ARRAY : scoRatings
+                //RateModel[] scoRatings = new RateModel[sco_rating.length()];//VIDE
+                                /*
+                                if (sco_rating.length() != 0){
+                                    for (int kk=0 ; kk < sco_rating.length() ; kk++){
+                                        // TABLEAU VIDE pas évident...
+                                        JSONObject rate = sco_rating.getJSONObject(kk);
+
+                                        //PLACE COMMENT OWNER RATING - JSON OBJ : "pcor_"
+                                        int scor_valueForMoney = rate.getInt("valueForMoney");
+                                        int scor_location = rate.getInt("location");
+                                        int scor_cleanness = rate.getInt("cleanness");
+                                        int scor_overallRating = rate.getInt("overallRating");
+                                        int scor_numbersOfRatings = rate.getInt("numberOfRatings");
+
+                                        scoRatings[kk] = new RateModel();
+                                    }
+                                }*/
+
+                //SPOT COMMENT OWNER HOBBIES - JSON ARRAY : scoHobbies
+                String[] scoHobbies = new String[so_hobbies.length()];
+                for (int l=0 ; l < so_hobbies.length() ; l++){
+                    scoHobbies[l] = sco_hobbies.getString(l);
+                }
+
+                //SPOT COMMENT OWNER IDENTITY - JSON OBJ : "scoi_"
+                String scoi_firstName = sco_identity.getString("firstName");
+                String scoi_lastName = sco_identity.getString("lastName");
+
+                IdentityModel mSCOIdentity = new IdentityModel(scoi_firstName, scoi_lastName);
+
+                if (!sco_identity.isNull("birthday") && sco_identity.has("birthday")){
+                    String pcoi_birthday = sco_identity.getString("birthday");
+                    mSCOIdentity.setBirthday(pcoi_birthday);
+                }
+                if (!sco_identity.isNull("mobilePhone") && sco_identity.has("mobilePhone")){
+                    String pcoi_mobilePhone = sco_identity.getString("mobilePhone");
+                    mSCOIdentity.setMobilePhone(pcoi_mobilePhone);
+                }
+                if (!sco_identity.isNull("phone") && sco_identity.has("phone")){
+                    String pcoi_phone = sco_identity.getString("phone");
+                    mSCOIdentity.setPhone(pcoi_phone);
+                }
+
+                OwnerModel mSCOwner = new OwnerModel(sco_id,sco_email,sco_v,sco_isAdmin,scoHobbies,sco_engagement,mSCOIdentity,sco_isValidate,sco_creation);
+
+                //SETS
+                if(sc_owner.has("avatar")){
+                    String pco_avatar = sc_owner.getString("avatar");
+                    mSCOwner.setAvatar(pco_avatar);
+                }
+                else{
+                    mSCOwner.setAvatar("");
+                }
+
+                //SPOT COMMENT OWNER FACEBOOK - JSON OBJ : "scof_"
+                FacebookModel mSCOFacebook;
+                if (sc_owner.has("facebook")){
+
+                    JSONObject sco_facebook = sc_owner.getJSONObject("facebook");
+
+                    String scof_id = sco_facebook.getString("id");
+                    String scof_token = sco_facebook.getString("token");
+                    String scof_name = sco_facebook.getString("name");
+                    String scof_email = sco_facebook.getString("email");
+
+                    //set Facebook OBJ on Comment OBJ
+                    mSCOFacebook = new FacebookModel(scof_id,scof_token,scof_name,scof_email);
+
+                    if(sco_facebook.has("avatar")){
+                        String pcof_avatar = sco_facebook.getString("avatar");
+                        mSCOFacebook.setAvatar(pcof_avatar);
+                    }
+                    else{
+                        mSCOFacebook.setAvatar("");
+                    }
+                }
+                else{
+                    mSCOFacebook = new FacebookModel();
+                }
+                mSCOwner.setFacebook(mSCOFacebook);
+
+                //SPOT COMMENT OWNER GOOGLE - JSON OBJ : "scog_"
+                if (sc_owner.has("google")){
+
+                    JSONObject sco_google = sc_owner.getJSONObject("google");
+
+                    String scog_id = sco_google.getString("id");
+                    String scog_token = sco_google.getString("token");
+                    String scog_name = sco_google.getString("name");
+                    String scog_email = sco_google.getString("email");
+
+                    //set Google OBJ on Comment OBJ
+                    GoogleModel mPCOGoogle = new GoogleModel(scog_id,scog_token,scog_name,scog_email);
+                    mSCOwner.setGoogle(mPCOGoogle);
+                }
+
+                sComments[k] = new CommentModel(sc_id,sc_date,mSCOwner,sc_content,sc_cleanness,sc_location,sc_valueForMoney);
+
+            }
+        }
+
+        //SPOT RATING - JSON OBJ : "sr_"
+        int sr_difficulty = spot_rating.getInt("difficulty");
+        int sr_beauty = spot_rating.getInt("beauty");
+        int sr_quality = spot_rating.getInt("quality");
+        int sr_overallRating = spot_rating.getInt("overallRating");
+        int sr_numbersOfRatings = spot_rating.getInt("numberOfRatings");
+        SpotRatingModel mSRatings = new SpotRatingModel(sr_difficulty,sr_beauty,sr_quality,sr_overallRating,sr_numbersOfRatings);
+
+        //SPOT ADDRESS - JSON OBJ : "sa_"
+        String sa_postal = spot_address.getString("postal_code");
+        String sa_country = spot_address.getString("country");
+        String sa_admin_area_lvl_1 = spot_address.getString("administrative_area_level_1");
+        String sa_locality = spot_address.getString("locality");
+        String sa_route = spot_address.getString("route");
+        AddressModel mSAddress = new AddressModel(sa_postal,sa_country,sa_admin_area_lvl_1,sa_locality,sa_route);
+
+        if(!spot_address.isNull("street_number") && spot_address.has("street_number")){
+            int pa_street_number = spot_address.getInt("street_number");
+            mSAddress.setStreet_number(pa_street_number);
+        }
+
+        //SPOT PICTURES - JSON ARRAY : sPictures
+        String[] sPictures = new String[spot_pictures.length()];
+        for (int m=0 ; m < spot_pictures.length() ; m++){
+            sPictures[m] = spot_pictures.getString(m);
+        }
+
+        //===================
+        //Add Place Object on Collection
+        SpotModel mSpot = new SpotModel(spot_id,mSOwner,spot_hobby,spot_name,spot_latitude,spot_longitude,spot_about,spot_v,spot_modification,sComments,mSRatings,mSAddress,sPictures,spot_creation);
+        return mSpot;
+
+    }
 
 }
