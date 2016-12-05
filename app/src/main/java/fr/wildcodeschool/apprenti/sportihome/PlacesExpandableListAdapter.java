@@ -23,13 +23,13 @@ import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class SearchExpandableListAdapter extends BaseExpandableListAdapter {
+public class PlacesExpandableListAdapter extends BaseExpandableListAdapter {
     //private final SparseArray<Group> groups;
     private final SparseArray<PlacesGroup> groups;
     public LayoutInflater inflater;
     public Activity activity;
 
-    public SearchExpandableListAdapter(Activity act, SparseArray<PlacesGroup> groups) {
+    public PlacesExpandableListAdapter(Activity act, SparseArray<PlacesGroup> groups) {
         activity = act;
         this.groups = groups;
         inflater = act.getLayoutInflater();

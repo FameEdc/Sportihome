@@ -6,11 +6,11 @@ import java.util.ArrayList;
  * Created by chantome on 03/12/2016.
  */
 
-public class PlacesGroup {
+public class SpotsGroup {
     public String string;
-    public final ArrayList<PlaceModel> place = new ArrayList<PlaceModel>();
+    public final ArrayList<SpotModel> spot = new ArrayList<SpotModel>();
 
-    public PlacesGroup(String string) {
+    public SpotsGroup(String string) {
         this.string = string;
     }
 }

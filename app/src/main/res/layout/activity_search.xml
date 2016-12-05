@@ -4,9 +4,19 @@
     android:layout_height="match_parent">
 
     <ExpandableListView
-        android:id="@+id/search_list"
+        android:id="@+id/places_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:dividerHeight="10dp"
+        android:divider="@color/transparent">
+    </ExpandableListView>
+
+    <ExpandableListView
+        android:id="@+id/spots_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/places_list"
         android:padding="15dp"
         android:dividerHeight="10dp"
         android:divider="@color/transparent">
