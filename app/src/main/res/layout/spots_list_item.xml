@@ -1,111 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@drawable/shadow_box"
+    android:elevation="5dp"
+    >
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shadow_box">
+        android:layout_width="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:id="@+id/block_spot"
-            android:layout_width="wrap_content"
-            android:layout_height="280dp"
-            android:background="@color/white">
+            android:id="@+id/block_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/spot_img"
+                android:background="#AAA"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
 
             <RelativeLayout
-                android:id="@+id/img_spot"
+                android:layout_alignBottom="@+id/spot_img"
                 android:layout_width="wrap_content"
-                android:layout_height="225dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/imgspot_default"/>
-
-                <TextView
-                    android:id="@+id/spot_color"
-                    android:layout_width="5dp"
-                    android:layout_height="30dp"
-                    android:background="@color/green"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/marker"/>
+                android:layout_height="30dp">
 
                 <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
                     android:id="@+id/marker"
-                    android:background="@color/opaque_black"
-                    android:text="@string/img_marker"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:gravity="center"
                     app:font="@string/sportihome_ux_font"
+                    android:text=")"
+                    android:textSize="18dp"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@color/opaque_black"
+                    android:layout_width="100dp"
+                    android:padding="5dp"
+                    android:layout_height="match_parent" />
 
-                    android:layout_alignParentBottom="true" />
+                <TextView
+                    android:background="@color/green"
+                    android:layout_toRightOf="@+id/marker"
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent" />
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/spot_details"
-                android:layout_below="@+id/img_spot"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:padding="5dp">
+        </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/title_spot"
-                    android:text="Spot Title"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:padding="5dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@+id/block_img">
+
+            <TextView
+                android:id="@+id/name"
+                android:maxLines="1"
+                android:maxLength="23"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_below="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
                 <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
                     android:id="@+id/sport"
-                    android:text="@string/img_kitesurf"
-                    android:layout_below="@+id/title_spot"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:gravity="left"
-                    app:font="@string/sports_font"/>
-
-                <RatingBar
-                    android:id="@+id/rating_spot"
-                    android:layout_alignParentEnd="true"
+                    android:textSize="30dp"
+                    app:font="@string/sports_font"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:stepSize="1.0"
-                    style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:theme="@style/RatingBar"
-                    android:numStars="5"
-                    android:rating="3"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_height="wrap_content" />
+
 
             </RelativeLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/img_avatar"
-                android:src="@drawable/default_avatar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@color/white"
-                android:layout_margin="20dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"/>
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:theme="@style/RatingBar"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:rating="0"
+                />
+
+            <TextView
+                android:id="@+id/rating_count"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </RelativeLayout>
-    </RelativeLayout>
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/avatar"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/white"
+            android:layout_below="@+id/block_img"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-25dp"
+            android:layout_marginRight="25dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/default_avatar" />
+
+    </RelativeLayout>
 </RelativeLayout>
+
+
