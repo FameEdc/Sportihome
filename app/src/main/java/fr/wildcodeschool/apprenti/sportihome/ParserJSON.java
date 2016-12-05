@@ -19,7 +19,7 @@ public class ParserJSON extends AppCompatActivity{
         if (jsonStr != null) {
             try {
 
-                JSONObject place = new JSONObject();
+                JSONObject place = new JSONObject(jsonStr);
                 return parserPlace(place);
 
             }catch (final JSONException e){
