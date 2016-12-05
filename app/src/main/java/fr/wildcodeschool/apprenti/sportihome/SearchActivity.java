@@ -98,7 +98,7 @@ public class SearchActivity extends AppCompatActivity{
                     Intent intent = new Intent(SearchActivity.this,PlaceActivity.class);
                     intent.putExtra("place_id",placesList.get(i).get_id());
                     startActivity(intent);
-                    finish();
+                    //finish();
                 }
             });
         }
