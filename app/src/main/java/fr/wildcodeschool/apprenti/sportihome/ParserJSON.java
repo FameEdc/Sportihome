@@ -537,7 +537,7 @@ public class ParserJSON extends AppCompatActivity{
         }
 
         //SPOT OWNER FACEBOOK - JSON OBJ : "sof_"
-        FacebookModel mSCFacebook;
+        FacebookModel mSOFacebook;
         if (spot_owner.has("facebook")){
             JSONObject so_facebook = spot_owner.getJSONObject("facebook");
 
@@ -547,20 +547,20 @@ public class ParserJSON extends AppCompatActivity{
             String sof_email = so_facebook.getString("email");
 
             //Create object Facebook
-            mSCFacebook = new FacebookModel(sof_id,sof_token,sof_name,sof_email);
+            mSOFacebook = new FacebookModel(sof_id,sof_token,sof_name,sof_email);
 
             if(so_facebook.has("avatar")){
                 String pof_avatar = so_facebook.getString("avatar");
-                mSCFacebook.setAvatar(pof_avatar);
+                mSOFacebook.setAvatar(pof_avatar);
             }
             else{
-                mSCFacebook.setAvatar("");
+                mSOFacebook.setAvatar("");
             }
         }
         else{
-            mSCFacebook = new FacebookModel();
+            mSOFacebook = new FacebookModel();
         }
-        mSOwner.setFacebook(mSCFacebook);
+        mSOwner.setFacebook(mSOFacebook);
 
         //SPOT OWNER GOOGLE - JSON OBJ : "sog_"
         if (spot_owner.has("google")){
@@ -572,8 +572,8 @@ public class ParserJSON extends AppCompatActivity{
             String sog_name = so_google.getString("name");
             String sog_email = so_google.getString("email");
             //Create object Google
-            GoogleModel mSCGoogle = new GoogleModel(sog_id,sog_token,sog_name,sog_email);
-            mSOwner.setGoogle(mSCGoogle);
+            GoogleModel mSOGoogle = new GoogleModel(sog_id,sog_token,sog_name,sog_email);
+            mSOwner.setGoogle(mSOGoogle);
         }
 
         //===================
