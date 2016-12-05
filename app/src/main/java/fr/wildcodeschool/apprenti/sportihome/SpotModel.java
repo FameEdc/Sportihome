@@ -136,4 +136,8 @@ public class SpotModel {
     public void setCreation(String creation) {
         this.creation = creation;
     }
+
+    public String getFirstPicture(){
+        return pictures[0];
+    }
 }
