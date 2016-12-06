@@ -26,13 +26,13 @@
 
         <RelativeLayout
             android:layout_alignBottom="@+id/place_img"
-            android:layout_alignRight="@+id/place_img"
+            android:layout_alignEnd="@+id/place_img"
             android:layout_width="wrap_content"
             android:layout_height="30dp">
 
             <TextView
                 android:id="@+id/price"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -43,7 +43,7 @@
 
             <TextView
                 android:background="@color/blue"
-                android:layout_toRightOf="@+id/price"
+                android:layout_toEndOf="@+id/price"
                 android:layout_width="5dp"
                 android:layout_height="match_parent" />
 
@@ -62,7 +62,6 @@
                 android:src="@drawable/default_avatar"
                 app:civ_border_width="2dp"
                 app:civ_border_color="@color/white"
-                android:layout_marginLeft="10dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="70dp"
@@ -72,18 +71,17 @@
             <TextView
                 android:id="@+id/name_user"
                 android:layout_width="wrap_content"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_alignStart="@+id/img_avatar"
                 android:layout_marginStart="10dp"
-
                 android:layout_below="@+id/img_avatar"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true" />
 
             <TextView
                 android:id="@+id/title_place"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:maxLines="1"
                 android:maxLength="23"
                 android:textStyle="bold"
@@ -91,13 +89,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                />
 
             <TextView
                 android:id="@+id/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_alignStart="@+id/title_place"
                 android:layout_below="@+id/title_place"
                 />
@@ -106,15 +105,15 @@
                 android:id="@+id/region"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_toRightOf="@+id/city"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/city"
                 android:layout_below="@+id/title_place" />
 
             <TextView
                 android:id="@+id/country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/region"
+                android:layout_toEndOf="@+id/region"
                 android:layout_below="@+id/title_place"/>
 
             <RatingBar
@@ -133,14 +132,11 @@
             <TextView
                 android:id="@+id/rating_count"
                 android:layout_below="@+id/country"
-                android:layout_toRightOf="@+id/ratingBar"
+                android:layout_toEndOf="@+id/ratingBar"
                 android:layout_marginTop="3dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-
-
 
         </RelativeLayout>
 
@@ -157,8 +153,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_alignTop="@+id/sport"
                 android:layout_alignParentStart="true" />
+
 
 
             <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
@@ -166,7 +162,7 @@
                 android:layout_toEndOf="@+id/engagement"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="15dp"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 app:font="@string/sports_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -183,8 +179,9 @@
                 android:id="@+id/imgProperty"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
                 app:font="@string/sportihome_ux_font"
+                
+                android:textSize="30sp"
                 android:layout_alignTop="@+id/sports"
                 android:layout_toEndOf="@+id/sports"
                 android:layout_marginStart="20dp" />
@@ -205,7 +202,7 @@
                 app:srcCompat="@drawable/travellers"
                 android:layout_height="30dp"
                 android:layout_width="50dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginEnd="8dp"
 
                 android:layout_alignTop="@+id/imgProperty"
@@ -241,7 +238,7 @@
             android:layout_height="wrap_content"
             android:text="A propos"
             android:textAlignment="center"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_marginTop="15dp"
@@ -253,8 +250,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/about"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="18dp"/>
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="18dp"/>
 
 
     </RelativeLayout>

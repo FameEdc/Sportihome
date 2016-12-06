@@ -143,14 +143,13 @@ public class PlaceActivity extends AppCompatActivity {
             }
             txtSports.setText(strHobbies);
 
-
             switch (propertyType){
                 case "Maison":
-                    imgProperty.setText("");
+                    imgProperty.setText("f");
                     txtProperty.setText(propertyType);
                     break;
                 case "Appartement":
-                    imgProperty.setText("");
+                    imgProperty.setText("m");
                     txtProperty.setText(propertyType);
                     break;
             }
