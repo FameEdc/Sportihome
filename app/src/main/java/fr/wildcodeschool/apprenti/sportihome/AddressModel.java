@@ -14,6 +14,17 @@ public class AddressModel {
 
     public AddressModel(){}
 
+    public AddressModel(String country, String locality) {
+        setCountry(country);
+        setLocality(locality);
+    }
+
+    public AddressModel(String country, String administrative_area_level_1, String locality) {
+        setCountry(country);
+        setAdministrative_area_level_1(administrative_area_level_1);
+        setLocality(locality);
+    }
+
     public AddressModel(String postal_code, String country, String administrative_area_level_1, String locality, String route) {
         setPostal_code(postal_code);
         setCountry(country);

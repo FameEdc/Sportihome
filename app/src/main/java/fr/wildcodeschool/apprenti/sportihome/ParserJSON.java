@@ -452,7 +452,6 @@ public class ParserJSON extends AppCompatActivity{
         double spot_longitude = spot.getInt("longitude");
         String spot_about = spot.getString("about");
         int spot_v = spot.getInt("__v");
-        String spot_modification = spot.getString("modification");
         JSONArray spot_comments = spot.getJSONArray("comments");
         JSONObject spot_rating = spot.getJSONObject("rating");
         JSONObject spot_address = spot.getJSONObject("address");
@@ -589,9 +588,9 @@ public class ParserJSON extends AppCompatActivity{
                 JSONObject sc_owner = comment.getJSONObject("owner");
                 String sc_date = comment.getString("date");
                 String sc_content = comment.getString("comment");
-                int sc_cleanness = comment.getInt("cleanness");
-                int sc_location = comment.getInt("location");
-                int sc_valueForMoney = comment.getInt("valueForMoney");
+                int sc_difficulty = comment.getInt("difficulty");
+                int sc_beauty = comment.getInt("beauty");
+                int sc_quality = comment.getInt("quality");
 
                 //SPOT COMMENT OWNER - JSON OBJ : "sco_"
                 String sco_id = sc_owner.getString("_id");
@@ -712,7 +711,7 @@ public class ParserJSON extends AppCompatActivity{
                     mSCOwner.setGoogle(mPCOGoogle);
                 }
 
-                sComments[k] = new CommentModel(sc_id,sc_date,mSCOwner,sc_content,sc_cleanness,sc_location,sc_valueForMoney);
+                sComments[k] = new CommentModel(sc_id,sc_date,mSCOwner,sc_content,sc_difficulty,sc_beauty,sc_quality);
 
             }
         }
@@ -726,16 +725,31 @@ public class ParserJSON extends AppCompatActivity{
         SpotRatingModel mSRatings = new SpotRatingModel(sr_difficulty,sr_beauty,sr_quality,sr_overallRating,sr_numbersOfRatings);
 
         //SPOT ADDRESS - JSON OBJ : "sa_"
-        String sa_postal = spot_address.getString("postal_code");
-        String sa_country = spot_address.getString("country");
-        String sa_admin_area_lvl_1 = spot_address.getString("administrative_area_level_1");
-        String sa_locality = spot_address.getString("locality");
-        String sa_route = spot_address.getString("route");
-        AddressModel mSAddress = new AddressModel(sa_postal,sa_country,sa_admin_area_lvl_1,sa_locality,sa_route);
+        AddressModel mSAddress = new AddressModel();
 
         if(!spot_address.isNull("street_number") && spot_address.has("street_number")){
-            int pa_street_number = spot_address.getInt("street_number");
-            mSAddress.setStreet_number(pa_street_number);
+            int sa_street_number = spot_address.getInt("street_number");
+            mSAddress.setStreet_number(sa_street_number);
+        }
+        if(!spot_address.isNull("postal_code") && spot_address.has("postal_code")){
+            String sa_postal_code = spot_address.getString("postal_code");
+            mSAddress.setPostal_code(sa_postal_code);
+        }
+        if(!spot_address.isNull("route") && spot_address.has("route")){
+            String sa_route = spot_address.getString("route");
+            mSAddress.setRoute(sa_route);
+        }
+        if (!spot_address.isNull("administrative_area_level_1") && spot_address.has("administrative_area_level_1")){
+            String sa_admin_area_lvl_1 = spot_address.getString("administrative_area_level_1");
+            mSAddress.setAdministrative_area_level_1(sa_admin_area_lvl_1);
+        }
+        if (!spot_address.isNull("country") && spot_address.has("country")){
+            String sa_country = spot_address.getString("country");
+            mSAddress.setCountry(sa_country);
+        }
+        if (!spot_address.isNull("locality") && spot_address.has("locality")){
+            String sa_locality = spot_address.getString("locality");
+            mSAddress.setLocality(sa_locality);
         }
 
         //SPOT PICTURES - JSON ARRAY : sPictures
@@ -746,7 +760,13 @@ public class ParserJSON extends AppCompatActivity{
 
         //===================
         //Add Place Object on Collection
-        SpotModel mSpot = new SpotModel(spot_id,mSOwner,spot_hobby,spot_name,spot_latitude,spot_longitude,spot_about,spot_v,spot_modification,sComments,mSRatings,mSAddress,sPictures,spot_creation);
+        SpotModel mSpot = new SpotModel(spot_id,mSOwner,spot_hobby,spot_name,spot_latitude,spot_longitude,spot_about,spot_v,sComments,mSRatings,mSAddress,sPictures,spot_creation);
+
+        if(!spot.isNull("modification") && spot.has("modification")){
+            String spot_modification = spot.getString("modification");
+            mSpot.setModification(spot_modification);
+        }
+
         return mSpot;
 
     }

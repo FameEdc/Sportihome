@@ -25,7 +25,7 @@ public class SpotModel {
 
     public SpotModel(){}
 
-    public SpotModel(String _id, OwnerModel owner, String hobby, String name, double latitude, double longitude, String about, int __v, String modification, CommentModel[] comments, SpotRatingModel rating, AddressModel address, String[] pictures, String creation) {
+    public SpotModel(String _id, OwnerModel owner, String hobby, String name, double latitude, double longitude, String about, int __v, CommentModel[] comments, SpotRatingModel rating, AddressModel address, String[] pictures, String creation) {
         set_id(_id);
         setOwner(owner);
         setHobby(hobby);
@@ -34,7 +34,6 @@ public class SpotModel {
         setLongitude(longitude);
         setAbout(about);
         set__v(__v);
-        setModification(modification);
         setComments(comments);
         setRating(rating);
         setAddress(address);
