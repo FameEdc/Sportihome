@@ -6,10 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
 import android.widget.ExpandableListView;
-
 import java.util.ArrayList;
-
-
 
 public class SearchActivity extends AppCompatActivity{
 
@@ -30,17 +27,6 @@ public class SearchActivity extends AppCompatActivity{
         //createGroupsData();
         new GetPlaces().execute();
         new GetSpots().execute();
-
-
-
-
-
-    }
-
-    public void createGroupsData() {
-
-        //
-        //groups.append(1, spotsGroup);
 
     }
 
