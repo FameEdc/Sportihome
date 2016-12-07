@@ -70,6 +70,7 @@ public class SearchActivity extends AppCompatActivity{
             PlacesExpandableListAdapter placesAdapter = new PlacesExpandableListAdapter(SearchActivity.this, tabPlacesGroup);
             placesList.setAdapter(placesAdapter);
 
+
         }
     }
 

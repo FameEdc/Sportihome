@@ -22,6 +22,7 @@ public class ParserJSON extends AppCompatActivity{
                 PlaceModel maPlace = parserPlace(place);
                 return maPlace;
 
+
             }catch (final JSONException e){
                 Log.e(TAG, "Json parsing error: " + e.getMessage());
             }
