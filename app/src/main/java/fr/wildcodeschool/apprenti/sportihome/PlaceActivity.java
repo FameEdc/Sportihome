@@ -1,19 +1,20 @@
 package fr.wildcodeschool.apprenti.sportihome;
 
+/**
+ * Created by edwin on 02/12/2016.
+ */
+
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.widget.ExpandableListView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PlaceActivity extends AppCompatActivity {
@@ -69,15 +70,15 @@ public class PlaceActivity extends AppCompatActivity {
             CircleImageView imgAvatar = (CircleImageView) findViewById(R.id.img_avatar);
             TextView txtOwnerName = (TextView) findViewById(R.id.name_user);
             TextView txtName = (TextView) findViewById(R.id.title_place);
-            TextView txtCity = (TextView) findViewById(R.id.city);
-            TextView txtRegion = (TextView) findViewById(R.id.region);
-            TextView txtCountry = (TextView) findViewById(R.id.country);
+            TextView txtAddress = (TextView) findViewById(R.id.address);
             RatingBar ratePlace = (RatingBar) findViewById(R.id.ratingBar);
             TextView txtRatingCount = (TextView) findViewById(R.id.rating_count);
             ImageView imgEngagement = (ImageView) findViewById(R.id.engagement);
             CustomFontTextView txtSports = (CustomFontTextView) findViewById(R.id.sports);
             CustomFontTextView imgProperty = (CustomFontTextView) findViewById(R.id.imgProperty);
             TextView txtProperty = (TextView) findViewById(R.id.txtProperty);
+            CustomFontTextView imgPrivate = (CustomFontTextView) findViewById(R.id.imgPrivate);
+            TextView txtPrivate = (TextView) findViewById(R.id.txtPrivate);
             TextView txtTravellers = (TextView) findViewById(R.id.txtTravellers);
             TextView txtAbout =(TextView) findViewById(R.id.txt_about);
 
@@ -112,7 +113,7 @@ public class PlaceActivity extends AppCompatActivity {
                 strHobbies += getStringResourceByName(stringName,PlaceActivity.this);
             }
             String propertyType = maPlace.getHome().getPropertyType();
-
+            boolean mPrivate = maPlace.ismPrivate();
             int travellers = maPlace.getHome().getTravellers();
             String about = maPlace.getAbout();
 
@@ -125,9 +126,8 @@ public class PlaceActivity extends AppCompatActivity {
             }
             txtOwnerName.setText(userName);
             txtName.setText(name);
-            txtCity.setText(city+",");
-            txtRegion.setText(region+",");
-            txtCountry.setText(country);
+            txtAddress.setText(city+", " + region+", "+ country);
+
             ratePlace.setRating(rating);
             txtRatingCount.setText("("+String.valueOf(countRatings+")"));
             switch (engagement){
@@ -152,6 +152,10 @@ public class PlaceActivity extends AppCompatActivity {
                     imgProperty.setText("m");
                     txtProperty.setText(propertyType);
                     break;
+            }
+            if (mPrivate) {
+                imgPrivate.setVisibility(View.VISIBLE);
+                txtPrivate.setText("Privée");
             }
             txtTravellers.setText(travellers+"");
             txtAbout.setText(about);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -10,13 +10,10 @@
     android:background="#F2F4F3"
     tools:context="fr.wildcodeschool.apprenti.sportihome.PlaceActivity">
 
-
     <RelativeLayout
         android:id="@+id/block_place"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/place_img"
@@ -57,86 +54,84 @@
             android:layout_alignParentStart="true"
             android:layout_height="100dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_avatar"
-                android:src="@drawable/default_avatar"
-                app:civ_border_width="2dp"
-                app:civ_border_color="@color/white"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="10dp"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_alignParentStart="true" />
-
-            <TextView
-                android:id="@+id/name_user"
-                android:layout_width="wrap_content"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_alignStart="@+id/img_avatar"
-                android:layout_marginStart="10dp"
-                android:layout_below="@+id/img_avatar"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:id="@+id/title_place"
-                android:textSize="20sp"
-                android:maxLines="1"
-                android:maxLength="23"
-                android:textStyle="bold"
+            <RelativeLayout
+                android:id="@+id/infoOwner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="19dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                />
+                android:layout_marginStart="10dp">
 
-            <TextView
-                android:id="@+id/city"
-                android:layout_width="wrap_content"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_avatar"
+                    android:src="@drawable/default_avatar"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:id="@+id/name_user"
+                    android:layout_width="wrap_content"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@+id/img_avatar"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/infoPlace"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_alignStart="@+id/title_place"
-                android:layout_below="@+id/title_place"
-                />
+                android:layout_toEndOf="@+id/infoOwner"
+                android:layout_marginStart="20dp"
+                >
 
-            <TextView
-                android:id="@+id/region"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_toEndOf="@+id/city"
-                android:layout_below="@+id/title_place" />
+                <TextView
+                    android:id="@+id/title_place"
+                    android:textSize="20sp"
+                    android:maxLength="23"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    />
 
-            <TextView
-                android:id="@+id/country"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/region"
-                android:layout_below="@+id/title_place"/>
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_alignStart="@+id/title_place"
+                    android:layout_below="@+id/title_place"
+                    />
 
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:theme="@style/RatingBar"
-                android:numStars="5"
-                android:stepSize="1.0"
-                android:rating="3"
-                android:layout_marginTop="5dp"
-                android:layout_below="@+id/country"
-                android:layout_alignStart="@+id/title_place" />
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:theme="@style/RatingBar"
+                    android:numStars="5"
+                    android:stepSize="1.0"
+                    android:rating="3"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/address"
+                    android:layout_alignStart="@+id/title_place" />
 
-            <TextView
-                android:id="@+id/rating_count"
-                android:layout_below="@+id/country"
-                android:layout_toEndOf="@+id/ratingBar"
-                android:layout_marginTop="3dp"
-                android:layout_marginStart="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/rating_count"
+                    android:layout_below="@+id/address"
+                    android:layout_toEndOf="@+id/ratingBar"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -155,105 +150,149 @@
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true" />
 
-
-
-            <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
-                android:id="@+id/sports"
+            <RelativeLayout
+                android:id="@+id/infoSports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_toEndOf="@+id/engagement"
-                android:layout_marginStart="30dp"
+                >
+
+                <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                    android:id="@+id/sports"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="30sp"
+                    app:font="@string/sports_font"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="Sport de l'Hôte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_sports_owner"
+                    android:layout_alignStart="@+id/sports"
+                    android:layout_below="@+id/sports"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/infoProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/infoSports"
+                android:layout_toEndOf="@+id/infoSports">
+
+                <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                    android:id="@+id/imgProperty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:font="@string/sportihome_ux_font"
+                    android:textSize="30sp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp" />
+
+                <TextView
+                    android:id="@+id/txtProperty"
+                    android:maxLength="6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/imgProperty"
+                    android:layout_below="@+id/imgProperty"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/infoPrivate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/infoProperty"
+                android:layout_toEndOf="@+id/infoProperty">
+
+                <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                    android:id="@+id/imgPrivate"
+                    android:layout_width="wrap_content"
+                    android:text="5"
+                    android:layout_height="wrap_content"
+                    app:font="@string/sportihome_ux_font"
+                    android:textSize="30sp"
+                    android:visibility="invisible"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp" />
+
+                <TextView
+                    android:id="@+id/txtPrivate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_below="@+id/imgPrivate"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/infoTravellers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/infoPrivate"
+                android:layout_toEndOf="@+id/infoPrivate">
+
+                <ImageView
+                    android:id="@+id/imgTravellers"
+                    app:srcCompat="@drawable/travellers"
+                    android:layout_height="30dp"
+                    android:layout_width="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_alignParentEnd="true" />
+
+                <TextView
+                    android:id="@+id/txtTravellers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_below="@+id/imgTravellers"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/about_place"
+            android:layout_width="match_parent"
+            android:background="#f2f4f3"
+            android:layout_below="@+id/place_engagement"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A propos"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
                 android:layout_marginTop="15dp"
-                android:textSize="30sp"
-                app:font="@string/sports_font"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_alignParentStart="true" />
 
             <TextView
-                android:text="Sport de l'Hôte"
+                android:id="@+id/txt_about"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_sports_owner"
-                android:layout_alignBottom="@+id/engagement"
-                android:layout_alignStart="@+id/sports" />
-
-            <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
-                android:id="@+id/imgProperty"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                app:font="@string/sportihome_ux_font"
-                
-                android:textSize="30sp"
-                android:layout_alignTop="@+id/sports"
-                android:layout_toEndOf="@+id/sports"
-                android:layout_marginStart="20dp" />
-
-            <TextView
-                android:id="@+id/txtProperty"
-                android:maxLength="6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/txt_sports_owner"
-                android:layout_alignBottom="@+id/txt_sports_owner"
-                android:layout_alignStart="@+id/imgProperty"
-                android:layout_toEndOf="@+id/sports"
-                 />
-
-            <ImageView
-                android:id="@+id/imgTravellers"
-                app:srcCompat="@drawable/travellers"
-                android:layout_height="30dp"
-                android:layout_width="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="8dp"
-
-                android:layout_alignTop="@+id/imgProperty"
-                android:layout_alignParentEnd="true" />
-
-            <TextView
-                android:id="@+id/txtTravellers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/txtProperty"
-                android:layout_alignBottom="@+id/txtProperty"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="28dp" />
-
+                android:layout_below="@+id/about"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="18dp"/>
 
         </RelativeLayout>
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/about_place"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:background="#f2f4f3"
-        android:layout_below="@+id/block_place"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true">
-
-        <TextView
-            android:id="@+id/about"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="A propos"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="15dp"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:id="@+id/txt_about"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/about"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="18dp"/>
-
-
-    </RelativeLayout>
-
-</RelativeLayout>
+</ScrollView>
