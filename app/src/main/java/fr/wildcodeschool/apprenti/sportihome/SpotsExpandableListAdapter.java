@@ -98,11 +98,10 @@ public class SpotsExpandableListAdapter extends BaseExpandableListAdapter {
         convertView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, monSpot.get_id(),
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(activity, monSpot.get_id(), Toast.LENGTH_SHORT).show();
                 //Quand je clic sur un hébergement
                 //ENVOYER ID hergement à PlaceActivity
-                Intent intent = new Intent(activity,PlaceActivity.class);
+                Intent intent = new Intent(activity,SpotActivity.class);
                 intent.putExtra("spot_id",monSpot.get_id());
                 activity.startActivity(intent);
                 //activity.finish();

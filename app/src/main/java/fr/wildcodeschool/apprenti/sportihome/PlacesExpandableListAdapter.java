@@ -124,8 +124,7 @@ public class PlacesExpandableListAdapter extends BaseExpandableListAdapter {
         convertView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, maPlace.get_id(),
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(activity, maPlace.get_id(), Toast.LENGTH_SHORT).show();
                 //Quand je clic sur un hébergement
                 //ENVOYER ID hergement à PlaceActivity
                 Intent intent = new Intent(activity,PlaceActivity.class);
