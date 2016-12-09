@@ -10,6 +10,7 @@ public class IdentityModel {
     private String birthday;
     private String mobilePhone;
     private String phone;
+    private String about;
 
     public IdentityModel() {
     }
@@ -55,7 +56,17 @@ public class IdentityModel {
         return phone;
     }
 
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
 }
