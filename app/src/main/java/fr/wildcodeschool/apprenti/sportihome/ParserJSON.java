@@ -110,6 +110,27 @@ public class ParserJSON extends AppCompatActivity{
         return null;
     }
 
+    public static OwnerModel getOwner(String jsonStr){
+
+        if (jsonStr != null) {
+            try {
+                JSONObject owner = new JSONObject(jsonStr);
+                OwnerModel mOwner = parserOwner(owner);
+                return mOwner;
+
+            }catch (final JSONException e){
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        }
+        else{
+            Log.e(TAG, "Couldn't get json from server.");
+        }
+
+        return null;
+
+
+    }
+
     private static PlaceModel parserPlace(JSONObject place) throws JSONException{
             //PLACE - JSON OBJ : "place_"
             String place_id = place.getString("_id");
@@ -131,6 +152,8 @@ public class ParserJSON extends AppCompatActivity{
             boolean place_private = place.getBoolean("private");
             boolean place_finished = place.getBoolean("finished");
             int place_step = place.getInt("step");
+
+
 
             //================
             //PLACE OWNER - JSON OBJ : "po_"
@@ -770,6 +793,109 @@ public class ParserJSON extends AppCompatActivity{
 
         return mSpot;
 
+    }
+
+    private static OwnerModel parserOwner(JSONObject owner) throws JSONException {
+
+        // OWNER JSONOBJECT
+
+        String avatar = owner.getString("avatar");
+        String engagement = owner.getString("engagement");
+        String creation = owner.getString("creation");
+        String id = owner.getString("_id");
+        String email = owner.getString("email");
+        int v = owner.getInt("__v");
+        JSONArray hobbies = owner.getJSONArray("hobbies");
+        JSONObject identity = owner.getJSONObject("identity");
+        Boolean isValidate = owner.getBoolean("isValidate");
+        Boolean isAdmin = owner.getBoolean("isAdmin");
+
+        //OWNER HOBBIES
+        String[] oHobbies = new String[hobbies.length()];
+        for (int i=0; i<hobbies.length();i++){
+            oHobbies[i] = hobbies.getString(i);
+        }
+
+        //IDENTITY JSONOBJET
+
+        String firstname = identity.getString("firstName");
+        String lastname = identity.getString("lastName");
+
+        IdentityModel mOIdentity = new IdentityModel(firstname, lastname);
+
+        if (!identity.isNull("birthday") && identity.has("birthday")){
+            String birthday = identity.getString("birthday");
+            mOIdentity.setBirthday(birthday);
+        }
+        if (!identity.isNull("mobilePhone") && identity.has("mobilePhone")){
+            String mobilePhone = identity.getString("mobilePhone");
+            mOIdentity.setMobilePhone(mobilePhone);
+        }
+        if (!identity.isNull("phone") && identity.has("phone")){
+            String phone = identity.getString("phone");
+            mOIdentity.setPhone(phone);
+        }
+        if (!identity.isNull("about") && identity.has("about")){
+            String about = identity.getString("about");
+            mOIdentity.setAbout(about);
+        }
+
+
+        //FACEBOOK JSONOBJECT
+
+        OwnerModel mOwner = new OwnerModel(id,email,v,isAdmin,oHobbies,engagement,mOIdentity,isValidate,creation);
+
+        //SETS
+        if(owner.has("avatar")){
+            String po_avatar = owner.getString("avatar");
+            mOwner.setAvatar(po_avatar);
+        }
+        else{
+            mOwner.setAvatar("");
+        }
+
+        //PLACE OWNER FACEBOOK - JSON OBJ : "pof_"
+        FacebookModel mPCFacebook;
+        if (owner.has("facebook")){
+            JSONObject facebook = owner.getJSONObject("facebook");
+
+            String f_id = facebook.getString("id");
+            String token = facebook.getString("token");
+            String name = facebook.getString("name");
+            String f_avatar = facebook.getString("avatar");
+            String f_email = facebook.getString("email");;
+
+            //Create object Facebook
+            mPCFacebook = new FacebookModel(f_id,token,name,f_email);
+
+            if(facebook.has("avatar")){
+                String pof_avatar = facebook.getString("avatar");
+                mPCFacebook.setAvatar(pof_avatar);
+            }
+            else{
+                mPCFacebook.setAvatar("");
+            }
+        }
+        else{
+            mPCFacebook = new FacebookModel();
+        }
+        mOwner.setFacebook(mPCFacebook);
+
+        //PLACE OWNER GOOGLE - JSON OBJ : "pog_"
+        if (owner.has("google")){
+
+            JSONObject google = owner.getJSONObject("google");
+
+            String og_id = google.getString("id");
+            String og_token = google.getString("token");
+            String og_name = google.getString("name");
+            String og_email = google.getString("email");
+            //Create object Google
+            GoogleModel mPCGoogle = new GoogleModel(og_id,og_token,og_name,og_email);
+            mOwner.setGoogle(mPCGoogle);
+        }
+
+        return mOwner;
     }
 
 }
