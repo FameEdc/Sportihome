@@ -1,10 +1,13 @@
 package fr.wildcodeschool.apprenti.sportihome;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import java.util.ArrayList;
 
@@ -18,6 +21,7 @@ public class SearchActivity extends AppCompatActivity{
     private final String urlSpots = "https://sportihome.com/api/spots/";
     private ArrayList<PlaceModel> placesList;
     private ArrayList<SpotModel> spotsList;
+    private Button btn_profil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,14 @@ public class SearchActivity extends AppCompatActivity{
         //createGroupsData();
         new GetPlaces().execute();
         new GetSpots().execute();
+        btn_profil = (Button)findViewById(R.id.my_profil);
+        btn_profil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchActivity.this, ProfilActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
