@@ -8,20 +8,38 @@ package fr.wildcodeschool.apprenti.sportihome;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
-import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PlaceActivity extends AppCompatActivity {
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import me.relex.circleindicator.CircleIndicator;
+
+public class PlaceActivity extends FragmentActivity {
 
     private ProgressDialog pDialog;
     private PlaceModel maPlace;
     private String url;
+    //private SliderLayout sliderShow;
+
+
+    ImageFragmentPagerAdapter imageFragmentPagerAdapter;
+    ViewPager viewPager;
+    //public static final String[] IMAGE_NAME = {"eagle", "horse", "bonobo", "wolf", "owl", "bear",};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +56,8 @@ public class PlaceActivity extends AppCompatActivity {
     }
 
     private class GetPlace extends AsyncTask<Void, Void, Void> {
+
+        private int count = 0;
 
         @Override
         protected void onPreExecute() {
@@ -65,7 +85,6 @@ public class PlaceActivity extends AppCompatActivity {
             if (pDialog.isShowing())
                 pDialog.dismiss();
 
-            ImageView imgPlace = (ImageView) findViewById(R.id.place_img);
             TextView txtPrice = (TextView) findViewById(R.id.price);
             CircleImageView imgAvatar = (CircleImageView) findViewById(R.id.img_avatar);
             TextView txtOwnerName = (TextView) findViewById(R.id.name_user);
@@ -80,11 +99,15 @@ public class PlaceActivity extends AppCompatActivity {
             CustomFontTextView imgPrivate = (CustomFontTextView) findViewById(R.id.imgPrivate);
             TextView txtPrivate = (TextView) findViewById(R.id.txtPrivate);
             TextView txtTravellers = (TextView) findViewById(R.id.txtTravellers);
-            TextView txtAbout =(TextView) findViewById(R.id.txt_about);
+            TextView txtAbout = (TextView) findViewById(R.id.txt_about);
 
             //Load datas
-            String picture = maPlace.getFirstPicture();
-            String pictureUrl = "https://sportihome.com/uploads/places/"+maPlace.get_id()+"/thumb/"+picture;
+            String[] pictures = maPlace.getPictures();
+            String[] picturesUrl = new String[pictures.length];
+            for (int i= 0 ; i < pictures.length ;i++){
+                //picturesUrl[i] = picturesUrl[i].replace(" ","%20");
+                picturesUrl[i] = "https://sportihome.com/uploads/places/"+maPlace.get_id()+"/thumb/"+pictures[i];
+            }
 
             int price = maPlace.getHome().getPrice().getLowSeason();
             String user,avatarUrl="";
@@ -118,7 +141,32 @@ public class PlaceActivity extends AppCompatActivity {
             String about = maPlace.getAbout();
 
             //AFFICHER
-            Picasso.with(PlaceActivity.this).load(pictureUrl).fit().centerCrop().into(imgPlace);
+            imageFragmentPagerAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(),picturesUrl);
+            viewPager = (ViewPager) findViewById(R.id.pager);
+            CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+            viewPager.setAdapter(imageFragmentPagerAdapter);
+            indicator.setViewPager(viewPager);
+            viewPager.setCurrentItem(0);
+
+            // Timer for auto sliding
+            Timer timer  = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(count<=5){
+                                viewPager.setCurrentItem(count);
+                                count++;
+                            }else{
+                                count = 0;
+                                viewPager.setCurrentItem(count);
+                            }
+                        }
+                    });
+                }
+            }, 500, 3000);
 
             txtPrice.setText(price+" €/nuit");
             if (!avatarUrl.isEmpty()){
@@ -160,6 +208,74 @@ public class PlaceActivity extends AppCompatActivity {
             txtTravellers.setText(travellers+"");
             txtAbout.setText(about);
         }
+
+
+    }
+
+    public static class ImageFragmentPagerAdapter extends FragmentPagerAdapter {
+
+        private static int NUM_ITEMS=0;
+        private String[] picturesUrl;
+
+        public ImageFragmentPagerAdapter(FragmentManager fm, String[] picturesUrl) {
+            super(fm);
+            this.NUM_ITEMS = picturesUrl.length;
+            this.picturesUrl = picturesUrl;
+        }
+
+        @Override
+        public int getCount() {
+            return this.NUM_ITEMS;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            SwipeFragment fragment = new SwipeFragment();
+            return SwipeFragment.newInstance(position, picturesUrl[position]);
+        }
+    }
+
+    public static class SwipeFragment extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+            View swipeView = inflater.inflate(R.layout.swipe_fragment, container, false);
+            Context context = swipeView.getContext();
+
+            ImageView imageView = (ImageView) swipeView.findViewById(R.id.imageView);
+            //ImageButton imageBtn = (ImageButton) swipeView.findViewById(R.id.imageBtn);
+
+            Bundle bundle = getArguments();
+
+            int position = bundle.getInt("position");
+            String imageFileUrl = bundle.getString("url");
+
+            Picasso.with(context).load(imageFileUrl).fit().centerCrop().into(imageView);
+            //Picasso.with(context).load(imageFileUrl).fit().centerCrop().into(imageBtn);
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //code
+                }
+            });
+
+            return swipeView;
+
+        }
+
+        static SwipeFragment newInstance(int position, String pictureUrl) {
+
+            SwipeFragment swipeFragment = new SwipeFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("position", position);
+            bundle.putString("url", pictureUrl);
+            swipeFragment.setArguments(bundle);
+
+            return swipeFragment;
+
+        }
     }
 
     private String getStringResourceByName(String aString,Context context) {
@@ -167,4 +283,5 @@ public class PlaceActivity extends AppCompatActivity {
         int resId = context.getResources().getIdentifier(aString, "string", packageName);
         return context.getString(resId);
     }
+
 }

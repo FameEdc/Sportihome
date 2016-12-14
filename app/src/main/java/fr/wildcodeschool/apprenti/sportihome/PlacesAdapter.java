@@ -82,7 +82,7 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
         String user,avatarUrl="";
         if(!mesPlaces.get(position).getOwner().getAvatar().isEmpty()){
             user = mesPlaces.get(position).getOwner().get_id();
-            avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/image.jpeg";
+            avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/"+mesPlaces.get(position).getOwner().getAvatar();
         }
         else{
             if (!mesPlaces.get(position).getOwner().getFacebook().getAvatar().isEmpty()){
