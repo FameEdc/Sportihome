@@ -75,7 +75,7 @@ public class SpotsExpandableListAdapter extends BaseExpandableListAdapter {
         String user,avatarUrl="";
         if(!monSpot.getOwner().getAvatar().isEmpty()){
             user = monSpot.getOwner().get_id();
-            avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/image.jpeg";
+            avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/"+monSpot.getOwner().getAvatar();
         }
         else{
             if (!monSpot.getOwner().getFacebook().getAvatar().isEmpty()){
