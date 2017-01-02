@@ -12,12 +12,6 @@ public class HomeModel {
     public HomeModel() {
     }
 
-    public HomeModel(int travellers, String propertyType, PriceModel price) {
-        setTravellers(travellers);
-        setPropertyType(propertyType);
-        setPrice(price);
-    }
-
     public int getTravellers() {
         return travellers;
     }

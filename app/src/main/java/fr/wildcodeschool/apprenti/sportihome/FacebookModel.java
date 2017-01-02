@@ -5,20 +5,13 @@ package fr.wildcodeschool.apprenti.sportihome;
  */
 
 public class FacebookModel {
-    private String id="";
-    private String token="";
-    private String name="";
-    private String avatar="";
-    private String email="";
+    private String id;
+    private String token;
+    private String name;
+    private String avatar;
+    private String email;
 
     public FacebookModel(){}
-
-    public FacebookModel(String id, String token, String name, String email) {
-        setId(id);
-        setToken(token);
-        setName(name);
-        setEmail(email);
-    }
 
     public String getId() {
         return id;

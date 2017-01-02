@@ -6,7 +6,7 @@ package fr.wildcodeschool.apprenti.sportihome;
 
 public class PlaceModel {
     private String _id;
-    private boolean isActive=false;
+    private boolean isActive;
     private OwnerModel owner;
     private double latitude;
     private double longitude;
@@ -26,28 +26,6 @@ public class PlaceModel {
     private int step;
 
     public PlaceModel() {
-    }
-
-    public PlaceModel(String _id, boolean isActive, OwnerModel owner, double latitude, double longitude, String name, String about, int __v, String modification, CommentModel[] comments, RateModel rating, HomeModel home, AddressModel address, String[] pictures, String creation, String[] hobbies, boolean mPrivate, boolean finished, int step) {
-        set_id(_id);
-        setActive(isActive);
-        setOwner(owner);
-        setLatitude(latitude);
-        setLongitude(longitude);
-        setName(name);
-        setAbout(about);
-        set__v(__v);
-        setModification(modification);
-        setComments(comments);
-        setRating(rating);
-        setHome(home);
-        setAddress(address);
-        setPictures(pictures);
-        setCreation(creation);
-        setHobbies(hobbies);
-        setmPrivate(mPrivate);
-        setFinished(finished);
-        setStep(step);
     }
 
     public String get_id() {
