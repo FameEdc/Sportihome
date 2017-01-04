@@ -15,16 +15,6 @@ public class SpotCommentModel {
 
     public SpotCommentModel(){}
 
-    public SpotCommentModel(String _id, String date, OwnerModel owner, String comment, int difficulty, int beauty, int quality) {
-        set_id(_id);
-        setDate(date);
-        setOwner(owner);
-        setComment(comment);
-        setDifficulty(difficulty);
-        setBeauty(beauty);
-        setQuality(quality);
-    }
-
     public String get_id() {
         return _id;
     }

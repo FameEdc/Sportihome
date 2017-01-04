@@ -12,13 +12,7 @@ public class IdentityModel {
     private String phone;
     private String about;
 
-    public IdentityModel() {
-    }
-
-    public IdentityModel(String firstName, String lastName){
-        setFirstName(firstName);
-        setLastName(lastName);
-    }
+    public IdentityModel() {}
 
     public String getFirstName() {
         return firstName;

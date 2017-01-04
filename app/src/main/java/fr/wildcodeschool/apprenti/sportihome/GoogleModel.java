@@ -8,14 +8,10 @@ public class GoogleModel {
     private String id;
     private String token;
     private String name;
+    private String avatar;
     private String email;
 
-    public GoogleModel(String id, String token, String name, String email) {
-        setId(id);
-        setToken(token);
-        setName(name);
-        setEmail(email);
-    }
+    public GoogleModel(){}
 
     public String getId() {
         return id;
@@ -39,6 +35,14 @@ public class GoogleModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getEmail() {

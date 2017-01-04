@@ -15,17 +15,18 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
-
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.relex.circleindicator.CircleIndicator;
 
@@ -34,12 +35,12 @@ public class PlaceActivity extends FragmentActivity {
     private ProgressDialog pDialog;
     private PlaceModel maPlace;
     private String url;
-    //private SliderLayout sliderShow;
+    private boolean autoScroll=true;
+    private int nbrPictures=0;
 
 
     ImageFragmentPagerAdapter imageFragmentPagerAdapter;
     ViewPager viewPager;
-    //public static final String[] IMAGE_NAME = {"eagle", "horse", "bonobo", "wolf", "owl", "bear",};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,131 +86,233 @@ public class PlaceActivity extends FragmentActivity {
             if (pDialog.isShowing())
                 pDialog.dismiss();
 
-            TextView txtPrice = (TextView) findViewById(R.id.price);
+            final Context context = PlaceActivity.this.getBaseContext();
+
+            //CHECK & LOAD DATAS
+
+            //Avatar
             CircleImageView imgAvatar = (CircleImageView) findViewById(R.id.img_avatar);
-            TextView txtOwnerName = (TextView) findViewById(R.id.name_user);
-            TextView txtName = (TextView) findViewById(R.id.title_place);
-            TextView txtAddress = (TextView) findViewById(R.id.address);
-            RatingBar ratePlace = (RatingBar) findViewById(R.id.ratingBar);
-            TextView txtRatingCount = (TextView) findViewById(R.id.rating_count);
-            ImageView imgEngagement = (ImageView) findViewById(R.id.engagement);
-            CustomFontTextView txtSports = (CustomFontTextView) findViewById(R.id.sports);
-            CustomFontTextView imgProperty = (CustomFontTextView) findViewById(R.id.imgProperty);
-            TextView txtProperty = (TextView) findViewById(R.id.txtProperty);
-            CustomFontTextView imgPrivate = (CustomFontTextView) findViewById(R.id.imgPrivate);
-            TextView txtPrivate = (TextView) findViewById(R.id.txtPrivate);
-            TextView txtTravellers = (TextView) findViewById(R.id.txtTravellers);
-            TextView txtAbout = (TextView) findViewById(R.id.txt_about);
+            String user,avatarUrl;
+            //on verifie d'abord si c'est un avatar du site
+            user = maPlace.getOwner().get_id();
+            if (maPlace.getOwner().getAvatar() != null){
+                avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/"+maPlace.getOwner().getAvatar();
+                avatarUrl = avatarUrl.replace(" ","%20");
+                Picasso.with(context).load(avatarUrl).fit().centerCrop().into(imgAvatar);
+            }else{
+                //sinon c'est que l'avatar viens soit de facebook soit de google
 
-            //Load datas
-            String[] pictures = maPlace.getPictures();
-            String[] picturesUrl = new String[pictures.length];
-            for (int i= 0 ; i < pictures.length ;i++){
-                //picturesUrl[i] = picturesUrl[i].replace(" ","%20");
-                picturesUrl[i] = "https://sportihome.com/uploads/places/"+maPlace.get_id()+"/thumb/"+pictures[i];
-            }
+                if (maPlace.getOwner().getGoogle() != null){
+                    if (maPlace.getOwner().getGoogle().getAvatar() != null){
+                        //avatar google
+                        avatarUrl = maPlace.getOwner().getGoogle().getAvatar();
+                        Picasso.with(context).load(avatarUrl).fit().centerCrop().into(imgAvatar);
+                    }
+                }
 
-            int price = maPlace.getHome().getPrice().getLowSeason();
-            String user,avatarUrl="";
-            if(!maPlace.getOwner().getAvatar().isEmpty()){
-                user = maPlace.getOwner().get_id();
-                avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/image.jpeg";
-            }
-            else{
-                if (!maPlace.getOwner().getFacebook().getAvatar().isEmpty()){
-                    avatarUrl = maPlace.getOwner().getFacebook().getAvatar();
+                if (maPlace.getOwner().getFacebook() != null){
+                    if (maPlace.getOwner().getFacebook().getAvatar() != null){
+                        //avatar facebook
+                        avatarUrl = maPlace.getOwner().getFacebook().getAvatar();
+                        Picasso.with(context).load(avatarUrl).fit().centerCrop().into(imgAvatar);
+                    }
                 }
             }
-            String userName = maPlace.getOwner().getIdentity().getFirstName();
-            String name = maPlace.getName();
-            String city = maPlace.getAddress().getLocality();
-            String region = maPlace.getAddress().getAdministrative_area_level_1();
-            String country = maPlace.getAddress().getCountry();
-            int rating = maPlace.getRating().getOverallRating();
-            int countRatings = maPlace.getRating().getNumberOfRatings();
-            String engagement = maPlace.getOwner().getEngagement();
-            String[] hobbies = maPlace.getHobbies();
-            String strHobbies="";
-            for (int i=0 ; i < hobbies.length ; i++){
-                String stringName = "img_"+hobbies[i];
-                stringName = stringName.replace("-","_");
-                strHobbies += getStringResourceByName(stringName,PlaceActivity.this);
-            }
-            String propertyType = maPlace.getHome().getPropertyType();
-            boolean mPrivate = maPlace.ismPrivate();
-            int travellers = maPlace.getHome().getTravellers();
-            String about = maPlace.getAbout();
 
-            //AFFICHER
-            imageFragmentPagerAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(),picturesUrl);
-            viewPager = (ViewPager) findViewById(R.id.pager);
-            CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
-            viewPager.setAdapter(imageFragmentPagerAdapter);
-            indicator.setViewPager(viewPager);
-            viewPager.setCurrentItem(0);
+            //Pictures
+            if (maPlace.getPictures() != null){
+                String[] pictures = maPlace.getPictures();
+                nbrPictures = pictures.length;
+                String[] picturesUrl = new String[nbrPictures];
+                for (int i= 0 ; i < pictures.length ;i++){
+                    //picturesUrl[i] = picturesUrl[i].replace(" ","%20");
+                    picturesUrl[i] = "https://sportihome.com/uploads/places/"+maPlace.get_id()+"/thumb/"+pictures[i];
+                }
 
-            // Timer for auto sliding
-            Timer timer  = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(count<=5){
-                                viewPager.setCurrentItem(count);
-                                count++;
-                            }else{
-                                count = 0;
-                                viewPager.setCurrentItem(count);
+                imageFragmentPagerAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(),picturesUrl);
+                viewPager = (ViewPager) findViewById(R.id.pager);
+                CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+                viewPager.setAdapter(imageFragmentPagerAdapter);
+                indicator.setViewPager(viewPager);
+                viewPager.setCurrentItem(0);
+
+                // Timer for auto sliding
+                Timer timer  = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(autoScroll){
+                                    if(count < nbrPictures){
+                                        viewPager.setCurrentItem(count);
+                                        count++;
+                                    }else{
+                                        count = 0;
+                                        viewPager.setCurrentItem(count);
+                                    }
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
+                }, 500, 3000);
+
+                viewPager.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        autoScroll=false;
+                        return false;
+                    }
+                });
+            }
+
+            //Price
+            if (maPlace.getHome().getPrice().getLowSeason() != 0){
+                TextView txtPrice = (TextView) findViewById(R.id.price);
+                int price = maPlace.getHome().getPrice().getLowSeason();
+                txtPrice.setText(price+" €/nuit");
+            }
+
+            //User name
+            if (maPlace.getOwner().getIdentity().getFirstName() != null){
+                TextView txtOwnerName = (TextView) findViewById(R.id.name_user);
+                String userName = maPlace.getOwner().getIdentity().getFirstName();
+                txtOwnerName.setText(userName);
+            }
+
+            //Place name
+            if (maPlace.getName() != null){
+                TextView txtName = (TextView) findViewById(R.id.title_place);
+                String name = maPlace.getName();
+                txtName.setText(name);
+            }
+
+            //Address
+            if (maPlace.getAddress().getLocality() != null && maPlace.getAddress().getAdministrative_area_level_1() != null && maPlace.getAddress().getCountry() != null){
+                TextView txtAddress = (TextView) findViewById(R.id.address);
+                String city = maPlace.getAddress().getLocality();
+                String region = maPlace.getAddress().getAdministrative_area_level_1();
+                String country = maPlace.getAddress().getCountry();
+                txtAddress.setText(city+", " + region+", "+ country);
+            }
+
+            //Rating
+            if (maPlace.getRating().getOverallRating() != 0){
+                RatingBar ratePlace = (RatingBar) findViewById(R.id.ratingBar);
+                int rating = maPlace.getRating().getOverallRating();
+                ratePlace.setRating(rating);
+            }
+
+            //Count rating
+            if (maPlace.getRating().getNumberOfRatings() != 0){
+                TextView txtRatingCount = (TextView) findViewById(R.id.rating_count);
+                TextView txtOpinions = (TextView)findViewById(R.id.title_opinions);
+                int countRatings = maPlace.getRating().getNumberOfRatings();
+                txtRatingCount.setText("("+String.valueOf(countRatings+")"));
+                txtOpinions.setText(countRatings+" Avis");
+            }
+
+            //Engagement
+            if (maPlace.getOwner().getEngagement() != null){
+                ImageView imgEngagement = (ImageView) findViewById(R.id.engagement);
+                String engagement = maPlace.getOwner().getEngagement();
+                switch (engagement){
+                    case "stay":
+                        imgEngagement.setImageResource(R.drawable.stay);
+                        break;
+                    case "stayshare":
+                        imgEngagement.setImageResource(R.drawable.stayshare);
+                        break;
+                    case "stayshareplay":
+                        imgEngagement.setImageResource(R.drawable.stayshareplay);
+                        break;
                 }
-            }, 500, 3000);
-
-            txtPrice.setText(price+" €/nuit");
-            if (!avatarUrl.isEmpty()){
-                Picasso.with(PlaceActivity.this).load(avatarUrl).fit().centerCrop().into(imgAvatar);
             }
-            txtOwnerName.setText(userName);
-            txtName.setText(name);
-            txtAddress.setText(city+", " + region+", "+ country);
 
-            ratePlace.setRating(rating);
-            txtRatingCount.setText("("+String.valueOf(countRatings+")"));
-            switch (engagement){
-                case "stay":
-                    imgEngagement.setImageResource(R.drawable.stay);
-                    break;
-                case "stayshare":
-                    imgEngagement.setImageResource(R.drawable.stayshare);
-                    break;
-                case "stayshareplay":
-                    imgEngagement.setImageResource(R.drawable.stayshareplay);
-                    break;
+            //Hobbies
+            if (maPlace.getHobbies() != null){
+                CustomFontTextView txtSports = (CustomFontTextView) findViewById(R.id.sports);
+                String[] hobbies = maPlace.getHobbies();
+                String strHobbies="";
+                for (int i=0 ; i < hobbies.length ; i++){
+                    String stringName = "img_"+hobbies[i];
+                    stringName = stringName.replace("-","_");
+                    strHobbies += getStringResourceByName(stringName,PlaceActivity.this);
+                }
+                txtSports.setText(strHobbies);
             }
-            txtSports.setText(strHobbies);
 
-            switch (propertyType){
-                case "Maison":
-                    imgProperty.setText("f");
-                    txtProperty.setText(propertyType);
-                    break;
-                case "Appartement":
-                    imgProperty.setText("m");
-                    txtProperty.setText(propertyType);
-                    break;
+            //Proper type
+            if (maPlace.getHome().getPropertyType() != null){
+                TextView txtProperty = (TextView) findViewById(R.id.txtProperty);
+                CustomFontTextView imgProperty = (CustomFontTextView) findViewById(R.id.imgProperty);
+                String propertyType = maPlace.getHome().getPropertyType();
+                switch (propertyType){
+                    case "Maison":
+                        imgProperty.setText("f");
+                        txtProperty.setText(propertyType);
+                        break;
+                    case "Appartement":
+                        imgProperty.setText("m");
+                        txtProperty.setText(propertyType);
+                        break;
+                }
             }
-            if (mPrivate) {
-                imgPrivate.setVisibility(View.VISIBLE);
+
+            //Private
+            if (maPlace.ismPrivate() == true){
+                TextView txtPrivate = (TextView) findViewById(R.id.txtPrivate);
+                CustomFontTextView imgPrivate = (CustomFontTextView) findViewById(R.id.imgPrivate);
+                imgPrivate.setText("5");
                 txtPrivate.setText("Privée");
             }
-            txtTravellers.setText(travellers+"");
-            txtAbout.setText(about);
+
+            //Travellers
+            if (maPlace.getHome().getTravellers() != 0){
+                TextView txtTravellers = (TextView) findViewById(R.id.txtTravellers);
+                int travellers = maPlace.getHome().getTravellers();
+                txtTravellers.setText(String.valueOf(travellers)+" voyageur(s)");
+            }
+
+            //About
+            if (maPlace.getAbout() != null){
+                TextView txtAbout = (TextView) findViewById(R.id.txt_about);
+                String about = maPlace.getAbout();
+                txtAbout.setText(about);
+            }
+
+            //Value for money
+            if (maPlace.getRating().getValueForMoney() != 0){
+                RatingBar rateValueForMoney = (RatingBar) findViewById(R.id.ratingBar_valueformoney);
+                int ratingVFM = maPlace.getRating().getValueForMoney();
+                rateValueForMoney.setRating(ratingVFM);
+            }
+
+            //Location
+            if (maPlace.getRating().getLocation() != 0){
+                RatingBar rateLocation = (RatingBar) findViewById(R.id.ratingBar_location);
+                int ratingLocation = maPlace.getRating().getLocation();
+                rateLocation.setRating(ratingLocation);
+            }
+
+            //Cleanness
+            if (maPlace.getRating().getCleanness() != 0){
+                RatingBar rateCleanness = (RatingBar) findViewById(R.id.ratingBar_cleanness);
+                int ratingCleannness = maPlace.getRating().getCleanness();
+                rateCleanness.setRating(ratingCleannness);
+            }
+
+            //Comments
+            if(maPlace.getComments() != null && maPlace.getRating().getNumberOfRatings() != 0){
+
+                ListView listComments = (ListView) findViewById(R.id.place_comments);
+                PlaceCommentsAdapter placeCommentsAdapter = new PlaceCommentsAdapter(PlaceActivity.this, maPlace.getComments());
+                listComments.setAdapter(placeCommentsAdapter);
+
+            }
+
         }
-
-
     }
 
     public static class ImageFragmentPagerAdapter extends FragmentPagerAdapter {
@@ -244,7 +347,6 @@ public class PlaceActivity extends FragmentActivity {
             Context context = swipeView.getContext();
 
             ImageView imageView = (ImageView) swipeView.findViewById(R.id.imageView);
-            //ImageButton imageBtn = (ImageButton) swipeView.findViewById(R.id.imageBtn);
 
             Bundle bundle = getArguments();
 
@@ -252,7 +354,6 @@ public class PlaceActivity extends FragmentActivity {
             String imageFileUrl = bundle.getString("url");
 
             Picasso.with(context).load(imageFileUrl).fit().centerCrop().into(imageView);
-            //Picasso.with(context).load(imageFileUrl).fit().centerCrop().into(imageBtn);
 
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -283,5 +384,7 @@ public class PlaceActivity extends FragmentActivity {
         int resId = context.getResources().getIdentifier(aString, "string", packageName);
         return context.getString(resId);
     }
+
+
 
 }

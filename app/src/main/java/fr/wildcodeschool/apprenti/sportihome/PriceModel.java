@@ -5,16 +5,11 @@ package fr.wildcodeschool.apprenti.sportihome;
  */
 
 public class PriceModel {
+
     private int hightSeason;
     private int lowSeason;
 
-    public PriceModel() {
-    }
-
-    public PriceModel(int hightSeason, int lowSeason) {
-        setHightSeason(hightSeason);
-        setLowSeason(lowSeason);
-    }
+    public PriceModel() {}
 
     public int getHightSeason() {
         return hightSeason;

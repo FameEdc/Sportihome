@@ -132,770 +132,796 @@ public class ParserJSON extends AppCompatActivity{
     }
 
     private static PlaceModel parserPlace(JSONObject place) throws JSONException{
-            //PLACE - JSON OBJ : "place_"
-            String place_id = place.getString("_id");
-            boolean place_isActive = place.getBoolean("isActive");
-            JSONObject place_owner = place.getJSONObject("owner");
-            double place_latitude = place.getInt("latitude");
-            double place_longitude = place.getInt("longitude");
-            String place_name = place.getString("name");
-            String place_about = place.getString("about");
-            int place_v = place.getInt("__v");
-            String place_modification = place.getString("modification");
-            JSONArray place_comments = place.getJSONArray("comments");
-            JSONObject place_rating = place.getJSONObject("rating");
-            JSONObject place_home = place.getJSONObject("home");
-            JSONObject place_address = place.getJSONObject("address");
-            JSONArray place_pictures = place.getJSONArray("pictures");
-            String place_creation = place.getString("creation");
-            JSONArray place_hobbies = place.getJSONArray("hobbies");
-            boolean place_private = place.getBoolean("private");
-            boolean place_finished = place.getBoolean("finished");
-            int place_step = place.getInt("step");
+        if (place != null) {
 
+            try {
 
+                PlaceModel mPlace = new PlaceModel();
 
-            //================
-            //PLACE OWNER - JSON OBJ : "po_"
-            String po_id = place_owner.getString("_id");
-            String po_email = place_owner.getString("email");
-            int po_v = place_owner.getInt("__v");
-            //JSONArray po_comments = place_owner.getJSONArray("comments");
-            boolean po_isAdmin = place_owner.getBoolean("isAdmin");
-            //JSONArray po_rating = place_owner.getJSONArray("rating");
-            JSONArray po_hobbies = place_owner.getJSONArray("hobbies");
-            String po_engagement = place_owner.getString("engagement");
-            JSONObject po_identity = place_owner.getJSONObject("identity");
-            boolean po_isValidate = place_owner.getBoolean("isValidate");
-            String po_creation = place_owner.getString("creation");
-
-            //PLACE OWNER COMMENTS - JSON ARRAY : poComments
-            //CommentModel[] poComments = new CommentModel[po_comments.length()];//VIDE
-                        /* on sait que poComments est vide mais dans le cas contraire utilise ca idem pour les autres.
-                        if (po_comments.length() != 0){
-                            for (int k=0 ; k < po_comments.length() ; k++){
-                                poComments[k] = new CommentModel();
-                            }
-                        }*/
-
-            //PLACE OWNER RATING - JSON ARRAY : poRatings
-            //RateModel[] poRatings = new RateModel[po_rating.length()];//VIDE
-                        /*
-                        if (po_rating.length() != 0){
-                            for (int k=0 ; k < po_rating.length() ; k++){
-                                JSONObject rate = po_rating.getJSONObject(kk);
-
-                                //PLACE OWNER RATING JSON OBJ : "por_"
-                                int por_valueForMoney = rate.getInt("valueForMoney");
-                                int por_location = rate.getInt("location");
-                                int por_cleanness = rate.getInt("cleanness");
-                                int por_overallRating = rate.getInt("overallRating");
-                                int por_numbersOfRatings = rate.getInt("numberOfRatings");
-
-                                poRatings[k] = new RateModel();
-                            }
-                        }*/
-
-            //PLACE OWNER HOBBIES - JSON ARRAY : poHobbies
-            String[] poHobbies = new String[po_hobbies.length()];
-            for (int j=0 ; j < po_hobbies.length() ; j++){
-                poHobbies[j] = po_hobbies.getString(j);
-            }
-
-            //PLACE OWNER IDENTITY - JSON OBJ : "poi_"
-            String poi_firstName = po_identity.getString("firstName");
-            String poi_lastName = po_identity.getString("lastName");
-
-            IdentityModel mPOIdentity = new IdentityModel(poi_firstName,poi_lastName);
-
-            if (!po_identity.isNull("birthday") && po_identity.has("birthday")){
-                String poi_birthday = po_identity.getString("birthday");
-                mPOIdentity.setBirthday(poi_birthday);
-            }
-            if (!po_identity.isNull("mobilePhone") && po_identity.has("mobilePhone")){
-                String poi_mobilePhone = po_identity.getString("mobilePhone");
-                mPOIdentity.setMobilePhone(poi_mobilePhone);
-            }
-            if (!po_identity.isNull("phone") && po_identity.has("phone")){
-                String poi_phone = po_identity.getString("phone");
-                mPOIdentity.setPhone(poi_phone);
-            }
-
-            OwnerModel mPOwner = new OwnerModel(po_id,po_email,po_v,po_isAdmin,poHobbies,po_engagement,mPOIdentity,po_isValidate,po_creation);
-
-            //SETS
-            if(place_owner.has("avatar")){
-                String po_avatar = place_owner.getString("avatar");
-                mPOwner.setAvatar(po_avatar);
-            }
-            else{
-                mPOwner.setAvatar("");
-            }
-
-            //PLACE OWNER FACEBOOK - JSON OBJ : "pof_"
-            FacebookModel mPCFacebook;
-            if (place_owner.has("facebook")){
-                JSONObject po_facebook = place_owner.getJSONObject("facebook");
-
-                String pof_id = po_facebook.getString("id");
-                String pof_token = po_facebook.getString("token");
-                String pof_name = po_facebook.getString("name");
-                String pof_email = po_facebook.getString("email");
-
-                //Create object Facebook
-                mPCFacebook = new FacebookModel(pof_id,pof_token,pof_name,pof_email);
-
-                if(po_facebook.has("avatar")){
-                    String pof_avatar = po_facebook.getString("avatar");
-                    mPCFacebook.setAvatar(pof_avatar);
+                if (!place.isNull("_id") && place.has("_id")){
+                    String place_id = place.getString("_id");
+                    mPlace.set_id(place_id);
                 }
-                else{
-                    mPCFacebook.setAvatar("");
+
+                if (!place.isNull("isActive") && place.has("isActive")){
+                    boolean place_isActive = place.getBoolean("isActive");
+                    mPlace.setActive(place_isActive);
                 }
-            }
-            else{
-                mPCFacebook = new FacebookModel();
-            }
-            mPOwner.setFacebook(mPCFacebook);
 
-            //PLACE OWNER GOOGLE - JSON OBJ : "pog_"
-            if (place_owner.has("google")){
+                if (!place.isNull("owner") && place.has("owner")){
+                    JSONObject place_owner = place.getJSONObject("owner");
+                    OwnerModel mPOwner = parserOwner(place_owner);
+                    mPlace.setOwner(mPOwner);
+                }
 
-                JSONObject po_google = place_owner.getJSONObject("google");
+                if (!place.isNull("latitude") && place.has("latitude")){
+                    double place_latitude = place.getInt("latitude");
+                    mPlace.setLatitude(place_latitude);
+                }
 
-                String pog_id = po_google.getString("id");
-                String pog_token = po_google.getString("token");
-                String pog_name = po_google.getString("name");
-                String pog_email = po_google.getString("email");
-                //Create object Google
-                GoogleModel mPCGoogle = new GoogleModel(pog_id,pog_token,pog_name,pog_email);
-                mPOwner.setGoogle(mPCGoogle);
-            }
+                if (!place.isNull("longitude") && place.has("longitude")){
+                    double place_longitude = place.getInt("longitude");
+                    mPlace.setLongitude(place_longitude);
+                }
 
-            //===================
-            //PLACE COMMENTS - JSON ARRAY : pComments
-            CommentModel[] pComments = new CommentModel[place_comments.length()];
-            if (place_comments.length() != 0){
-                for (int k=0; k < place_comments.length() ; k++){
+                if (!place.isNull("name") && place.has("name")){
+                    String place_name = place.getString("name");
+                    mPlace.setName(place_name);
+                }
 
-                    JSONObject comment = place_comments.getJSONObject(k);
+                if (!place.isNull("about") && place.has("about")){
+                    String place_about = place.getString("about");
+                    mPlace.setAbout(place_about);
+                }
 
-                    //PLACE COMMENT - JSON OBJ : "pc_"
-                    String pc_id = comment.getString("_id");
-                    JSONObject pc_owner = comment.getJSONObject("owner");
-                    String pc_date = comment.getString("date");
-                    String pc_content = comment.getString("comment");
-                    int pc_cleanness = comment.getInt("cleanness");
-                    int pc_location = comment.getInt("location");
-                    int pc_valueForMoney = comment.getInt("valueForMoney");
+                if (!place.isNull("__v") && place.has("__v")){
+                    int place_v = place.getInt("__v");
+                    mPlace.set__v(place_v);
+                }
 
-                    //PLACE COMMENT OWNER - JSON OBJ : "pco_"
-                    String pco_id = pc_owner.getString("_id");
-                    String pco_email = pc_owner.getString("email");
-                    int pco_v = pc_owner.getInt("__v");
-                    //JSONArray pco_comments = pc_owner.getJSONArray("comments");
-                    boolean pco_isAdmin = pc_owner.getBoolean("isAdmin");
-                    //JSONArray pco_rating = pc_owner.getJSONArray("rating");
-                    JSONArray pco_hobbies = pc_owner.getJSONArray("hobbies");
-                    String pco_engagement = pc_owner.getString("engagement");
-                    JSONObject pco_identity = pc_owner.getJSONObject("identity");
-                    boolean pco_isValidate = pc_owner.getBoolean("isValidate");
-                    String pco_creation = pc_owner.getString("creation");
-
-                    //PLACE COMMENT OWNER COMMENTS - JSON ARRAY : pcoComments
-                    //CommentModel[] pcoComments = new CommentModel[pc_content.length()];//VIDE
-                                /*
-                                if (po_comments.length() != 0){
-                                    for (int k=0 ; k < po_comments.length() ; k++){
-                                        pcoComments[k] = new CommentModel();
-                                    }
-                                }*/
-
-                    //PLACE COMMENT OWNER RATING - JSON ARRAY : pcoRatings
-                    //RateModel[] pcoRatings = new RateModel[pco_rating.length()];//VIDE
-                                /*
-                                if (pco_rating.length() != 0){
-                                    for (int kk=0 ; kk < pco_rating.length() ; kk++){
-                                        // TABLEAU VIDE pas évident...
-                                        JSONObject rate = pco_rating.getJSONObject(kk);
-
-                                        //PLACE COMMENT OWNER RATING - JSON OBJ : "pcor_"
-                                        int pcor_valueForMoney = rate.getInt("valueForMoney");
-                                        int pcor_location = rate.getInt("location");
-                                        int pcor_cleanness = rate.getInt("cleanness");
-                                        int pcor_overallRating = rate.getInt("overallRating");
-                                        int pcor_numbersOfRatings = rate.getInt("numberOfRatings");
-
-                                        pcoRatings[kk] = new RateModel();
-                                    }
-                                }*/
-
-                    //PLACE COMMENT OWNER HOBBIES - JSON ARRAY : pcoHobbies
-                    String[] pcoHobbies = new String[po_hobbies.length()];
-                    for (int l=0 ; l < pco_hobbies.length() ; l++){
-                        pcoHobbies[l] = pco_hobbies.getString(l);
-                    }
-
-                    //PLACE COMMENT OWNER IDENTITY - JSON OBJ : "pcoi_"
-                    String pcoi_firstName = pco_identity.getString("firstName");
-                    String pcoi_lastName = pco_identity.getString("lastName");
-
-                    IdentityModel mPCOIdentity = new IdentityModel(pcoi_firstName, pcoi_lastName);
-
-                    if (!pco_identity.isNull("birthday") && pco_identity.has("birthday")){
-                        String pcoi_birthday = pco_identity.getString("birthday");
-                        mPCOIdentity.setBirthday(pcoi_birthday);
-                    }
-                    if (!pco_identity.isNull("mobilePhone") && pco_identity.has("mobilePhone")){
-                        String pcoi_mobilePhone = pco_identity.getString("mobilePhone");
-                        mPCOIdentity.setMobilePhone(pcoi_mobilePhone);
-                    }
-                    if (!pco_identity.isNull("phone") && pco_identity.has("phone")){
-                        String pcoi_phone = pco_identity.getString("phone");
-                        mPCOIdentity.setPhone(pcoi_phone);
-                    }
-
-                    OwnerModel mPCOwner = new OwnerModel(pco_id,pco_email,pco_v,pco_isAdmin,pcoHobbies,pco_engagement,mPCOIdentity,pco_isValidate,pco_creation);
-
-                    //SETS
-                    if(pc_owner.has("avatar")){
-                        String pco_avatar = pc_owner.getString("avatar");
-                        mPCOwner.setAvatar(pco_avatar);
-                    }
-                    else{
-                        mPCOwner.setAvatar("");
-                    }
-
-                    //PLACE COMMENT OWNER FACEBOOK - JSON OBJ : "pcof_"
-                    FacebookModel mPCOFacebook;
-                    if (pc_owner.has("facebook")){
-
-                        JSONObject pco_facebook = pc_owner.getJSONObject("facebook");
-
-                        String pcof_id = pco_facebook.getString("id");
-                        String pcof_token = pco_facebook.getString("token");
-                        String pcof_name = pco_facebook.getString("name");
-                        String pcof_email = pco_facebook.getString("email");
-
-                        //set Facebook OBJ on Comment OBJ
-                        mPCOFacebook = new FacebookModel(pcof_id,pcof_token,pcof_name,pcof_email);
-
-                        if(pco_facebook.has("avatar")){
-                            String pcof_avatar = pco_facebook.getString("avatar");
-                            mPCOFacebook.setAvatar(pcof_avatar);
+                if (!place.isNull("comments") && place.has("comments")){
+                    JSONArray place_comments = place.getJSONArray("comments");
+                    ArrayList<CommentModel> pComments = new ArrayList<CommentModel>(place_comments.length());
+                    if (place_comments.length() != 0){
+                        for (int k=0; k < place_comments.length() ; k++){
+                            JSONObject comment = place_comments.getJSONObject(k);
+                            pComments.add(parserPlaceComment(comment));
+                            //pComments[k] = parserPlaceComment(comment);
                         }
-                        else{
-                            mPCOFacebook.setAvatar("");
+                        mPlace.setComments(pComments);
+                    }
+                }
+
+                if (!place.isNull("rating") && place.has("rating")){
+                    JSONObject place_rating = place.getJSONObject("rating");
+                    RateModel mPRatings = parserPlaceRating(place_rating);
+                    mPlace.setRating(mPRatings);
+                }
+
+                if (!place.isNull("home") && place.has("home")){
+                    JSONObject place_home = place.getJSONObject("home");
+                    HomeModel mPHome = parserHome(place_home);
+                    mPlace.setHome(mPHome);
+                }
+
+                if (!place.isNull("address") && place.has("address")){
+                    JSONObject place_address = place.getJSONObject("address");
+                    AddressModel mPAddress = parserAddress(place_address);
+                    mPlace.setAddress(mPAddress);
+                }
+
+                if (!place.isNull("pictures") && place.has("pictures")){
+                    JSONArray place_pictures = place.getJSONArray("pictures");
+                    String[] pPictures = new String[place_pictures.length()];
+                    for (int m=0 ; m < place_pictures.length() ; m++){
+                        pPictures[m] = place_pictures.getString(m);
+                    }
+                    mPlace.setPictures(pPictures);
+                }
+
+                if (!place.isNull("creation") && place.has("creation")){
+                    String place_creation = place.getString("creation");
+                    mPlace.setCreation(place_creation);
+                }
+
+                if (!place.isNull("hobbies") && place.has("hobbies")){
+                    JSONArray place_hobbies = place.getJSONArray("hobbies");
+                    String[] pHobbies = new String[place_hobbies.length()];
+                    if (place_hobbies.length() != 0){
+                        for (int n=0 ; n < place_hobbies.length() ; n++){
+                            pHobbies[n] = place_hobbies.getString(n);
                         }
                     }
-                    else{
-                        mPCOFacebook = new FacebookModel();
-                    }
-                    mPCOwner.setFacebook(mPCOFacebook);
-
-                    //PLACE COMMENT OWNER GOOGLE - JSON OBJ : "pcog_"
-                    if (pc_owner.has("google")){
-
-                        JSONObject pco_google = pc_owner.getJSONObject("google");
-
-                        String pcog_id = pco_google.getString("id");
-                        String pcog_token = pco_google.getString("token");
-                        String pcog_name = pco_google.getString("name");
-                        String pcog_email = pco_google.getString("email");
-
-                        //set Google OBJ on Comment OBJ
-                        GoogleModel mPCOGoogle = new GoogleModel(pcog_id,pcog_token,pcog_name,pcog_email);
-                        mPCOwner.setGoogle(mPCOGoogle);
-                    }
-
-                    pComments[k] = new CommentModel(pc_id,pc_date,mPCOwner,pc_content,pc_cleanness,pc_location,pc_valueForMoney);
-
+                    mPlace.setHobbies(pHobbies);
                 }
-            }
 
-            //PLACE RATING - JSON OBJ : "pr_"
-            int pr_valueForMoney = place_rating.getInt("valueForMoney");
-            int pr_location = place_rating.getInt("location");
-            int pr_cleanness = place_rating.getInt("cleanness");
-            int pr_overallRating = place_rating.getInt("overallRating");
-            int pr_numbersOfRatings = place_rating.getInt("numberOfRatings");
-            RateModel mPRatings = new RateModel(pr_valueForMoney,pr_location,pr_cleanness,pr_overallRating,pr_numbersOfRatings);
-
-            //PLACE HOME - JSON OBJ : "ph_"
-            int ph_travellers = place_home.getInt("travellers");
-            String ph_property = place_home.getString("propertyType");
-            JSONObject ph_price = place_home.getJSONObject("price");
-
-            //PLACE HOME PRICE - JSON OBJ : "php_"
-            int php_highSeason = ph_price.getInt("highSeason");
-            int php_lowSeason = ph_price.getInt("lowSeason");
-            PriceModel mPHPrice = new PriceModel(php_highSeason,php_lowSeason);
-            HomeModel mPHome = new HomeModel(ph_travellers,ph_property,mPHPrice);
-
-            //PLACE ADDRESS - JSON OBJ : "pa_"
-            String pa_postal = place_address.getString("postal_code");
-            String pa_country = place_address.getString("country");
-            String pa_admin_area_lvl_1 = place_address.getString("administrative_area_level_1");
-            String pa_locality = place_address.getString("locality");
-            String pa_route = place_address.getString("route");
-            AddressModel mPAddress = new AddressModel(pa_postal,pa_country,pa_admin_area_lvl_1,pa_locality,pa_route);
-
-            if(!place_address.isNull("street_number") && place_address.has("street_number")){
-                int pa_street_number = place_address.getInt("street_number");
-                mPAddress.setStreet_number(pa_street_number);
-            }
-
-            //PLACE PICTURES - JSON ARRAY : pPictures
-            String[] pPictures = new String[place_pictures.length()];
-            for (int m=0 ; m < place_pictures.length() ; m++){
-                pPictures[m] = place_pictures.getString(m);
-            }
-
-            //PLACE HOBBIES - JSON ARRAY : pHobbies VIDE
-            String[] pHobbies = new String[place_hobbies.length()];
-            if (place_hobbies.length() != 0){
-                for (int n=0 ; n < place_hobbies.length() ; n++){
-                    pHobbies[n] = place_hobbies.getString(n);
+                if (!place.isNull("private") && place.has("private")){
+                    boolean place_private = place.getBoolean("private");
+                    mPlace.setmPrivate(place_private);
                 }
+
+                if (!place.isNull("finished") && place.has("finished")){
+                    boolean place_finished = place.getBoolean("finished");
+                    mPlace.setFinished(place_finished);
+                }
+
+                if (!place.isNull("step") && place.has("step")){
+                    int place_step = place.getInt("step");
+                    mPlace.setStep(place_step);
+                }
+
+                //return Place Object on Collection
+                return mPlace;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
             }
+        } else {
+            Log.e(TAG, "Place Object is Null.");
+        }
 
-            //===================
-            //Add Place Object on Collection
-            PlaceModel mPlace = new PlaceModel(place_id,place_isActive,mPOwner,place_latitude,place_longitude,place_name,place_about,place_v,place_modification,pComments,mPRatings,mPHome,mPAddress,pPictures,place_creation,pHobbies,place_private,place_finished,place_step);
-            return mPlace;
-
+        return null;
     }
 
     private static SpotModel parserSpot(JSONObject spot) throws JSONException{
-        //PLACE - JSON OBJ : "spot_"
-        String spot_id = spot.getString("_id");
-        JSONObject spot_owner = spot.getJSONObject("owner");
-        String spot_hobby = spot.getString("hobby");
-        String spot_name = spot.getString("name");
-        double spot_latitude = spot.getInt("latitude");
-        double spot_longitude = spot.getInt("longitude");
-        String spot_about = spot.getString("about");
-        int spot_v = spot.getInt("__v");
-        JSONArray spot_comments = spot.getJSONArray("comments");
-        JSONObject spot_rating = spot.getJSONObject("rating");
-        JSONObject spot_address = spot.getJSONObject("address");
-        JSONArray spot_pictures = spot.getJSONArray("pictures");
-        String spot_creation = spot.getString("creation");
+        if (spot != null) {
 
-        //================
-        //SPOT OWNER - JSON OBJ : "so_"
-        String so_id = spot_owner.getString("_id");
-        String so_email = spot_owner.getString("email");
-        int so_v = spot_owner.getInt("__v");
-        //JSONArray so_comments = place_owner.getJSONArray("comments");
-        boolean so_isAdmin = spot_owner.getBoolean("isAdmin");
-        //JSONArray so_rating = place_owner.getJSONArray("rating");
-        JSONArray so_hobbies = spot_owner.getJSONArray("hobbies");
-        String so_engagement = spot_owner.getString("engagement");
-        JSONObject so_identity = spot_owner.getJSONObject("identity");
-        boolean so_isValidate = spot_owner.getBoolean("isValidate");
-        String so_creation = spot_owner.getString("creation");
+            try {
 
-        //SPOT OWNER COMMENTS - JSON ARRAY : soComments
-        //CommentModel[] soComments = new CommentModel[so_comments.length()];//VIDE
-                        /* on sait que soComments est vide mais dans le cas contraire utilise ca idem pour les autres.
-                        if (so_comments.length() != 0){
-                            for (int k=0 ; k < so_comments.length() ; k++){
-                                soComments[k] = new CommentModel();
-                            }
-                        }*/
+                SpotModel mSpot = new SpotModel();
 
-        //SPOT OWNER RATING - JSON ARRAY : soRatings
-        //RateModel[] soRatings = new RateModel[so_rating.length()];//VIDE
-                        /*
-                        if (so_rating.length() != 0){
-                            for (int k=0 ; k < so_rating.length() ; k++){
-                                JSONObject rate = so_rating.getJSONObject(kk);
-
-                                //PLACE OWNER RATING JSON OBJ : "sor_"
-                                int sor_valueForMoney = rate.getInt("valueForMoney");
-                                int sor_location = rate.getInt("location");
-                                int sor_cleanness = rate.getInt("cleanness");
-                                int sor_overallRating = rate.getInt("overallRating");
-                                int sor_numbersOfRatings = rate.getInt("numberOfRatings");
-
-                                soRatings[k] = new RateModel();
-                            }
-                        }*/
-
-        //SPOT OWNER HOBBIES - JSON ARRAY : soHobbies
-        String[] soHobbies = new String[so_hobbies.length()];
-        for (int j=0 ; j < so_hobbies.length() ; j++){
-            soHobbies[j] = so_hobbies.getString(j);
-        }
-
-        //SPOT OWNER IDENTITY - JSON OBJ : "soi_"
-        String soi_firstName = so_identity.getString("firstName");
-        String soi_lastName = so_identity.getString("lastName");
-
-        IdentityModel mSOIdentity = new IdentityModel(soi_firstName,soi_lastName);
-
-        if (!so_identity.isNull("birthday") && so_identity.has("birthday")){
-            String poi_birthday = so_identity.getString("birthday");
-            mSOIdentity.setBirthday(poi_birthday);
-        }
-        if (!so_identity.isNull("mobilePhone") && so_identity.has("mobilePhone")){
-            String poi_mobilePhone = so_identity.getString("mobilePhone");
-            mSOIdentity.setMobilePhone(poi_mobilePhone);
-        }
-        if (!so_identity.isNull("phone") && so_identity.has("phone")){
-            String poi_phone = so_identity.getString("phone");
-            mSOIdentity.setPhone(poi_phone);
-        }
-
-        OwnerModel mSOwner = new OwnerModel(so_id,so_email,so_v,so_isAdmin,soHobbies,so_engagement,mSOIdentity,so_isValidate,so_creation);
-
-        //SETS
-        if(spot_owner.has("avatar")){
-            String po_avatar = spot_owner.getString("avatar");
-            mSOwner.setAvatar(po_avatar);
-        }
-        else{
-            mSOwner.setAvatar("");
-        }
-
-        //SPOT OWNER FACEBOOK - JSON OBJ : "sof_"
-        FacebookModel mSOFacebook;
-        if (spot_owner.has("facebook")){
-            JSONObject so_facebook = spot_owner.getJSONObject("facebook");
-
-            String sof_id = so_facebook.getString("id");
-            String sof_token = so_facebook.getString("token");
-            String sof_name = so_facebook.getString("name");
-            String sof_email = so_facebook.getString("email");
-
-            //Create object Facebook
-            mSOFacebook = new FacebookModel(sof_id,sof_token,sof_name,sof_email);
-
-            if(so_facebook.has("avatar")){
-                String pof_avatar = so_facebook.getString("avatar");
-                mSOFacebook.setAvatar(pof_avatar);
-            }
-            else{
-                mSOFacebook.setAvatar("");
-            }
-        }
-        else{
-            mSOFacebook = new FacebookModel();
-        }
-        mSOwner.setFacebook(mSOFacebook);
-
-        //SPOT OWNER GOOGLE - JSON OBJ : "sog_"
-        if (spot_owner.has("google")){
-
-            JSONObject so_google = spot_owner.getJSONObject("google");
-
-            String sog_id = so_google.getString("id");
-            String sog_token = so_google.getString("token");
-            String sog_name = so_google.getString("name");
-            String sog_email = so_google.getString("email");
-            //Create object Google
-            GoogleModel mSOGoogle = new GoogleModel(sog_id,sog_token,sog_name,sog_email);
-            mSOwner.setGoogle(mSOGoogle);
-        }
-
-        //===================
-        //SPOT COMMENTS - JSON ARRAY : sComments
-        CommentModel[] sComments = new CommentModel[spot_comments.length()];
-        if (spot_comments.length() != 0){
-            for (int k=0; k < spot_comments.length() ; k++){
-
-                JSONObject comment = spot_comments.getJSONObject(k);
-
-                //SPOT COMMENT - JSON OBJ : "sc_"
-                String sc_id = comment.getString("_id");
-                JSONObject sc_owner = comment.getJSONObject("owner");
-                String sc_date = comment.getString("date");
-                String sc_content = comment.getString("comment");
-                int sc_difficulty = comment.getInt("difficulty");
-                int sc_beauty = comment.getInt("beauty");
-                int sc_quality = comment.getInt("quality");
-
-                //SPOT COMMENT OWNER - JSON OBJ : "sco_"
-                String sco_id = sc_owner.getString("_id");
-                String sco_email = sc_owner.getString("email");
-                int sco_v = sc_owner.getInt("__v");
-                //JSONArray sco_comments = sc_owner.getJSONArray("comments");
-                boolean sco_isAdmin = sc_owner.getBoolean("isAdmin");
-                //JSONArray pco_rating = sc_owner.getJSONArray("rating");
-                JSONArray sco_hobbies = sc_owner.getJSONArray("hobbies");
-                String sco_engagement = sc_owner.getString("engagement");
-                JSONObject sco_identity = sc_owner.getJSONObject("identity");
-                boolean sco_isValidate = sc_owner.getBoolean("isValidate");
-                String sco_creation = sc_owner.getString("creation");
-
-                //SPOT COMMENT OWNER COMMENTS - JSON ARRAY : scoComments
-                //CommentModel[] scoComments = new CommentModel[sc_content.length()];//VIDE
-                                /*
-                                if (so_comments.length() != 0){
-                                    for (int k=0 ; k < so_comments.length() ; k++){
-                                        scoComments[k] = new CommentModel();
-                                    }
-                                }*/
-
-                //PLACE COMMENT OWNER RATING - JSON ARRAY : scoRatings
-                //RateModel[] scoRatings = new RateModel[sco_rating.length()];//VIDE
-                                /*
-                                if (sco_rating.length() != 0){
-                                    for (int kk=0 ; kk < sco_rating.length() ; kk++){
-                                        // TABLEAU VIDE pas évident...
-                                        JSONObject rate = sco_rating.getJSONObject(kk);
-
-                                        //PLACE COMMENT OWNER RATING - JSON OBJ : "pcor_"
-                                        int scor_valueForMoney = rate.getInt("valueForMoney");
-                                        int scor_location = rate.getInt("location");
-                                        int scor_cleanness = rate.getInt("cleanness");
-                                        int scor_overallRating = rate.getInt("overallRating");
-                                        int scor_numbersOfRatings = rate.getInt("numberOfRatings");
-
-                                        scoRatings[kk] = new RateModel();
-                                    }
-                                }*/
-
-                //SPOT COMMENT OWNER HOBBIES - JSON ARRAY : scoHobbies
-                String[] scoHobbies = new String[so_hobbies.length()];
-                for (int l=0 ; l < so_hobbies.length() ; l++){
-                    scoHobbies[l] = sco_hobbies.getString(l);
+                if (!spot.isNull("_id") && spot.has("_id")){
+                    String place_step = spot.getString("_id");
+                    mSpot.set_id(place_step);
                 }
 
-                //SPOT COMMENT OWNER IDENTITY - JSON OBJ : "scoi_"
-                String scoi_firstName = sco_identity.getString("firstName");
-                String scoi_lastName = sco_identity.getString("lastName");
-
-                IdentityModel mSCOIdentity = new IdentityModel(scoi_firstName, scoi_lastName);
-
-                if (!sco_identity.isNull("birthday") && sco_identity.has("birthday")){
-                    String pcoi_birthday = sco_identity.getString("birthday");
-                    mSCOIdentity.setBirthday(pcoi_birthday);
-                }
-                if (!sco_identity.isNull("mobilePhone") && sco_identity.has("mobilePhone")){
-                    String pcoi_mobilePhone = sco_identity.getString("mobilePhone");
-                    mSCOIdentity.setMobilePhone(pcoi_mobilePhone);
-                }
-                if (!sco_identity.isNull("phone") && sco_identity.has("phone")){
-                    String pcoi_phone = sco_identity.getString("phone");
-                    mSCOIdentity.setPhone(pcoi_phone);
+                if (!spot.isNull("owner") && spot.has("owner")){
+                    JSONObject spot_owner = spot.getJSONObject("owner");
+                    OwnerModel mSOwner = parserOwner(spot_owner);
+                    mSpot.setOwner(mSOwner);
                 }
 
-                OwnerModel mSCOwner = new OwnerModel(sco_id,sco_email,sco_v,sco_isAdmin,scoHobbies,sco_engagement,mSCOIdentity,sco_isValidate,sco_creation);
-
-                //SETS
-                if(sc_owner.has("avatar")){
-                    String pco_avatar = sc_owner.getString("avatar");
-                    mSCOwner.setAvatar(pco_avatar);
-                }
-                else{
-                    mSCOwner.setAvatar("");
+                if (!spot.isNull("hobby") && spot.has("hobby")){
+                    String spot_hobby = spot.getString("hobby");
+                    mSpot.setHobby(spot_hobby);
                 }
 
-                //SPOT COMMENT OWNER FACEBOOK - JSON OBJ : "scof_"
-                FacebookModel mSCOFacebook;
-                if (sc_owner.has("facebook")){
+                if (!spot.isNull("name") && spot.has("name")){
+                    String spot_name = spot.getString("name");
+                    mSpot.setName(spot_name);
+                }
 
-                    JSONObject sco_facebook = sc_owner.getJSONObject("facebook");
+                if (!spot.isNull("latitude") && spot.has("latitude")){
+                    double spot_latitude = spot.getInt("latitude");
+                    mSpot.setLatitude(spot_latitude);
+                }
 
-                    String scof_id = sco_facebook.getString("id");
-                    String scof_token = sco_facebook.getString("token");
-                    String scof_name = sco_facebook.getString("name");
-                    String scof_email = sco_facebook.getString("email");
+                if (!spot.isNull("longitude") && spot.has("longitude")){
+                    double spot_longitude = spot.getInt("longitude");
+                    mSpot.setLongitude(spot_longitude);
+                }
 
-                    //set Facebook OBJ on Comment OBJ
-                    mSCOFacebook = new FacebookModel(scof_id,scof_token,scof_name,scof_email);
+                if (!spot.isNull("about") && spot.has("about")){
+                    String spot_about = spot.getString("about");
+                    mSpot.setAbout(spot_about);
+                }
 
-                    if(sco_facebook.has("avatar")){
-                        String pcof_avatar = sco_facebook.getString("avatar");
-                        mSCOFacebook.setAvatar(pcof_avatar);
-                    }
-                    else{
-                        mSCOFacebook.setAvatar("");
+                if (!spot.isNull("__v") && spot.has("__v")){
+                    int spot_v = spot.getInt("__v");
+                    mSpot.set__v(spot_v);
+                }
+
+                if(!spot.isNull("modification") && spot.has("modification")){
+                    String spot_modification = spot.getString("modification");
+                    mSpot.setModification(spot_modification);
+                }
+
+                if(!spot.isNull("comments") && spot.has("comments")){
+                    JSONArray spot_comments = spot.getJSONArray("comments");
+                    ArrayList<SpotCommentModel> sComments = new ArrayList<SpotCommentModel>(spot_comments.length());
+                    if (spot_comments.length() != 0){
+                        for (int k=0; k < spot_comments.length() ; k++){
+                            JSONObject comment = spot_comments.getJSONObject(k);
+                            sComments.add(parserSpotComment(comment));
+                            //sComments[k] = parserSpotComment(comment);
+                        }
+                        mSpot.setComments(sComments);
                     }
                 }
-                else{
-                    mSCOFacebook = new FacebookModel();
-                }
-                mSCOwner.setFacebook(mSCOFacebook);
 
-                //SPOT COMMENT OWNER GOOGLE - JSON OBJ : "scog_"
-                if (sc_owner.has("google")){
-
-                    JSONObject sco_google = sc_owner.getJSONObject("google");
-
-                    String scog_id = sco_google.getString("id");
-                    String scog_token = sco_google.getString("token");
-                    String scog_name = sco_google.getString("name");
-                    String scog_email = sco_google.getString("email");
-
-                    //set Google OBJ on Comment OBJ
-                    GoogleModel mPCOGoogle = new GoogleModel(scog_id,scog_token,scog_name,scog_email);
-                    mSCOwner.setGoogle(mPCOGoogle);
+                if(!spot.isNull("rating") && spot.has("rating")){
+                    JSONObject spot_rating = spot.getJSONObject("rating");
+                    SpotRatingModel mSRatings = parserSpotRating(spot_rating);
+                    mSpot.setRating(mSRatings);
                 }
 
-                sComments[k] = new CommentModel(sc_id,sc_date,mSCOwner,sc_content,sc_difficulty,sc_beauty,sc_quality);
+                if(!spot.isNull("address") && spot.has("address")){
+                    JSONObject spot_address = spot.getJSONObject("address");
+                    AddressModel mSAddress = parserAddress(spot_address);
+                    mSpot.setAddress(mSAddress);
+                }
 
+                if(!spot.isNull("pictures") && spot.has("pictures")){
+                    JSONArray spot_pictures = spot.getJSONArray("pictures");
+                    String[] sPictures = new String[spot_pictures.length()];
+                    for (int m=0 ; m < spot_pictures.length() ; m++){
+                        sPictures[m] = spot_pictures.getString(m);
+                    }
+                    mSpot.setPictures(sPictures);
+                }
+
+                if(!spot.isNull("creation") && spot.has("creation")){
+                    String spot_creation = spot.getString("creation");
+                    mSpot.setCreation(spot_creation);
+                }
+
+                return mSpot;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
             }
+        } else {
+            Log.e(TAG, "Spot Object is Null.");
         }
 
-        //SPOT RATING - JSON OBJ : "sr_"
-        int sr_difficulty = spot_rating.getInt("difficulty");
-        int sr_beauty = spot_rating.getInt("beauty");
-        int sr_quality = spot_rating.getInt("quality");
-        int sr_overallRating = spot_rating.getInt("overallRating");
-        int sr_numbersOfRatings = spot_rating.getInt("numberOfRatings");
-        SpotRatingModel mSRatings = new SpotRatingModel(sr_difficulty,sr_beauty,sr_quality,sr_overallRating,sr_numbersOfRatings);
-
-        //SPOT ADDRESS - JSON OBJ : "sa_"
-        AddressModel mSAddress = new AddressModel();
-
-        if(!spot_address.isNull("street_number") && spot_address.has("street_number")){
-            int sa_street_number = spot_address.getInt("street_number");
-            mSAddress.setStreet_number(sa_street_number);
-        }
-        if(!spot_address.isNull("postal_code") && spot_address.has("postal_code")){
-            String sa_postal_code = spot_address.getString("postal_code");
-            mSAddress.setPostal_code(sa_postal_code);
-        }
-        if(!spot_address.isNull("route") && spot_address.has("route")){
-            String sa_route = spot_address.getString("route");
-            mSAddress.setRoute(sa_route);
-        }
-        if (!spot_address.isNull("administrative_area_level_1") && spot_address.has("administrative_area_level_1")){
-            String sa_admin_area_lvl_1 = spot_address.getString("administrative_area_level_1");
-            mSAddress.setAdministrative_area_level_1(sa_admin_area_lvl_1);
-        }
-        if (!spot_address.isNull("country") && spot_address.has("country")){
-            String sa_country = spot_address.getString("country");
-            mSAddress.setCountry(sa_country);
-        }
-        if (!spot_address.isNull("locality") && spot_address.has("locality")){
-            String sa_locality = spot_address.getString("locality");
-            mSAddress.setLocality(sa_locality);
-        }
-
-        //SPOT PICTURES - JSON ARRAY : sPictures
-        String[] sPictures = new String[spot_pictures.length()];
-        for (int m=0 ; m < spot_pictures.length() ; m++){
-            sPictures[m] = spot_pictures.getString(m);
-        }
-
-        //===================
-        //Add Place Object on Collection
-        SpotModel mSpot = new SpotModel(spot_id,mSOwner,spot_hobby,spot_name,spot_latitude,spot_longitude,spot_about,spot_v,sComments,mSRatings,mSAddress,sPictures,spot_creation);
-
-        if(!spot.isNull("modification") && spot.has("modification")){
-            String spot_modification = spot.getString("modification");
-            mSpot.setModification(spot_modification);
-        }
-
-        return mSpot;
+        return null;
 
     }
 
     private static OwnerModel parserOwner(JSONObject owner) throws JSONException {
+        if (owner != null) {
 
-        // OWNER JSONOBJECT
+            try {
 
-        String avatar = owner.getString("avatar");
-        String engagement = owner.getString("engagement");
-        String creation = owner.getString("creation");
-        String id = owner.getString("_id");
-        String email = owner.getString("email");
-        int v = owner.getInt("__v");
-        JSONArray hobbies = owner.getJSONArray("hobbies");
-        JSONObject identity = owner.getJSONObject("identity");
-        Boolean isValidate = owner.getBoolean("isValidate");
-        Boolean isAdmin = owner.getBoolean("isAdmin");
+                OwnerModel mOwner = new OwnerModel();
 
-        //OWNER HOBBIES
-        String[] oHobbies = new String[hobbies.length()];
-        for (int i=0; i<hobbies.length();i++){
-            oHobbies[i] = hobbies.getString(i);
-        }
+                if (!owner.isNull("_id") && owner.has("_id")){
+                    String id = owner.getString("_id");
+                    mOwner.set_id(id);
+                }
 
-        //IDENTITY JSONOBJET
+                if (!owner.isNull("email") && owner.has("email")){
+                    String email = owner.getString("email");
+                    mOwner.setEmail(email);
+                }
 
-        String firstname = identity.getString("firstName");
-        String lastname = identity.getString("lastName");
+                if (!owner.isNull("__v") && owner.has("__v")){
+                    int v = owner.getInt("__v");
+                    mOwner.set__v(v);
+                }
 
-        IdentityModel mOIdentity = new IdentityModel(firstname, lastname);
+                if (!owner.isNull("avatar") && owner.has("avatar")){
+                    String avatar = owner.getString("avatar");
+                    mOwner.setAvatar(avatar);
+                }
 
-        if (!identity.isNull("birthday") && identity.has("birthday")){
-            String birthday = identity.getString("birthday");
-            mOIdentity.setBirthday(birthday);
-        }
-        if (!identity.isNull("mobilePhone") && identity.has("mobilePhone")){
-            String mobilePhone = identity.getString("mobilePhone");
-            mOIdentity.setMobilePhone(mobilePhone);
-        }
-        if (!identity.isNull("phone") && identity.has("phone")){
-            String phone = identity.getString("phone");
-            mOIdentity.setPhone(phone);
-        }
-        if (!identity.isNull("about") && identity.has("about")){
-            String about = identity.getString("about");
-            mOIdentity.setAbout(about);
-        }
+                if (!owner.isNull("isAdmin") && owner.has("isAdmin")){
+                    boolean isAdmin = owner.getBoolean("isAdmin");
+                    mOwner.setAdmin(isAdmin);
+                }
 
+                if (!owner.isNull("isAdmin") && owner.has("isAdmin")){
+                    boolean isAdmin = owner.getBoolean("isAdmin");
+                    mOwner.setAdmin(isAdmin);
+                }
 
-        //FACEBOOK JSONOBJECT
+                if (!owner.isNull("hobbies") && owner.has("hobbies")){
+                    JSONArray hobbies = owner.getJSONArray("hobbies");
+                    String[] oHobbies = new String[hobbies.length()];
+                    for (int i=0; i<hobbies.length();i++){
+                        oHobbies[i] = hobbies.getString(i);
+                    }
+                    mOwner.setHobbies(oHobbies);
+                }
 
-        OwnerModel mOwner = new OwnerModel(id,email,v,isAdmin,oHobbies,engagement,mOIdentity,isValidate,creation);
+                if (!owner.isNull("engagement") && owner.has("engagement")){
+                    String engagement = owner.getString("engagement");
+                    mOwner.setEngagement(engagement);
+                }
 
-        //SETS
-        if(owner.has("avatar")){
-            String po_avatar = owner.getString("avatar");
-            mOwner.setAvatar(po_avatar);
-        }
-        else{
-            mOwner.setAvatar("");
-        }
+                if (!owner.isNull("identity") && owner.has("identity")){
+                    JSONObject identity = owner.getJSONObject("identity");
+                    IdentityModel mOIdentity = parserIdentity(identity);
+                    mOwner.setIdentity(mOIdentity);
+                }
 
-        //PLACE OWNER FACEBOOK - JSON OBJ : "pof_"
-        FacebookModel mPCFacebook;
-        if (owner.has("facebook")){
-            JSONObject facebook = owner.getJSONObject("facebook");
+                if (!owner.isNull("identity") && owner.has("identity")){
+                    JSONObject identity = owner.getJSONObject("identity");
+                    IdentityModel mOIdentity = parserIdentity(identity);
+                    mOwner.setIdentity(mOIdentity);
+                }
 
-            String f_id = facebook.getString("id");
-            String token = facebook.getString("token");
-            String name = facebook.getString("name");
-            String f_avatar = facebook.getString("avatar");
-            String f_email = facebook.getString("email");;
+                if (!owner.isNull("facebook") && owner.has("facebook")){
+                    JSONObject facebook = owner.getJSONObject("facebook");
+                    FacebookModel mPCFacebook = parserFacebook(facebook);
+                    mOwner.setFacebook(mPCFacebook);
+                }
 
-            //Create object Facebook
-            mPCFacebook = new FacebookModel(f_id,token,name,f_email);
+                if (!owner.isNull("google") && owner.has("google")){
+                    JSONObject google = owner.getJSONObject("google");
+                    GoogleModel mPCGoogle = parserGoogle(google);
+                    mOwner.setGoogle(mPCGoogle);
+                }
 
-            if(facebook.has("avatar")){
-                String pof_avatar = facebook.getString("avatar");
-                mPCFacebook.setAvatar(pof_avatar);
+                if (!owner.isNull("isValidate") && owner.has("isValidate")){
+                    Boolean isValidate = owner.getBoolean("isValidate");
+                    mOwner.setValidate(isValidate);
+                }
+
+                if (!owner.isNull("creation") && owner.has("creation")){
+                    String creation = owner.getString("creation");
+                    mOwner.setCreation(creation);
+                }
+
+                return mOwner;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
             }
-            else{
-                mPCFacebook.setAvatar("");
+        } else {
+            Log.e(TAG, "Owner Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static IdentityModel parserIdentity(JSONObject identity) throws JSONException{
+        if (identity != null) {
+
+            try {
+
+                IdentityModel mIdentity = new IdentityModel();
+
+                if (!identity.isNull("firstName") && identity.has("firstName")){
+                    String firstname = identity.getString("firstName");
+                    mIdentity.setFirstName(firstname);
+                }
+
+                if (!identity.isNull("lastName") && identity.has("lastName")){
+                    String lastname = identity.getString("lastName");
+                    mIdentity.setLastName(lastname);
+                }
+
+                if (!identity.isNull("birthday") && identity.has("birthday")){
+                    String birthday = identity.getString("birthday");
+                    mIdentity.setBirthday(birthday);
+                }
+
+                if (!identity.isNull("mobilePhone") && identity.has("mobilePhone")){
+                    String mobilePhone = identity.getString("mobilePhone");
+                    mIdentity.setMobilePhone(mobilePhone);
+                }
+
+                if (!identity.isNull("phone") && identity.has("phone")){
+                    String phone = identity.getString("phone");
+                    mIdentity.setPhone(phone);
+                }
+
+                if (!identity.isNull("about") && identity.has("about")){
+                    String about = identity.getString("about");
+                    mIdentity.setAbout(about);
+                }
+
+                return mIdentity;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
             }
-        }
-        else{
-            mPCFacebook = new FacebookModel();
-        }
-        mOwner.setFacebook(mPCFacebook);
-
-        //PLACE OWNER GOOGLE - JSON OBJ : "pog_"
-        if (owner.has("google")){
-
-            JSONObject google = owner.getJSONObject("google");
-
-            String og_id = google.getString("id");
-            String og_token = google.getString("token");
-            String og_name = google.getString("name");
-            String og_email = google.getString("email");
-            //Create object Google
-            GoogleModel mPCGoogle = new GoogleModel(og_id,og_token,og_name,og_email);
-            mOwner.setGoogle(mPCGoogle);
+        } else {
+            Log.e(TAG, "Identity Object is Null.");
         }
 
-        return mOwner;
+        return null;
+
+    }
+
+    private static FacebookModel parserFacebook(JSONObject facebook) throws JSONException{
+        if (facebook != null) {
+
+            try {
+
+                FacebookModel mFacebook = new FacebookModel();
+
+                if (!facebook.isNull("id") && facebook.has("id")){
+                    String f_id = facebook.getString("id");
+                    mFacebook.setId(f_id);
+                }
+
+                if (!facebook.isNull("token") && facebook.has("token")){
+                    String token = facebook.getString("token");
+                    mFacebook.setToken(token);
+                }
+
+                if (!facebook.isNull("name") && facebook.has("name")){
+                    String name = facebook.getString("name");
+                    mFacebook.setName(name);
+                }
+
+                if (!facebook.isNull("avatar") && facebook.has("avatar")){
+                    String f_avatar = facebook.getString("avatar");
+                    mFacebook.setAvatar(f_avatar);
+                }
+
+                if (!facebook.isNull("email") && facebook.has("email")){
+                    String f_email = facebook.getString("email");
+                    mFacebook.setEmail(f_email);
+                }
+
+                return mFacebook;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Facebook Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static GoogleModel parserGoogle(JSONObject google) throws JSONException{
+        if (google != null) {
+
+            try {
+
+                GoogleModel mGoogle = new GoogleModel();
+
+                if (!google.isNull("id") && google.has("id")){
+                    String og_id = google.getString("id");
+                    mGoogle.setId(og_id);
+                }
+
+                if (!google.isNull("avatar") && google.has("avatar")){
+                    String og_avatar = google.getString("avatar");
+                    mGoogle.setAvatar(og_avatar);
+                }
+
+                if (!google.isNull("token") && google.has("token")){
+                    String og_token = google.getString("token");
+                    mGoogle.setToken(og_token);
+                }
+
+                if (!google.isNull("name") && google.has("name")){
+                    String og_name = google.getString("name");
+                    mGoogle.setName(og_name);
+                }
+
+                if (!google.isNull("email") && google.has("email")){
+                    String og_email = google.getString("email");
+                    mGoogle.setName(og_email);
+                }
+
+                return mGoogle;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Google Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static CommentModel parserPlaceComment(JSONObject comment) throws JSONException{
+        if (comment != null) {
+
+            try {
+
+                CommentModel mComment = new CommentModel();
+
+                if (!comment.isNull("_id") && comment.has("_id")){
+                    String pc_id = comment.getString("_id");
+                    mComment.set_id(pc_id);
+                }
+
+                if (!comment.isNull("owner") && comment.has("owner")){
+                    JSONObject pc_owner = comment.getJSONObject("owner");
+                    OwnerModel mPCOwner = parserOwner(pc_owner);
+                    mComment.setOwner(mPCOwner);
+                }
+
+                if (!comment.isNull("date") && comment.has("date")){
+                    String pc_date = comment.getString("date");
+                    mComment.setDate(pc_date);
+                }
+
+                if (!comment.isNull("comment") && comment.has("comment")){
+                    String pc_content = comment.getString("comment");
+                    mComment.setComment(pc_content);
+                }
+
+                if (!comment.isNull("cleanness") && comment.has("cleanness")){
+                    int pc_cleanness = comment.getInt("cleanness");
+                    mComment.setCleanness(pc_cleanness);
+                }
+
+                if (!comment.isNull("location") && comment.has("location")){
+                    int pc_location = comment.getInt("location");
+                    mComment.setLocation(pc_location);
+                }
+
+                if (!comment.isNull("valueForMoney") && comment.has("valueForMoney")){
+                    int pc_valueForMoney = comment.getInt("valueForMoney");
+                    mComment.setValueForMoney(pc_valueForMoney);
+                }
+
+                return mComment;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Place Comment Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static SpotCommentModel parserSpotComment(JSONObject comment) throws JSONException{
+        if (comment != null) {
+
+            try {
+
+                SpotCommentModel mSpotComment = new SpotCommentModel();
+
+                if (!comment.isNull("_id") && comment.has("_id")){
+                    String sc_id = comment.getString("_id");
+                    mSpotComment.set_id(sc_id);
+                }
+
+                if (!comment.isNull("owner") && comment.has("owner")){
+                    JSONObject sc_owner = comment.getJSONObject("owner");
+                    OwnerModel mSCOwner = parserOwner(sc_owner);
+                    mSpotComment.setOwner(mSCOwner);
+                }
+
+                if (!comment.isNull("date") && comment.has("date")){
+                    String sc_date = comment.getString("date");
+                    mSpotComment.setDate(sc_date);
+                }
+
+                if (!comment.isNull("comment") && comment.has("comment")){
+                    String sc_content = comment.getString("comment");
+                    mSpotComment.setComment(sc_content);
+                }
+
+                if (!comment.isNull("difficulty") && comment.has("difficulty")){
+                    int sc_difficulty = comment.getInt("difficulty");
+                    mSpotComment.setDifficulty(sc_difficulty);
+                }
+
+                if (!comment.isNull("beauty") && comment.has("beauty")){
+                    int sc_beauty = comment.getInt("beauty");
+                    mSpotComment.setBeauty(sc_beauty);
+                }
+
+                if (!comment.isNull("quality") && comment.has("quality")){
+                    int sc_quality = comment.getInt("quality");
+                    mSpotComment.setQuality(sc_quality);
+                }
+
+                return mSpotComment;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Spot Comment Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static RateModel parserPlaceRating(JSONObject rating) throws JSONException{
+        if (rating != null) {
+
+            try {
+
+                RateModel mRatings = new RateModel();
+
+                if (!rating.isNull("valueForMoney") && rating.has("valueForMoney")){
+                    int pr_valueForMoney = rating.getInt("valueForMoney");
+                    mRatings.setValueForMoney(pr_valueForMoney);
+                }
+
+                if (!rating.isNull("location") && rating.has("location")){
+                    int pr_location = rating.getInt("location");
+                    mRatings.setLocation(pr_location);
+                }
+
+                if (!rating.isNull("cleanness") && rating.has("cleanness")){
+                    int pr_cleanness = rating.getInt("cleanness");
+                    mRatings.setCleanness(pr_cleanness);
+                }
+
+                if (!rating.isNull("overallRating") && rating.has("overallRating")){
+                    int pr_overallRating = rating.getInt("overallRating");
+                    mRatings.setOverallRating(pr_overallRating);
+                }
+
+                if (!rating.isNull("numberOfRatings") && rating.has("numberOfRatings")){
+                    int pr_numbersOfRatings = rating.getInt("numberOfRatings");
+                    mRatings.setNumberOfRatings(pr_numbersOfRatings);
+                }
+
+                return mRatings;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Place Rating Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static SpotRatingModel parserSpotRating(JSONObject rating) throws JSONException{
+        if (rating != null) {
+
+            try {
+
+                SpotRatingModel mSRatings = new SpotRatingModel();
+
+                if (!rating.isNull("difficulty") && rating.has("difficulty")){
+                    int sr_difficulty = rating.getInt("difficulty");
+                    mSRatings.setDifficulty(sr_difficulty);
+                }
+
+                if (!rating.isNull("beauty") && rating.has("beauty")){
+                    int sr_beauty = rating.getInt("beauty");
+                    mSRatings.setBeauty(sr_beauty);
+                }
+
+                if (!rating.isNull("quality") && rating.has("quality")){
+                    int sr_quality = rating.getInt("quality");
+                    mSRatings.setQuality(sr_quality);
+                }
+
+                if (!rating.isNull("overallRating") && rating.has("overallRating")){
+                    int sr_overallRating = rating.getInt("overallRating");
+                    mSRatings.setOverallRating(sr_overallRating);
+                }
+
+                if (!rating.isNull("numberOfRatings") && rating.has("numberOfRatings")){
+                    int sr_numbersOfRatings = rating.getInt("numberOfRatings");
+                    mSRatings.setNumberOfRatings(sr_numbersOfRatings);
+                }
+
+                return mSRatings;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Spot Rating Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static HomeModel parserHome(JSONObject home) throws JSONException{
+        if (home != null) {
+
+            try {
+
+                HomeModel mPHome = new HomeModel();
+
+                if (!home.isNull("travellers") && home.has("travellers")){
+                    int ph_travellers = home.getInt("travellers");
+                    mPHome.setTravellers(ph_travellers);
+                }
+
+                if (!home.isNull("propertyType") && home.has("propertyType")){
+                    String ph_property = home.getString("propertyType");
+                    mPHome.setPropertyType(ph_property);
+                }
+
+                if (!home.isNull("price") && home.has("price")){
+                    JSONObject ph_price = home.getJSONObject("price");
+                    PriceModel mPrice = parserPrice(ph_price);
+                    mPHome.setPrice(mPrice);
+                }
+
+                return mPHome;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Home Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static PriceModel parserPrice(JSONObject price) throws JSONException{
+        if (price != null) {
+
+            try {
+
+                PriceModel mPrice = new PriceModel();
+
+                if (!price.isNull("highSeason") && price.has("highSeason")){
+                    int php_highSeason = price.getInt("highSeason");
+                    mPrice.setHightSeason(php_highSeason);
+                }
+
+                if (!price.isNull("lowSeason") && price.has("lowSeason")){
+                    int php_lowSeason = price.getInt("lowSeason");
+                    mPrice.setLowSeason(php_lowSeason);
+                }
+
+                return mPrice;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Price Object is Null.");
+        }
+
+        return null;
+
+    }
+
+    private static AddressModel parserAddress(JSONObject address) throws JSONException{
+        if (address != null) {
+
+            try {
+
+                AddressModel mAddress = new AddressModel();
+
+                if(!address.isNull("street_number") && address.has("street_number")){
+                    int sa_street_number = address.getInt("street_number");
+                    mAddress.setStreet_number(sa_street_number);
+                }
+
+                if(!address.isNull("postal_code") && address.has("postal_code")){
+                    String sa_postal_code = address.getString("postal_code");
+                    mAddress.setPostal_code(sa_postal_code);
+                }
+
+                if(!address.isNull("route") && address.has("route")){
+                    String sa_route = address.getString("route");
+                    mAddress.setRoute(sa_route);
+                }
+
+                if (!address.isNull("administrative_area_level_1") && address.has("administrative_area_level_1")){
+                    String sa_admin_area_lvl_1 = address.getString("administrative_area_level_1");
+                    mAddress.setAdministrative_area_level_1(sa_admin_area_lvl_1);
+                }
+
+                if (!address.isNull("country") && address.has("country")){
+                    String sa_country = address.getString("country");
+                    mAddress.setCountry(sa_country);
+                }
+
+                if (!address.isNull("locality") && address.has("locality")){
+                    String sa_locality = address.getString("locality");
+                    mAddress.setLocality(sa_locality);
+                }
+
+                return mAddress;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Address Object is Null.");
+        }
+
+        return null;
+
     }
 
 }

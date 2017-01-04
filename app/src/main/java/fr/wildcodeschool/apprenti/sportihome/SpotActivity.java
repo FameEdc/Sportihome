@@ -9,19 +9,18 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
 import java.util.Timer;
 import java.util.TimerTask;
-
 import me.relex.circleindicator.CircleIndicator;
 
 /**
@@ -32,8 +31,10 @@ public class SpotActivity extends FragmentActivity {
     private String url;
     private ProgressDialog pDialog;
     private SpotModel mSpot;
-    SpotActivity.ImageFragmentPagerAdapter imageFragmentPagerAdapter;
+    ImageFragmentPagerAdapter imageFragmentPagerAdapter;
     ViewPager viewPager;
+    private boolean autoScroll=true;
+    private int nbrPictures=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,107 +80,178 @@ public class SpotActivity extends FragmentActivity {
 
             final Context context = SpotActivity.this.getBaseContext();
 
-            ImageView avatar = (ImageView)findViewById(R.id.profile_image);
-            //ImageView imgSlider = (ImageView)findViewById(R.id.img_slide);
-            TextView txtCountRate = (TextView)findViewById(R.id.rating_count);
-            TextView txtName = (TextView)findViewById(R.id.name_user);
-            TextView txtSpotName = (TextView)findViewById(R.id.title_place);
+            //CHECK & LOAD DATAS
 
-            TextView txtAddress = (TextView)findViewById(R.id.address);
-
-            RatingBar rateSpot = (RatingBar)findViewById(R.id.ratingBar_beauty);
-            RatingBar rateQuality = (RatingBar)findViewById(R.id.ratingBar_dificulty);
-            RatingBar rateBeauty = (RatingBar)findViewById(R.id.ratingBar_quality);
-            RatingBar rateDificulty = (RatingBar)findViewById(R.id.ratingBar);
-            TextView txtSport = (TextView)findViewById(R.id.sport);
-            TextView txtAbout = (TextView)findViewById(R.id.text_about);
-            CustomFontTextView imgSport = (CustomFontTextView) findViewById(R.id.sport_affichage);
-
-            String[] pictures = mSpot.getPictures();
-            String[] picturesUrl = new String[pictures.length];
-            for (int i= 0 ; i < pictures.length ;i++){
-                //picturesUrl[i] = picturesUrl[i].replace(" ","%20");
-                picturesUrl[i] = "https://sportihome.com/uploads/spots/"+mSpot.get_id()+"/thumb/"+pictures[i];
-            }
-
-            String user,avatarUrl="";
-            if(!mSpot.getOwner().getAvatar().isEmpty()){
-                user = mSpot.getOwner().get_id();
+            //Avatar
+            ImageView avatar = (ImageView)findViewById(R.id.img_avatar);
+            String user,avatarUrl;
+            //on verifie d'abord si c'est un avatar du site
+            user = mSpot.getOwner().get_id();
+            if (mSpot.getOwner().getAvatar() != null){
                 avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/"+mSpot.getOwner().getAvatar();
-            }
-            else{
-                if (!mSpot.getOwner().getFacebook().getAvatar().isEmpty()){
-                    avatarUrl = mSpot.getOwner().getFacebook().getAvatar();
+                avatarUrl = avatarUrl.replace(" ","%20");
+                Log.i("YOLO",avatarUrl);
+                Picasso.with(context).load(avatarUrl).fit().centerCrop().into(avatar);
+            }else{
+                //sinon c'est que l'avatar viens soit de facebook soit de google
+
+                if (mSpot.getOwner().getGoogle() != null){
+                    if (mSpot.getOwner().getGoogle().getAvatar() != null){
+                        //avatar google
+                        avatarUrl = mSpot.getOwner().getGoogle().getAvatar();
+                        Log.i("YOLO",avatarUrl);
+                        Picasso.with(context).load(avatarUrl).fit().centerCrop().into(avatar);
+                    }
+                }
+
+                if (mSpot.getOwner().getFacebook() != null){
+                    if (mSpot.getOwner().getFacebook().getAvatar() != null){
+                        //avatar facebook
+                        avatarUrl = mSpot.getOwner().getFacebook().getAvatar();
+                        Log.i("YOLO",avatarUrl);
+                        Picasso.with(context).load(avatarUrl).fit().centerCrop().into(avatar);
+                    }
                 }
             }
-            int count = mSpot.getRating().getNumberOfRatings();
-            String sport = mSpot.getHobby();
-            String userName = mSpot.getOwner().getIdentity().getFirstName();
-            String name = mSpot.getName();
-            String city = mSpot.getAddress().getLocality();
-            String region = mSpot.getAddress().getAdministrative_area_level_1();
-            String country = mSpot.getAddress().getCountry();
-            String about = mSpot.getAbout();
-            int rating = mSpot.getRating().getOverallRating();
-            int countRatingsQuality = mSpot.getRating().getNumberOfRatings();
-            int countRatingsDificulty = mSpot.getRating().getNumberOfRatings();
-            int countRatingsBeauty = mSpot.getRating().getNumberOfRatings();
 
-            String strName = "img_"+sport;
-            strName = strName.replace("-","_");
-            String strHobby = getStringResourceByName(strName, context);
+            //Pictures
+            if(mSpot.getPictures() != null){
+                String[] pictures = mSpot.getPictures();
+                String[] picturesUrl = new String[pictures.length];
+                nbrPictures = pictures.length;
+                for (int i= 0 ; i < pictures.length ;i++){
+                    //picturesUrl[i] = picturesUrl[i].replace(" ","%20");
+                    picturesUrl[i] = "https://sportihome.com/uploads/spots/"+mSpot.get_id()+"/thumb/"+pictures[i];
+                }
 
-            //AFFICHER
-            imageFragmentPagerAdapter = new SpotActivity.ImageFragmentPagerAdapter(getSupportFragmentManager(),picturesUrl);
-            viewPager = (ViewPager) findViewById(R.id.pager);
-            CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
-            viewPager.setAdapter(imageFragmentPagerAdapter);
-            indicator.setViewPager(viewPager);
-            viewPager.setCurrentItem(0);
+                imageFragmentPagerAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(),picturesUrl);
+                viewPager = (ViewPager) findViewById(R.id.pager);
+                CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
+                viewPager.setAdapter(imageFragmentPagerAdapter);
+                indicator.setViewPager(viewPager);
+                viewPager.setCurrentItem(0);
 
-            // Timer for auto sliding
-            Timer timer  = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(counti<=5){
-                                viewPager.setCurrentItem(counti);
-                                counti++;
-                            }else{
-                                counti = 0;
-                                viewPager.setCurrentItem(counti);
+                // Timer for auto sliding
+                Timer timer  = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(autoScroll){
+                                    if(counti < nbrPictures){
+                                        viewPager.setCurrentItem(counti);
+                                        counti++;
+                                    }else{
+                                        Log.i("YOLO","change state : "+counti);
+                                        counti = 0;
+                                        viewPager.setCurrentItem(counti);
+                                    }
+                                }
                             }
-                        }
-                    });
-                }
-            }, 500, 3000);
+                        });
+                    }
+                }, 500, 3000);
 
-            //Picasso.with(SpotActivity.this).load(pictureUrl).fit().centerCrop().into(imgSlider);
-            if (!avatarUrl.isEmpty()){
-                Picasso.with(SpotActivity.this).load(avatarUrl).fit().centerCrop().into(avatar);
+                viewPager.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        autoScroll=false;
+                        return false;
+                    }
+                });
             }
 
-            txtCountRate.setText("("+String.valueOf(count+")"));
-            imgSport.setText(strHobby);
-            txtAbout.setText(about);
-            txtSport.setText(sport);
-            txtName.setText(userName);
-            txtSpotName.setText(name);
+            //User Name
+            if(mSpot.getOwner().getIdentity().getFirstName() != null){
+                TextView txtName = (TextView)findViewById(R.id.name_user);
+                String userName = mSpot.getOwner().getIdentity().getFirstName();
+                txtName.setText(userName);
+            }
 
-            txtAddress.setText(city+", "+region+", "+country);
+            //Spot Name
+            if(mSpot.getName() != null){
+                TextView txtSpotName = (TextView)findViewById(R.id.title_spot);
+                String name = mSpot.getName();
+                txtSpotName.setText(name);
+            }
 
-            rateSpot.setRating(rating);
-            rateQuality.setRating(countRatingsQuality);
-            rateDificulty.setRating(countRatingsDificulty);
-            rateBeauty.setRating(countRatingsBeauty);
+            //Hobby
+            if(mSpot.getHobby() != null){
+                CustomFontTextView imgSport = (CustomFontTextView) findViewById(R.id.img_hobby);
+                TextView txtSport = (TextView)findViewById(R.id.txt_hobby);
+                String sport = mSpot.getHobby();
+                String strName = "img_"+sport;
+                strName = strName.replace("-","_");
+                String strHobby = getStringResourceByName(strName, context);
+                imgSport.setText(strHobby);
+                txtSport.setText(sport);
+            }
 
+            //Address
+            if(mSpot.getAddress().getLocality() != null && mSpot.getAddress().getAdministrative_area_level_1() != null && mSpot.getAddress().getCountry() != null){
+                TextView txtAddress = (TextView)findViewById(R.id.address);
+                String city = mSpot.getAddress().getLocality();
+                String region = mSpot.getAddress().getAdministrative_area_level_1();
+                String country = mSpot.getAddress().getCountry();
+                txtAddress.setText(city+", "+region+", "+country);
+            }
 
+            //Rating
+            if(mSpot.getRating().getOverallRating() != 0){
+                int rating = mSpot.getRating().getOverallRating();
+                RatingBar rateSpot = (RatingBar)findViewById(R.id.ratingBar);
+                rateSpot.setRating(rating);
+            }
+
+            //Count Rating
+            if(mSpot.getRating().getNumberOfRatings() != 0){
+                TextView txtCountRate = (TextView)findViewById(R.id.rating_count);
+                TextView txtOpinions = (TextView)findViewById(R.id.title_opinions);
+                int count = mSpot.getRating().getNumberOfRatings();
+                txtCountRate.setText("("+String.valueOf(count+")"));
+                txtOpinions.setText(count+" Avis");
+            }
+
+            //Quality
+            if(mSpot.getRating().getQuality() != 0){
+                RatingBar rateQuality = (RatingBar)findViewById(R.id.ratingBar_quality);
+                int ratingsQuality = mSpot.getOverallQuality();
+                rateQuality.setRating(ratingsQuality);
+            }
+
+            //Beauty
+            if(mSpot.getRating().getBeauty() != 0){
+                RatingBar rateBeauty = (RatingBar)findViewById(R.id.ratingBar_beauty);
+                int ratingsBeauty = mSpot.getRating().getBeauty();
+                rateBeauty.setRating(ratingsBeauty);
+            }
+
+            //Difficulty
+            if(mSpot.getRating().getDifficulty() != 0){
+                RatingBar rateDifficulty = (RatingBar)findViewById(R.id.ratingBar_difficulty);
+                int ratingsDifficulty = mSpot.getRating().getDifficulty();
+                rateDifficulty.setRating(ratingsDifficulty);
+            }
+
+            //About
+            if(mSpot.getAbout() != null){
+                TextView txtAbout = (TextView)findViewById(R.id.txt_about);
+                String about = mSpot.getAbout();
+                txtAbout.setText(about);
+            }
+
+            //Comments
+            if(mSpot.getComments() != null){
+
+                ListView listComments = (ListView) findViewById(R.id.spot_comments);
+                SpotCommentsAdapter spotCommentsAdapter = new SpotCommentsAdapter(SpotActivity.this, mSpot.getComments());
+                listComments.setAdapter(spotCommentsAdapter);
+
+            }
 
         }
-
     }
     private String getStringResourceByName(String aString,Context context) {
         String packageName = context.getPackageName();
@@ -205,8 +277,8 @@ public class SpotActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            PlaceActivity.SwipeFragment fragment = new PlaceActivity.SwipeFragment();
-            return PlaceActivity.SwipeFragment.newInstance(position, picturesUrl[position]);
+            SwipeFragment fragment = new SwipeFragment();
+            return SwipeFragment.newInstance(position, picturesUrl[position]);
         }
     }
 
@@ -219,7 +291,6 @@ public class SpotActivity extends FragmentActivity {
             Context context = swipeView.getContext();
 
             ImageView imageView = (ImageView) swipeView.findViewById(R.id.imageView);
-            //ImageButton imageBtn = (ImageButton) swipeView.findViewById(R.id.imageBtn);
 
             Bundle bundle = getArguments();
 
@@ -227,7 +298,6 @@ public class SpotActivity extends FragmentActivity {
             String imageFileUrl = bundle.getString("url");
 
             Picasso.with(context).load(imageFileUrl).fit().centerCrop().into(imageView);
-            //Picasso.with(context).load(imageFileUrl).fit().centerCrop().into(imageBtn);
 
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -240,9 +310,9 @@ public class SpotActivity extends FragmentActivity {
 
         }
 
-        static PlaceActivity.SwipeFragment newInstance(int position, String pictureUrl) {
+        static SwipeFragment newInstance(int position, String pictureUrl) {
 
-            PlaceActivity.SwipeFragment swipeFragment = new PlaceActivity.SwipeFragment();
+            SwipeFragment swipeFragment = new SwipeFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("position", position);
             bundle.putString("url", pictureUrl);

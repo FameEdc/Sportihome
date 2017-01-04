@@ -5,6 +5,7 @@ package fr.wildcodeschool.apprenti.sportihome;
  */
 
 public class SpotRatingModel {
+
     private int difficulty=0;
     private int beauty=0;
     private int quality=0;
@@ -12,14 +13,6 @@ public class SpotRatingModel {
     private int numberOfRatings=0;
 
     public SpotRatingModel() {
-    }
-
-    public SpotRatingModel(int difficulty, int beauty, int quality, int overallRating, int numberOfRatings) {
-        this.difficulty = difficulty;
-        this.beauty = beauty;
-        this.quality = quality;
-        this.overallRating = overallRating;
-        this.numberOfRatings = numberOfRatings;
     }
 
     public int getDifficulty() {

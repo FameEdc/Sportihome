@@ -18,23 +18,7 @@ public class UserModel {
     private boolean isValidate;
     private String creation;
 
-    public UserModel() {
-    }
-
-    public UserModel(String _id, String email, int __v, CommentModel[] comments, boolean isAdmin, RateModel rating, String[] hobbies, String engagement, IdentityModel identity, FacebookModel facebook, boolean isValidate, String creation) {
-        set_id(_id);
-        setEmail(email);
-        set__v(__v);
-        setComments(comments);
-        setAdmin(isAdmin);
-        setRating(rating);
-        setHobbies(hobbies);
-        setEngagement(engagement);
-        setIdentity(identity);
-        setFacebook(facebook);
-        setValidate(isValidate);
-        setCreation(creation);
-    }
+    public UserModel() {}
 
     public String get_id() {
         return _id;

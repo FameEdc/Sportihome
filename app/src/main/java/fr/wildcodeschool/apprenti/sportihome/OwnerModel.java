@@ -9,9 +9,9 @@ public class OwnerModel {
     private String email;
     private int __v;
     private String avatar;
-    //private CommentModel[] comments;//BUTER LUI
+    //private CommentModel[] comments;
     private boolean isAdmin;
-    //private RateModel rating;//BUTTER LUI
+    //private RateModel rating;
     private String[] hobbies;
     private String engagement;
     private IdentityModel identity;
@@ -21,18 +21,6 @@ public class OwnerModel {
     private String creation;
 
     public OwnerModel() {
-    }
-
-    public OwnerModel(String _id, String email, int __v, boolean isAdmin, String[] hobbies, String engagement, IdentityModel identity, boolean isValidate, String creation) {
-        set_id(_id);
-        setEmail(email);
-        set__v(__v);
-        setAdmin(isAdmin);
-        setHobbies(hobbies);
-        setEngagement(engagement);
-        setIdentity(identity);
-        setValidate(isValidate);
-        setCreation(creation);
     }
 
     public String get_id() {

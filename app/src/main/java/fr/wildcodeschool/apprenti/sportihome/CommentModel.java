@@ -15,16 +15,6 @@ public class CommentModel {
 
     public CommentModel(){}
 
-    public CommentModel(String _id, String date, OwnerModel owner, String comment, int cleanness, int location, int valueForMoney) {
-        set_id(_id);
-        setDate(date);
-        setOwner(owner);
-        setComment(comment);
-        setCleanness(cleanness);
-        setLocation(location);
-        setValueForMoney(valueForMoney);
-    }
-
     public String get_id() {
         return _id;
     }
