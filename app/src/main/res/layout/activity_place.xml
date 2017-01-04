@@ -95,7 +95,6 @@
 
                         <TextView
                             android:id="@+id/name_user"
-                            android:text="Sebastian"
                             android:layout_width="wrap_content"
                             android:textSize="15sp"
                             android:textStyle="bold"
@@ -116,7 +115,6 @@
                             android:id="@+id/sports"
                             android:textSize="35dp"
                             app:font="@string/sports_font"
-                            android:text="aaa"
                             android:layout_marginTop="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -138,7 +136,6 @@
 
                         <ImageView
                             android:id="@+id/engagement"
-                            android:background="@drawable/stayshareplay"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
@@ -155,7 +152,6 @@
 
                     <TextView
                         android:id="@+id/title_place"
-                        android:text="Studio de charme sur la plage"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -163,7 +159,6 @@
 
                     <TextView
                         android:id="@+id/address"
-                        android:text="Clohars-Carnoët, Bretagne, France"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/title_place"
@@ -212,7 +207,6 @@
 
                         <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
                             android:id="@+id/imgProperty"
-                            android:text="k"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:font="@string/sportihome_ux_font"
@@ -220,7 +214,6 @@
 
                         <TextView
                             android:id="@+id/txtProperty"
-                            android:text="Appartement"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             />
