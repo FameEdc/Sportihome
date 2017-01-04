@@ -181,14 +181,15 @@ public class ParserJSON extends AppCompatActivity{
 
                 if (!place.isNull("comments") && place.has("comments")){
                     JSONArray place_comments = place.getJSONArray("comments");
-                    CommentModel[] pComments = new CommentModel[place_comments.length()];
+                    ArrayList<CommentModel> pComments = new ArrayList<CommentModel>(place_comments.length());
                     if (place_comments.length() != 0){
                         for (int k=0; k < place_comments.length() ; k++){
                             JSONObject comment = place_comments.getJSONObject(k);
-                            pComments[k] = parserPlaceComment(comment);
+                            pComments.add(parserPlaceComment(comment));
+                            //pComments[k] = parserPlaceComment(comment);
                         }
+                        mPlace.setComments(pComments);
                     }
-                    mPlace.setComments(pComments);
                 }
 
                 if (!place.isNull("rating") && place.has("rating")){
@@ -317,14 +318,15 @@ public class ParserJSON extends AppCompatActivity{
 
                 if(!spot.isNull("comments") && spot.has("comments")){
                     JSONArray spot_comments = spot.getJSONArray("comments");
-                    SpotCommentModel[] sComments = new SpotCommentModel[spot_comments.length()];
+                    ArrayList<SpotCommentModel> sComments = new ArrayList<SpotCommentModel>(spot_comments.length());
                     if (spot_comments.length() != 0){
                         for (int k=0; k < spot_comments.length() ; k++){
                             JSONObject comment = spot_comments.getJSONObject(k);
-                            sComments[k] = parserSpotComment(comment);
+                            sComments.add(parserSpotComment(comment));
+                            //sComments[k] = parserSpotComment(comment);
                         }
+                        mSpot.setComments(sComments);
                     }
-                    mSpot.setComments(sComments);
                 }
 
                 if(!spot.isNull("rating") && spot.has("rating")){
