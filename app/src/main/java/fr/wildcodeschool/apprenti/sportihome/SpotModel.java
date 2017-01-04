@@ -1,6 +1,8 @@
 package fr.wildcodeschool.apprenti.sportihome;
 
 
+import java.util.ArrayList;
+
 /**
  * Created by Alban on 24/11/16.
  * This is the Spot Model
@@ -17,7 +19,7 @@ public class SpotModel {
     private String about;
     private int __v;
     private String modification;
-    private SpotCommentModel[] comments;
+    private ArrayList<SpotCommentModel> comments;
     private SpotRatingModel rating;
     private AddressModel address;
     private String pictures[];
@@ -97,11 +99,11 @@ public class SpotModel {
         this.modification = modification;
     }
 
-    public SpotCommentModel[] getComments() {
+    public ArrayList<SpotCommentModel> getComments() {
         return comments;
     }
 
-    public void setComments(SpotCommentModel[] comments) {
+    public void setComments(ArrayList<SpotCommentModel> comments) {
         this.comments = comments;
     }
 
@@ -140,4 +142,5 @@ public class SpotModel {
     public String getFirstPicture(){
         return pictures[0];
     }
+
 }
