@@ -1,5 +1,7 @@
 package fr.wildcodeschool.apprenti.sportihome;
 
+import java.util.ArrayList;
+
 /**
  * Created by chantome on 23/11/2016.
  */
@@ -14,7 +16,7 @@ public class PlaceModel {
     private String about;
     private int __v;
     private String modification;
-    private CommentModel[] comments;
+    private ArrayList<CommentModel> comments;
     private RateModel rating;
     private HomeModel home;
     private AddressModel address;
@@ -100,11 +102,11 @@ public class PlaceModel {
         this.modification = modification;
     }
 
-    public CommentModel[] getComments() {
+    public ArrayList<CommentModel> getComments() {
         return comments;
     }
 
-    public void setComments(CommentModel[] comments) {
+    public void setComments(ArrayList<CommentModel> comments) {
         this.comments = comments;
     }
 
@@ -183,5 +185,6 @@ public class PlaceModel {
     public String getFirstPicture(){
         return pictures[0];
     }
+
 }
 
