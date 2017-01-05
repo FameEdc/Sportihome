@@ -217,7 +217,7 @@ public class SpotActivity extends FragmentActivity {
             //Quality
             if(mSpot.getRating().getQuality() != 0){
                 RatingBar rateQuality = (RatingBar)findViewById(R.id.ratingBar_quality);
-                int ratingsQuality = mSpot.getOverallQuality();
+                int ratingsQuality = mSpot.getRating().getQuality();
                 rateQuality.setRating(ratingsQuality);
             }
 
