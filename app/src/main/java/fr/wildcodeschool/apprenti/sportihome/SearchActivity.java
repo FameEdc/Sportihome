@@ -53,18 +53,6 @@ public class SearchActivity extends AppCompatActivity {
             Log.i("YOLO","Non Connecté");
         }
 
-        //createGroupsData();
-        //new GetPlaces().execute();
-        //new GetSpots().execute();
-        //btn_profil = (Button)findViewById(R.id.my_profil);
-        /*btn_profil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SearchActivity.this, ProfilActivity.class);
-                startActivity(intent);
-            }
-        });*/
-
     }
 
     private class GetPlaces extends AsyncTask<Void, Void, Void> {
@@ -322,4 +310,5 @@ public class SearchActivity extends AppCompatActivity {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
+
 }

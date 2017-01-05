@@ -26,6 +26,10 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ProfilActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".AboutActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CguActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

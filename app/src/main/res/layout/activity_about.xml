@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ScrollViewAbout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none" >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_about"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="fr.wildcodeschool.apprenti.sportihome.AboutActivity">
+
+        <ImageView
+            android:id="@+id/img_stayshareplay"
+            android:src="@drawable/stayshareplay_raw"
+            android:layout_centerHorizontal="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+
+        <TextView
+            android:id="@+id/title_About"
+            android:text="@string/about"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/img_stayshareplay"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/about_text"
+            android:text="@string/about_text"
+            android:layout_below="@id/title_About"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/sportiteam"
+            android:text="La sportiteam"
+            android:textSize="10dp"
+            android:textStyle="italic"
+            android:layout_below="@id/about_text"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sportiteam">
+
+            <ImageView
+            android:id="@+id/fred_avi"
+            android:src="@drawable/fred_diaw"
+            android:layout_weight="1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="5dp"/>
+
+        <ImageView
+            android:id="@+id/sylvain_avi"
+            android:src="@drawable/sylvain_morel"
+            android:layout_below="@+id/sportiteam"
+            android:layout_toRightOf="@+id/fred_avi"
+            android:layout_weight="1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="5dp"/>
+
+        <ImageView
+            android:id="@+id/iban_avi"
+            android:src="@drawable/iban_goenaga"
+            android:layout_below="@+id/sportiteam"
+            android:layout_toRightOf="@id/sylvain_avi"
+            android:layout_weight="1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="5dp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
