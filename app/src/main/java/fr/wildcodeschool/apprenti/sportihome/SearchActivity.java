@@ -30,7 +30,7 @@ public class SearchActivity extends AppCompatActivity{
 
         //createGroupsData();
         new GetPlaces().execute();
-        new GetSpots().execute();
+       // new GetSpots().execute();
         btn_profil = (Button)findViewById(R.id.my_profil);
         btn_profil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +86,7 @@ public class SearchActivity extends AppCompatActivity{
         }
     }
 
-    private class GetSpots extends AsyncTask<Void, Void, Void> {
+/*    private class GetSpots extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -126,5 +126,5 @@ public class SearchActivity extends AppCompatActivity{
             spotsList.setAdapter(spotsAdapter);
 
         }
-    }
+    }*/
 }

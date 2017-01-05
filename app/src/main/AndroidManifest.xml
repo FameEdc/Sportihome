@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".PlaceActivity" />
-        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".ProfilActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".CguActivity" />
     </application>
 
 </manifest>
