@@ -50,4 +50,182 @@
     <string name="img_home">f</string>
     <string name="img_door">m</string>
     <string name="img_private">5</string>
+    <string name="about">A propos</string>
+    <string name="about_text">"Comment identifier de manière simple et rapide les bons plans logements à côtés des spots ?
+
+C'est pour répondre à ce besoin que nous avons décidé de créer sportihome.com, la 1ère plateforme d'hébergements d'aventures entre particuliers partageant les mêmes passions sportives.
+
+Notre mission est de vous permettre de réserver de manière simple et sûre, l'hébergement idéalement situé pour la pratique de vos activités sportives (VTT, randonnée, golf, parapente, surf, kitesurf, équitation, etc.) et de vous faire découvrir de nouveaux spots renseignés et évalués par la communauté des sportifs.
+
+Il vous est ainsi possible de dormir soit chez un hôte ayant la même passion sportive que vous, qui pourra partager bons plans et conseils, soit dans un logement situé au plus près du spot.
+
+Êtes-vous prêt pour de nouvelles aventures ? Alors rejoignez la communauté des sportinautes et venez renseigner vos hébergements disponibles et vos spots.
+
+ Fred, Sylvain &amp; Iban"</string>
+    <string name="title_cgu">"Conditions Générales d'Utilisation"</string>
+    <string name="cgu_text">"Sportihome (ci-après le « Site ») est une plateforme web, accessible à l’adresse www.sportihome.com, exploitée par la société Sportihome SAS, ayant son siège social situé à Cap Oméga, Rond-Point Benjamin Franklin, CS39521, 34 960 Montpellier.
+
+Ladite plateforme est dédiée à la publication d’Annonces d'Hébergements et/ou de présentation de Spots par des Membres ayant un compte (le ou les « Utilisateur(s)») en leur permettant de créer et publier en ligne, à certaines conditions, leur profil. Les Membres ayant un compte (le ou les « Utilisateur(s)») pourront prendre contact avec les Membres proposant des Hébergements, ajouter des Hébergements et des Spots. Après avoir séjourné dans les dit Hébergements, les Membres concernés pourront poster leurs avis et commentaires relatif à ces Hébergements sur la plateforme. Les Spots peuvent quand à eux être évalués et commentés sur la plateforme à tout moment par les Membres.
+
+L’objet des présentes Conditions Générales d’Utilisation (les « Conditions » ou prises dans leur ensemble, le « Contrat ») est de définir les termes et les conditions régissant les relations entre les Utilisateurs et Sportihome. Ces Conditions constituent un accord contractuel pour une durée indéterminée à compter de l’acceptation par l’Utilisateur du présent Contrat.
+
+En cliquant sur « M'inscrire », l’Utilisateur reconnaît avoir pris connaissance des Conditions et accepte d’être lié par les présentes dispositions. Si l’Utilisateur accède au Site pour le compte d’une entreprise ou de toute autre entité juridique, il est néanmoins personnellement lié par le présent Contrat."</string>
+
+    <string name="cgu_update">"Dernière mise à jour: 12 octobre 2016"</string>
+    <string name="article1"><u>"Article 1 – Inscription au Site"</u></string>
+    <string name="article1.1">"1.1 Définition des principaux termes"</string>
+    <string name="text1.1">"Sauf s’ils sont définis dans d’autres sections du présent Contrat, les termes et expressions commençant par une majuscule utilisés ci-après ont la signification suivante :
+
+« Annonce » désigne un post internet regroupant les informations d'un Hébergement et/ou d'un Spot mises en ligne sur une page dédiée de la plateforme par un Membre ;
+
+« Hébergement » désigne un logement privé ou partagé proposé à la location sur le Site dont le Membre ayant publié l'Annonce dispose de la pleine jouissance ;
+
+« Spot » désigne un lieu de pratique de sport présenté sur le Site dont le Membre ayant publié l'Annonce a vérifié au préalable l'autorisation d'accès et de pratique ;
+
+« Membre » désigne un Utilisateur ayant un compte sur le Site ;"</string>
+
+    <string name="article1.2">"1.2 Éligibilité au Service"</string>
+    <string name="text1.2">"Pour être éligible au Service (tel que ce terme est défini à l’Article 2), l’Utilisateur doit être une personne physique ayant atteint l’âge de 18 ans et disposant de sa pleine capacité juridique."</string>
+
+    <string name="article1.3">"1.3 Création d’un compte"</string>
+    <string name="text1.3">"La création d’un compte Membre sur Sportihome est un préalable obligatoire à l’utilisation des services du Site. Elle suppose de compléter le formulaire d’inscription, disponible sur le Site, en fournissant des informations exactes, à jour et complètes.
+
+Ces informations devront faire, par la suite, l’objet de mises à jour régulières par l’Utilisateur, afin de préserver leur exactitude. L'utilisateur devra choisir un nom d’utilisateur constitué d’un mail valide et d'un mot de passe, et fournir obligatoirement les informations suivantes : nom, prénom et sports. D'autres champs comme son descriptif, son numéro de téléphone fixe et portable, son adresse postale ainsi que sa date de naissance pourront être renseignés en complément dans la partie profil d'Utilisateur. Les codes d’accès au compte d’Utilisateur sont strictement confidentiels. En cas d’utilisation non autorisée de son compte ou de toute atteinte à la confidentialité et à la sécurité de ses moyens d’identification, l’Utilisateur devra, sans délai, informer Sportihome.
+
+Chaque Utilisateur s’engage à ne créer qu’un seul compte correspondant à son profil.
+
+La création d’un compte permet à l’Utilisateur d’accéder notamment aux services suivants (le ou les « Service(s) ») :
+
+    • constitution et mise à jour d’un profil d’Utilisateur ;
+
+    • publication d’annonces de location d'Hébergement ;
+
+    • publication d'annonces de présentation de Spot ;
+
+    • recherche d'Hébergement, prise de contact avec l'Utilisateur ayant publié une annonce de location d'Hébergement et possibilité d'évaluer et commenter l'Hébergement après y avoir séjourné ;
+
+    • et recherche de Spot et possibilité d'évaluer et commenter la présentation du dit Spot ;"</string>
+
+    <string name="article2"><u>"Article 2 – Modalités de réservation et d'évaluation d'un Hébergement"</u></string>
+    <string name="article2.1">"2.1 Demande de Réservation"</string>
+    <string name="text2.1">"Dans l’hypothèse où un Membre souhaiterait réserver un Hébergement, la demande de réservation est effectuée exclusivement en ligne sur le Site.
+        L'utilisateur y indique sa date d'arrivée, de départ, le nombre de personnes et un message personnalisé. La demande est envoyée via la messagerie interne du Site au Membre ayant publié l'Annonce.
+        Le Membre ayant publié l'Annonce reçoit alors une notification sur l'adresse courriel confirmée lors de la création de son compte lui indiquant qu'il a un message dans son espace personnel sur le Site."</string>
+
+    <string name="article2.2">"2.2 Confirmation d'une réservation"</string>
+    <string name="text2.2">"Le Membre ayant reçu la demande de réservation se doit de répondre dans le plus bref délai via le système de messagerie interne du Site disponible dans son espace personnel.
+        C'est lors de ces échanges via la messagerie interne que le Membre ayant reçu la demande de réservation pourra confirmer et se mettre d'accord avec le Membre ayant fait la demande de réservation sur les conditions de réservation: prix du séjour, date d'arrivée, de départ, nombre de personnes, mode de règlement, acompte et contrat de location."</string>
+
+    <string name="article2.3">"2.3 Conditions liées à la location"</string>
+    <string name="text2.3">"Seuls le Membre ayant reçu la demande de réservation et le Membre ayant fait la demande de réservation sont responsables du bon déroulement de la location: validation du prix du séjour, des dates du séjour, du nombre de personne, des conditions de règlement, de la confirmation de la location, des conditions d'annulation et de la mise en place du contrat de location."</string>
+
+    <string name="article2.4">"2.4 Évaluation d'un Hébergement"</string>
+    <string name="text2.4">"Seul le Membre ayant séjourné dans l'Hébergement a le droit d'évaluer et commenter le dit Hébergement."</string>
+
+    <string name="article2.5">"2.5 Responsabilités du Site quant aux différentes étapes de la location"</string>
+    <string name="text2.5">"Le Site permet une mise en relation entre un Membre souhaitant louer son Hébergement et un Membre souhaitant réserver le dit Hébergement. En aucun cas, le Site n'est responsable et ne peut être sollicité pour régler un conflit lié à la location."</string>
+
+    <string name="article3"><u>"Article 3 – Utilisation des Services du Site"</u></string>
+    <string name="article3.1">"3.1 Droit d’accès au Site"</string>
+    <string name="text3.1">"Sportihome, selon les présentes Conditions, accorde aux Utilisateurs un droit d’accès limité révocable, non exclusif, non cessible aux Services à titre strictement personnel. Toute utilisation contraire du Site à sa finalité est strictement interdite et constitue un manquement aux présentes dispositions. L’utilisation du Site requiert une connexion et un navigateur internet.
+
+Tous matériels et logiciels nécessaires à l’accès au Site et à l’utilisation des Services restent exclusivement à la charge de l’Utilisateur.
+
+Sportihome se réserve le droit de suspendre, modifier, remplacer, refuser un accès ou supprimer discrétionnairement des comptes d’Utilisateurs, Spots et Hébergements. Il en est de même pour les évaluations et commentaires des Spots et Hébergements."</string>
+
+    <string name="article3.2">"3.2 Obligations des Utilisateurs"</string>
+    <string name="text3.2">"Les Utilisateurs s’interdisent :
+
+    1. de transmettre, publier, distribuer, enregistrer ou détruire tout matériel, en particulier les contenus de Sportihome, en violation des lois ou réglementations en vigueur concernant la collecte, le traitement ou le transfert d'informations personnelles ;
+
+    2. de créer des profils fictifs ;
+
+    3. de fournir des informations inexactes dans le formulaire ou de ne pas les mettre à jour régulièrement ;
+
+    4. de diffuser des données, informations, ou contenus à caractère diffamatoire, injurieux, obscène, offensant, violent ou incitant à la violence, ou à caractère politique, raciste ou xénophobe et de manière générale tout contenu qui serait contraire aux lois et règlements en vigueur ou aux bonnes mœurs ;
+
+    5. de référencer ou créer des liens vers tout contenu ou information disponible depuis les sites de Sportihome, sauf expressément autorisés par les présentes Conditions ;
+
+    6. d’obtenir d’autres Utilisateurs des mots de passe ou des données personnelles d’identification ;
+
+    7. d’utiliser des informations, contenus ou toutes données présentes sur le Site afin de proposer un service considéré, à l’entière discrétion de Sportihome, comme concurrentiel à Sportihome ;
+
+    8. de vendre, échanger ou monnayer des informations, contenus ou toutes données présentes sur le Site ou Service proposé par le Site, sans l’accord express et écrit de Sportihome ;
+
+    9. de supprimer ou modifier tout élément publié par une autre personne ou entité sous réserve des possibilités offertes par le Site ;
+
+    10. de pratiquer de l’ingénierie inversée (Reverse Engineering), décompiler, désassembler, déchiffrer ou autrement tenter d’obtenir le code source en relation avec toute propriété intellectuelle sous-jacente utilisée pour fournir tout ou partie des Services ;
+
+    11. d’utiliser des logiciels ou appareils manuels ou automates, robots de codage ou autres moyens pour accéder, explorer, extraire ou indexer toute page du Site ;
+
+    12. de mettre en danger ou essayer de mettre en danger la sécurité d'un site web de Sportihome. Cela comprend les tentatives de contrôler, scanner ou tester la vulnérabilité d’un système ou réseau ou de violer des mesures de sécurité ou d’authentification sans une autorisation préalable expresse ;
+
+    13. de contrefaire ou d’utiliser les produits, les logos, les marques ou tout autre élément protégé par les droits de propriété intellectuel de Sportihome ;
+
+    14. de simuler l’apparence ou le fonctionnement du Site, en procédant par exemple à un effet miroir ;
+
+    15. de perturber ou troubler, directement ou indirectement, Sportihome ou les Services, ou imposer une charge disproportionnée sur l’infrastructure du Site ou tenter de transmettre ou d’activer des virus informatique via ou sur le Site.
+
+Il est rappelé que les violations de la sécurité du système ou du réseau peuvent conduire à des poursuites civiles et pénales. Sportihome vérifie l’absence de telle violation et peut faire appel aux autorités judiciaires pour poursuivre, le cas échéant, des Utilisateurs ayant participé à de telles violations. Les Utilisateurs s’engagent à utiliser le Site de manière loyale, conformément à sa finalité professionnelle et aux dispositions légales, réglementaires, aux présentes Conditions et aux usages en vigueur."</string>
+
+    <string name="article4"><u>"Article 4 - Utilisation du contenu du Site"</u></string>
+    <string name="text4">"L’ensemble du contenu du Site, notamment les designs, textes, graphiques, images, vidéos, informations, logos, icônes-boutons, logiciels, fichiers audio et autres appartient à Sportihome, lequel est seul titulaire de l’intégralité des droits de propriété intellectuelle y afférents. Toute représentation et/ou reproduction et/ou exploitation partielle ou totale des contenus et Services proposés par Sportihome, par quelque procédé que ce soit, sans l'autorisation préalable et écrite de Sportihome, est strictement interdite et serait susceptible de donner lieu à des poursuites judiciaires."</string>
+
+    <string name="article5"><u>"Article 5 – Données à caractère personnel"</u></string>
+    <string name="text5">"Toutes les données à caractère personnel dont dispose Sportihome sont recueillies légalement et loyalement. Ces données sont fournies par les Utilisateurs qui acceptent, en créant un compte sur le Site, de manière volontaire et expresse, les présentes Conditions autorisant Sportihome à traiter ces données. Elles sont utilisées afin de permettre à l’Utilisateur de profiter pleinement des Services et des fonctions proposés par le Site. Afin de faciliter l’utilisation du Site et de personnaliser l’expérience du Site par l’Utilisateur, Sportihome utilise des cookies et fichiers journaux. L’utilisation des cookies peut être désactivée en modifiant les paramètres du navigateur internet. Les données à caractère personnel sont stockées par Sportihome sur ses serveurs, en vue de leur traitement dans le cadre de l’utilisation des Services. Elles sont conservées aussi longtemps que nécessaire pour l’apport des Services et fonctions offerts par le Site. L’Utilisateur reste toujours propriétaire des informations le concernant qu’il transmet à Sportihome. Il dispose, conformément à la loi n° 78-17 du 6 janvier 1978 modifiée par la loi n° 2004-801 du 6 août 2004, d’un droit d’accès, de rectification et de suppression des données à caractère personnel le concernant, ainsi que du droit de s’opposer à la communication de ces données à des tiers pour de justes motifs. L’Utilisateur pourra exercer ses droits en écrivant à l’adresse électronique suivante : contact@sportihome.com. Une réponse à la requête de l’Utilisateur lui sera adressée dans un délai de 30 jours."</string>
+
+    <string name="article6"><u>"Article 6 – Responsabilité"</u></string>
+    <string name="text6">"Sportihome ne contrôle pas l’exactitude du contenu généré par les Utilisateurs, en conséquence, Sportihome ne donne aucune garantie sur la teneur de ce contenu et ne serait en aucun être tenu responsable au titre de ce contenu. Seul l’Utilisateur, à l’exclusion de Sportihome, est responsable de toutes données et informations le concernant qu’il a fourni, que ces données soient accessibles ou non du public, et plus généralement, l’Utilisateur est seul responsable de l’utilisation qu’il fait du Site. Sportihome n’a pas d’obligation générale de surveillance des données et du contenu fournis par les membres, ni d’obligation de suppression d’un contenu qui ne paraîtrait pas manifestement illicite, nonobstant son signalement. Sportihome ne garantit pas que l’utilisation, par l’Utilisateur, du Site n’enfreindra pas les droits des tiers.
+
+Sportihome ne garantit pas la légalité de l’activité de location d'Hébergement proposée par le Membre ayant publié l'Annonce du dit Hébergement notamment via le Site. En conséquence, il revient aux Utilisateurs de s’assurer de la légalité du projet de location qu’ils envisagent et d’organiser les conditions juridiques et financières de leurs relations dont ils seront les seuls responsables.
+
+Sportihome ne garantit pas la légalité d'accès et de pratique de l’activité sportive sur le Spot présenté par le Membre ayant publié l'Annonce du Spot notamment via le Site. En conséquence, il revient aux Utilisateurs de s’assurer de la légalité d'accès et de pratique dont ils seront les seuls responsables.
+
+Sportihome ne saurait en aucun cas être tenu responsable notamment :
+
+    1. des conséquences des rencontres virtuelles ou réelles entre Utilisateurs suite à l’utilisation du Site ;
+
+    2. de la légalité des Annonces d'Hébergement publiées sur le Site ;
+
+    3. de la légalité d'accès et de pratique des Annonces de Spot publiées sur le Site ;
+
+    4. de tout préjudice consécutif à une faute de l’Utilisateur, ou à un événement imputable à tiers étranger à la fourniture du service de signature électronique, ou à un cas de force majeure.
+
+Pour l’ensemble des Services proposés sur le Site, Sportihome ne saurait en aucun cas avoir la qualité de loueur d'Hébergement, le rôle de Sportihome étant limité à la facilitation des mises en relation entre les Membres. Plus généralement, Sportihome reste tiers aux actes conclus par les Utilisateurs via le Site, et ne serait être responsable des conséquences de tels actes à quelque titre que ce soit. Il est rappelé que les données publiées par les Utilisateurs et les informations partagées par ces derniers peuvent être captées et exploitées par d’autres Utilisateurs ou des tiers. En ce sens, Sportihome ne garantit pas le respect de la propriété de ces données; il incombe à l’Utilisateur de prendre l’ensemble des dispositions nécessaires afin que soit préservée la propriété de ses données.
+
+Sportihome ne garantit pas le fonctionnement sans interruption ou sans erreur de fonctionnement des Services, en particulier Sportihome ne saurait être engagée en cas d’interruption d’accès au Site en raison d’opérations de maintenance, de mises à jour ou d’améliorations techniques. Sportihome n’est pas responsable de tout retard ou inexécution du présent Contrat justifié par un cas de force majeure, telle qu’elle est définie par la jurisprudence des cours et tribunaux français."</string>
+
+    <string name="article7"><u>"Article 7 – Résiliation"</u></string>
+    <string name="text7">"L’Utilisateur peut résilier à tout moment le présent Contrat, en se rendant sur le Site et en y suivant la procédure prévue à cet effet. Sportihome se réserve le droit de restreindre, suspendre ou supprimer, sans préavis ni remboursement, le compte de tout Utilisateur qui utilise de façon abusive ou inappropriée les Services. L’appréciation du comportement de l’Utilisateur est réservée à l’entière discrétion de Sportihome."</string>
+
+    <string name="article8"><u>"Article 8 – Convention de preuve"</u></string>
+    <string name="text8">"Les systèmes et fichiers informatiques font foi dans les rapports entre Sportihome et l’Utilisateur. Ainsi, Sportihome pourra valablement produire dans le cadre de toute procédure, aux fins de preuve les données, fichiers, programmes, enregistrements ou autres éléments, reçus, émis ou conservés au moyen des systèmes informatiques exploités par Sportihome, sur tout support numérique ou analogique, et s’en prévaloir sauf erreur manifeste."</string>
+
+    <string name="article9"><u>"Article 9 – Dispositions diverses"</u></string>
+    <string name="article9.1">"9.1 Intégralité et indivisibilité du Contrat"</string>
+    <string name="text9.1">"Le présent Contrat constitue l’intégralité de l’accord entre Sportihome et l’Utilisateur. Il annule et remplace tout accord et contrat antérieur, écrit ou verbal. Le fait que l’une quelconque des dispositions du Contrat soit ou devienne illégale ou inapplicable n’affectera en aucune façon la validité ou l’applicabilité des autres stipulations du Contrat."</string>
+
+    <string name="article9.2">"9.2 Modification du Contrat"</string>
+    <string name="text9.2">"Sportihome se réserve le droit de modifier, compléter ou remplacer les présentes Conditions. En cas de refus de l’Utilisateur des nouvelles dispositions, il est rappelé que l’Utilisateur pourra à tout moment, conformément à l’Article 7, résilier le présent Contrat."</string>
+
+    <string name="article10"><u>"Article 10 – Règlement des différends"</u></string>
+    <string name="text10">"10.1 La conclusion, l’interprétation et la validité du présent Contrat sont régis par la loi française, quelque soit le pays d’origine de l’Utilisateur ou le pays depuis lequel l’Utilisateur accède à Sportihome et nonobstant les principes de conflits de lois. Dans l’hypothèse où un différend portant sur la validité, l’exécution ou l’interprétation du présent Contrat serait porté devant les juridictions civiles, il sera soumis à la compétence exclusive des tribunaux du ressort de la Cour d’appel de Montpellier auquel il est fait expressément attribution de compétence, même en cas de référé ou de pluralité de défendeurs.
+
+10.2. Les parties acceptent de se soumettre, en cas de litige susceptible de survenir à l’occasion de l’interprétation et/ou de l’exécution des présentes ou en relation avec le présent Site et/ou tout achat et/ou tentative d’achat par son intermédiaire, à une procédure de médiation conventionnelle ou tout autre mode alternatif de règlement de leurs différends.
+
+10.3. En cas d’échec de cette procédure de médiation, les règles du Code de procédure civile s’appliqueront."</string>
+
+    <string name="LegalDisclaimer_title">"Mentions légales"</string>
+    <string name="LegalDisclaimer_text">"www.sportihome.com est édité par la société Sportihome SAS
+
+Adresse : Cap Oméga, Rond-Point Benjamin Franklin, CS 39521, 34 960 Montpellier - FRANCE
+
+Le site web est hébergé par Online SAS
+Adresse : BP 438, 75366 Paris CEDEX 08 - FRANCE
+RCS Paris B 433 115 904
+https://www.online.net/
+
+Déclaration CNIL N° xxxxx (demande en cours)"</string>
+
+
 </resources>
