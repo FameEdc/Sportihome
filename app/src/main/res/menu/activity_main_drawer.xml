@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_profil"
+            android:icon="@drawable/ic_profil"
+            android:title="Mon profil" />
+        <item
+            android:id="@+id/nav_hébergements"
+            android:icon="@drawable/ic_home"
+            android:title="Les Hébergements" />
+        <item
+            android:id="@+id/nav_spots"
+            android:icon="@drawable/ic_spot"
+            android:title="Les Spots" />
+
+        <item
+            android:id="@+id/nav_invite"
+            android:icon="@drawable/add_contacts"
+            android:title="Invites tes amis !" />
+
+
+    </group>
+
+
+    <item android:title="Découvrir">
+
+        <menu>
+            <item
+                android:id="@+id/nav_howItsWork"
+                android:icon="@drawable/ic_settings"
+                android:title="Comment ça marche ?" />
+
+        </menu>
+
+    </item>
+
+    <item android:title="Société">
+        <menu>
+
+            <item
+                android:id="@+id/nav_about"
+
+                android:title="A propos" />
+            <item
+                android:id="@+id/nav_cgu"
+
+                android:title="CGU" />
+            <item
+                android:id="@+id/nav_legal"
+
+                android:title="Mentions Légales" />
+
+        </menu>
+    </item>
+
+</menu>

@@ -277,7 +277,7 @@
                 android:layout_alignTop="@+id/poduim2"
                 android:layout_centerHorizontal="true" />
 
-         <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+         <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:font="@string/sports_font"
@@ -286,7 +286,7 @@
                 android:layout_alignTop="@+id/poduim3"
                 android:layout_toEndOf="@+id/poduim1" />
 
-            <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+            <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                 app:font="@string/sports_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -295,7 +295,7 @@
                 android:layout_alignTop="@+id/poduim2"
                 android:layout_toStartOf="@+id/poduim1" />
 
-            <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+            <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                 app:font="@string/sports_font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

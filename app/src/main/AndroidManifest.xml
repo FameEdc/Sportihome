@@ -12,24 +12,37 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SpotActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".SearchActivity"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".Activities.SpotActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlaceActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ProfilActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AboutActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CguActivity"
-            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".Activities.PlaceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.ProfilActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.CguActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.LegalDisclaimerActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

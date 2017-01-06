@@ -50,6 +50,24 @@
     <string name="img_home">f</string>
     <string name="img_door">m</string>
     <string name="img_private">5</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_tab">TabActivity</string>
+
+    <string name="title_activity_main">MainActivity</string>
+
+    <string-array name="nav_item_activity_titles">
+        <item>Sportihome</item>
+        <item>Sportihome</item>
+        <item>Sportihome</item>
+    </string-array>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
     <string name="about">A propos</string>
     <string name="about_text">"Comment identifier de manière simple et rapide les bons plans logements à côtés des spots ?
 
@@ -226,6 +244,9 @@ RCS Paris B 433 115 904
 https://www.online.net/
 
 Déclaration CNIL N° xxxxx (demande en cours)"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -7,6 +7,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
+import fr.wildcodeschool.apprenti.sportihome.Model.AddressModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.CommentModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.FacebookModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.GoogleModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.HomeModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.IdentityModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.OwnerModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.PlaceModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.PriceModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.RateModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.SpotCommentModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.SpotModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.SpotRatingModel;
+
 /**
  * Created by chantome on 30/11/2016.
  */
