@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                     android:id="@+id/marker"
                     app:font="@string/sportihome_ux_font"
                     android:text=")"
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
-                <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                     android:id="@+id/sport"
                     android:textSize="30dp"
                     app:font="@string/sports_font"

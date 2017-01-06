@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F4F3"
-    tools:context="fr.wildcodeschool.apprenti.sportihome.PlaceActivity">
+    tools:context="fr.wildcodeschool.apprenti.sportihome.Activities.PlaceActivity">
 
     <RelativeLayout
         android:id="@+id/block_place"
@@ -111,7 +111,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1">
 
-                        <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                        <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                             android:id="@+id/img_hobby"
                             android:textSize="35dp"
                             app:font="@string/sports_font"
@@ -192,7 +192,7 @@
                         android:layout_weight="1"
                         android:layout_marginBottom="10dp">
 
-                        <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                        <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                             android:textSize="30dp"
                             app:font="@string/sportihome_ux_font"
                             android:text="n"
@@ -225,7 +225,7 @@
                         android:gravity="center"
                         android:layout_weight="1">
 
-                        <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                        <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                             android:textSize="30dp"
                             app:font="@string/sportihome_ux_font"
                             android:text="A"
@@ -258,7 +258,7 @@
                         android:gravity="center"
                         android:layout_weight="1">
 
-                        <fr.wildcodeschool.apprenti.sportihome.CustomFontTextView
+                        <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                             android:textSize="30dp"
                             app:font="@string/sportihome_ux_font"
                             android:text="c"
