@@ -47,8 +47,8 @@ public class SearchActivity extends AppCompatActivity {
 
         if(isOnline()){
             Log.i("YOLO","Connecté");
-            new GetPlaces().execute();
-            //new GetSpots().execute();
+            //new GetPlaces().execute();
+            new GetSpots().execute();
         }else{
             Log.i("YOLO","Non Connecté");
         }
@@ -83,7 +83,7 @@ public class SearchActivity extends AppCompatActivity {
 
             if (ppDialog.isShowing())
                 ppDialog.dismiss();
-
+/*
             LayoutInflater pli = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             places = (ListView) findViewById(R.id.places_list);
             ftView = pli.inflate(R.layout.footer_view,null);
@@ -121,7 +121,7 @@ public class SearchActivity extends AppCompatActivity {
                         thread.start();
                     }
                 }
-            });
+            });*/
 
         }
     }
@@ -153,7 +153,7 @@ public class SearchActivity extends AppCompatActivity {
 
             if (psDialog.isShowing())
                 psDialog.dismiss();
-/*
+
             LayoutInflater sli = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             spots = (ListView) findViewById(R.id.spots_list);
             ftView = sli.inflate(R.layout.footer_view,null);
@@ -194,7 +194,7 @@ public class SearchActivity extends AppCompatActivity {
                     }
                 }
             });
-*/
+
 
         }
     }
