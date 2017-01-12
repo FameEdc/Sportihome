@@ -11,8 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
+import fr.wildcodeschool.apprenti.sportihome.Activities.LogInActivity;
+import fr.wildcodeschool.apprenti.sportihome.Model.LogInModel;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
 /**
@@ -26,6 +29,7 @@ public class SearchFragment extends Fragment {
     private ViewPager mViewPager;
     public static int int_items = 2;
     View mView;
+    LogInModel mLogIn;
     private int[] tabIcons = {
             R.drawable.ic_tabhost,
             R.drawable.ic_tabspot
@@ -41,7 +45,14 @@ public class SearchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        //mLogIn = (LogInModel) getArguments().getSerializable("login");
+
         mView = inflater.inflate(R.layout.fragment_search, null);
+
+        if (mLogIn.isSuccess()){
+            Toast.makeText(mView.getContext(), "Utilisateur connecté", Toast.LENGTH_LONG).show();
+        }
+
         tabLayout = (TabLayout) mView.findViewById(R.id.tabs);
         mViewPager = (ViewPager) mView.findViewById(R.id.viewpager);
 

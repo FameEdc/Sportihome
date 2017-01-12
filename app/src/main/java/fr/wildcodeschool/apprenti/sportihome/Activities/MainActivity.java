@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.view.View;
 import fr.wildcodeschool.apprenti.sportihome.Fragments.ProfilFragment;
 import fr.wildcodeschool.apprenti.sportihome.Fragments.SearchFragment;
 import fr.wildcodeschool.apprenti.sportihome.Fragments.SpotsFragment;
+import fr.wildcodeschool.apprenti.sportihome.Model.LogInModel;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
 /**
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean shouldLoadHostFragOnBackPress = true;
     private Handler mHandler;
+    LogInModel mLogIn;
 
 
     @Override
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mToolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
+
+        mLogIn = (LogInModel) getIntent().getSerializableExtra(LogInActivity.LOGIN);
 
         mHandler = new Handler();
 
@@ -106,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Fragment getHomeFragment() {
         Bundle bundle = new Bundle();
+        //bundle.putSerializable("login",mLogIn);
         SearchFragment searchFragment = new SearchFragment();
         switch (navItemIndex) {
             case 0:

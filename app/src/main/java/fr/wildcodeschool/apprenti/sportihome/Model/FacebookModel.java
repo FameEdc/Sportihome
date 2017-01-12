@@ -1,10 +1,12 @@
 package fr.wildcodeschool.apprenti.sportihome.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by chantome on 28/11/2016.
  */
 
-public class FacebookModel {
+public class FacebookModel implements Serializable {
     private String id;
     private String token;
     private String name;

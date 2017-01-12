@@ -145,8 +145,6 @@ public class PlacesFragment extends Fragment {
         }
     }
 
-
-
     private class MyPlaceHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {

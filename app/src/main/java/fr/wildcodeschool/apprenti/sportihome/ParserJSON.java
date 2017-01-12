@@ -13,6 +13,8 @@ import fr.wildcodeschool.apprenti.sportihome.Model.FacebookModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.GoogleModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.HomeModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.IdentityModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.LocModel;
+import fr.wildcodeschool.apprenti.sportihome.Model.LogInModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.OwnerModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.PlaceModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.PriceModel;
@@ -145,6 +147,24 @@ public class ParserJSON extends AppCompatActivity{
 
     }
 
+    public static LogInModel getLogIn(String jsonStr){
+        if (jsonStr != null) {
+            try {
+                JSONObject login = new JSONObject(jsonStr);
+                LogInModel mLogIn = parserLogIn(login);
+                return mLogIn;
+
+            }catch (final JSONException e){
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        }
+        else{
+            Log.e(TAG, "Couldn't get json from server.");
+        }
+
+        return null;
+    }
+
     private static PlaceModel parserPlace(JSONObject place) throws JSONException{
         if (place != null) {
 
@@ -167,7 +187,7 @@ public class ParserJSON extends AppCompatActivity{
                     OwnerModel mPOwner = parserOwner(place_owner);
                     mPlace.setOwner(mPOwner);
                 }
-
+/*
                 if (!place.isNull("latitude") && place.has("latitude")){
                     double place_latitude = place.getInt("latitude");
                     mPlace.setLatitude(place_latitude);
@@ -176,7 +196,7 @@ public class ParserJSON extends AppCompatActivity{
                 if (!place.isNull("longitude") && place.has("longitude")){
                     double place_longitude = place.getInt("longitude");
                     mPlace.setLongitude(place_longitude);
-                }
+                }*/
 
                 if (!place.isNull("name") && place.has("name")){
                     String place_name = place.getString("name");
@@ -222,6 +242,12 @@ public class ParserJSON extends AppCompatActivity{
                     JSONObject place_address = place.getJSONObject("address");
                     AddressModel mPAddress = parserAddress(place_address);
                     mPlace.setAddress(mPAddress);
+                }
+
+                if (!place.isNull("loc") && place.has("loc")){
+                    JSONObject place_loc = place.getJSONObject("loc");
+                    LocModel mPLoc = parserLoc(place_loc);
+                    mPlace.setLoc(mPLoc);
                 }
 
                 if (!place.isNull("pictures") && place.has("pictures")){
@@ -304,7 +330,7 @@ public class ParserJSON extends AppCompatActivity{
                     String spot_name = spot.getString("name");
                     mSpot.setName(spot_name);
                 }
-
+/*
                 if (!spot.isNull("latitude") && spot.has("latitude")){
                     double spot_latitude = spot.getInt("latitude");
                     mSpot.setLatitude(spot_latitude);
@@ -313,7 +339,7 @@ public class ParserJSON extends AppCompatActivity{
                 if (!spot.isNull("longitude") && spot.has("longitude")){
                     double spot_longitude = spot.getInt("longitude");
                     mSpot.setLongitude(spot_longitude);
-                }
+                }*/
 
                 if (!spot.isNull("about") && spot.has("about")){
                     String spot_about = spot.getString("about");
@@ -353,6 +379,12 @@ public class ParserJSON extends AppCompatActivity{
                     JSONObject spot_address = spot.getJSONObject("address");
                     AddressModel mSAddress = parserAddress(spot_address);
                     mSpot.setAddress(mSAddress);
+                }
+
+                if (!spot.isNull("loc") && spot.has("loc")){
+                    JSONObject spot_loc = spot.getJSONObject("loc");
+                    LocModel mSLoc = parserLoc(spot_loc);
+                    mSpot.setLoc(mSLoc);
                 }
 
                 if(!spot.isNull("pictures") && spot.has("pictures")){
@@ -936,6 +968,71 @@ public class ParserJSON extends AppCompatActivity{
 
         return null;
 
+    }
+
+    private static LocModel parserLoc(JSONObject loc) throws JSONException{
+        if (loc != null) {
+
+            try {
+
+                LocModel mLoc = new LocModel();
+
+                if(!loc.isNull("type") && loc.has("type")){
+                    String type = loc.getString("type");
+                    mLoc.setType(type);
+                }
+
+                if(!loc.isNull("coordinates") && loc.has("coordinates")){
+                    JSONArray coordinates = loc.getJSONArray("coordinates");
+                    double[] pCoordinates = new double[coordinates.length()];
+                    for (int i=0; i<coordinates.length();i++){
+                        pCoordinates[i] = coordinates.getDouble(i);
+                    }
+                    mLoc.setCoordinates(pCoordinates);
+                }
+
+                return mLoc;
+
+            } catch (final JSONException e) {
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Loc Object is Null.");
+        }
+        return null;
+    }
+
+    private static LogInModel parserLogIn(JSONObject login) throws JSONException{
+        if (login != null){
+            try{
+                LogInModel mLogIn = new LogInModel();
+
+                if(!login.isNull("success") && login.has("success")){
+                    boolean success = login.getBoolean("success");
+                    mLogIn.setSuccess(success);
+                }
+
+                if(!login.isNull("user") && login.has("user")){
+                    JSONObject user = login.getJSONObject("user");
+                    OwnerModel mUser = parserOwner(user);
+                    mLogIn.setUser(mUser);
+                }
+
+                if(!login.isNull("token") && login.has("token")){
+                    String token = login.getString("token");
+                    mLogIn.setToken(token);
+                }
+
+                return mLogIn;
+
+            }catch (final JSONException e){
+                Log.e(TAG, "Json parsing error: " + e.getMessage());
+            }
+        } else {
+            Log.e(TAG, "Loc Object is Null.");
+        }
+
+        return null;
     }
 
 }

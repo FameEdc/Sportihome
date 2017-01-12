@@ -10,8 +10,6 @@ public class PlaceModel {
     private String _id;
     private boolean isActive;
     private OwnerModel owner;
-    private double latitude;
-    private double longitude;
     private String name;
     private String about;
     private int __v;
@@ -20,6 +18,7 @@ public class PlaceModel {
     private RateModel rating;
     private HomeModel home;
     private AddressModel address;
+    private LocModel loc;
     private String[] pictures;
     private String creation;
     private String[] hobbies;
@@ -52,22 +51,6 @@ public class PlaceModel {
 
     public void setOwner(OwnerModel owner) {
         this.owner = owner;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
     }
 
     public String getName() {
@@ -132,6 +115,14 @@ public class PlaceModel {
 
     public void setAddress(AddressModel address) {
         this.address = address;
+    }
+
+    public LocModel getLoc() {
+        return loc;
+    }
+
+    public void setLoc(LocModel loc) {
+        this.loc = loc;
     }
 
     public String[] getPictures() {

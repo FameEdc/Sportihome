@@ -19,14 +19,13 @@ public class SpotModel {
     private OwnerModel owner;
     private String hobby;
     private String name;
-    private double latitude;
-    private double longitude;
     private String about;
     private int __v;
     private String modification;
     private ArrayList<SpotCommentModel> comments;
     private SpotRatingModel rating;
     private AddressModel address;
+    private LocModel loc;
     private String pictures[];
     private String creation;
 
@@ -62,22 +61,6 @@ public class SpotModel {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
     }
 
     public String getAbout() {
@@ -126,6 +109,14 @@ public class SpotModel {
 
     public void setAddress(AddressModel address) {
         this.address = address;
+    }
+
+    public LocModel getLoc() {
+        return loc;
+    }
+
+    public void setLoc(LocModel loc) {
+        this.loc = loc;
     }
 
     public String[] getPictures() {
