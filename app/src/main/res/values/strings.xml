@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Sportihome</string>
     <string name="sportihome_ux_font">sportihome-ux-font</string>
+    <string name="sportihome_font">sportihome-webfont</string>
     <string name="sports_font">sports-font</string>
     <string name="img_alpinisme">a</string>
     <string name="img_apnee">O</string>
