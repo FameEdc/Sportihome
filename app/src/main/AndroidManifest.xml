@@ -27,6 +27,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activities.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.CheckMailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.ForgotPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
