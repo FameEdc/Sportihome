@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         mToolbar= (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
-        mLogIn = (LogInModel) getIntent().getSerializableExtra(LogInActivity.LOGIN);
+        mLogIn = (LogInModel) getIntent().getSerializableExtra("login");
 
         mHandler = new Handler();
 
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Fragment getHomeFragment() {
         Bundle bundle = new Bundle();
-        //bundle.putSerializable("login",mLogIn);
+        bundle.putSerializable("login",mLogIn);
         SearchFragment searchFragment = new SearchFragment();
         switch (navItemIndex) {
             case 0:
@@ -123,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 searchFragment.setArguments(bundle);
                 return searchFragment;
             case 2:
-
                 ProfilFragment profilFragment= new ProfilFragment();
+                profilFragment.setArguments(bundle);
                 return profilFragment;
 
             default:

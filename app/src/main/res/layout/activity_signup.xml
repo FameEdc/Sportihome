@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/content"
+            android:textAlignment="center"
+            android:text="Pas encore sportinaute ? Inscrivez vous gratuitement"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/email"
+            android:hint="Adresse e-mail *"
+            android:inputType="textEmailAddress"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/firstname"
+            android:hint="Prénom *"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/name"
+            android:hint="Nom *"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/pass"
+            android:hint="Mot de passe *"
+            android:inputType="textPassword"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/confirm_pass"
+            android:hint="Confirmez *"
+            android:inputType="textPassword"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/connection"
+            android:text="M'inscrire"
+            android:background="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/cgu"
+            android:text="En créant un compte, vous acceptez les Conditions générales d'utilisation."
+            android:textAlignment="center"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_cgu"
+            android:text="Voir CGU"
+            android:background="@color/blue"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
