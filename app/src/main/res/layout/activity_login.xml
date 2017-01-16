@@ -15,11 +15,6 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <EditText
             android:id="@+id/login"
             android:hint="Adresse e-mail"
@@ -43,20 +38,32 @@
         <Button
             android:id="@+id/connection"
             android:text="Se Connecter"
-            android:background="@color/blue"
+            android:background="@color/green"
             android:textColor="@color/white"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
+            android:id="@+id/btn_signup"
+            android:layout_marginBottom="10dp"
             android:textAllCaps="false"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:text="Pas encore Sportinaute ? Inscrit toi !"
-            android:background="@color/transparent"
+            android:background="@color/opaque_black"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/btn_forgot"
+            android:textAllCaps="false"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:text="Mot de passe oublié ?"
+            android:background="@color/opaque_black"
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
 
     </LinearLayout>

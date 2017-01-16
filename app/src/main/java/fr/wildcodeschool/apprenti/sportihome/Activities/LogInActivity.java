@@ -45,21 +45,20 @@ public class LogInActivity extends FragmentActivity {
 
     private TextView content;
     private EditText editEmail, editPassword;
-    private String email, password;
-    private Button connect;
+    private String email, password,sport;
+    private Button connect,signup,forgotPassword;
     private HttpURLConnection client;
     private LogInActivity.ImageFragmentPagerAdapter imageFragmentPagerAdapter;
     private ViewPager viewPager;
     private boolean autoScroll=true;
     private int nbrPictures=3;
     private int count = 0;
-    public final static String LOGIN = "fr.wildcodeschool.apprenti.sportihome.Activities.LOGIN";
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_connection);
+        setContentView(R.layout.activity_login);
 
         int[] pictures = new int[3];
         pictures[0] = getBaseContext().getResources().getIdentifier("biking", "mipmap", getBaseContext().getPackageName());
@@ -98,19 +97,18 @@ public class LogInActivity extends FragmentActivity {
             }, 500, 5000);
         }
 
-        //FIN SLIDER
-
-        content    =   (TextView)findViewById( R.id.content );
         editEmail      =    (EditText)findViewById(R.id.login);
         editPassword       =   (EditText)findViewById(R.id.pass);
 
         connect = (Button)findViewById(R.id.connection);
+        signup = (Button)findViewById(R.id.btn_signup);
+        forgotPassword = (Button)findViewById(R.id.btn_forgot);
 
         connect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!editEmail.getText().toString().isEmpty() && !editPassword.getText().toString().isEmpty()){
-                    new SendPostRequest().execute();
+                    new SendPostLogin().execute();
                 }
                 if(editEmail.getText().toString().isEmpty()){
                     editEmail.setError("email vide !");
@@ -118,6 +116,22 @@ public class LogInActivity extends FragmentActivity {
                 if(editPassword.getText().toString().isEmpty()){
                     editPassword.setError("mot de passe vide !");
                 }
+            }
+        });
+
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogInActivity.this,SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LogInActivity.this,ForgotPasswordActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -205,7 +219,7 @@ public class LogInActivity extends FragmentActivity {
         }
     }
 
-    public class SendPostRequest extends AsyncTask<String, Void, String[]> {
+    public class SendPostLogin extends AsyncTask<String, Void, String[]> {
 
         protected void onPreExecute(){
             email = editEmail.getText().toString();
@@ -221,7 +235,6 @@ public class LogInActivity extends FragmentActivity {
                 JSONObject postDataParams = new JSONObject();
                 postDataParams.put("email", email);
                 postDataParams.put("password", password);
-                //Log.e("params",postDataParams.toString());
 
                 client = (HttpURLConnection) url.openConnection();
                 client.setRequestMethod("POST");
@@ -251,7 +264,7 @@ public class LogInActivity extends FragmentActivity {
                     input = client.getErrorStream();
 
                 }
-                //{identity: Object, password: "loutre", email: "loutre@gmail.com", passwordConfirm: "loutre"}
+
                 BufferedReader in=new BufferedReader(new InputStreamReader(input));
 
                 StringBuffer sb = new StringBuffer("");
@@ -279,22 +292,19 @@ public class LogInActivity extends FragmentActivity {
 
         @Override
         protected void onPostExecute(String[] result) {
-            //Log.i("RES : ", result);
+            //Log.i("RES : ", result[1]);
 
             if(result != null){
                 switch (result[0]){
                     case "200":
 
                         final LogInModel monLog = ParserJSON.getLogIn(result[1]);
-
-                        //Log.i("ACCESS : ", String.valueOf(monLog.isSuccess()));
-                        //Log.i("TOKEN : ", monLog.getToken());
-
+                        
                         if (monLog.isSuccess()){
                             //Connexion Ok - Go page Search
                             Intent intent = new Intent(LogInActivity.this,MainActivity.class);
                             Bundle mBundle = new Bundle();
-                            mBundle.putSerializable(LOGIN,monLog);
+                            mBundle.putSerializable("login",monLog);
                             intent.putExtras(mBundle);
                             startActivity(intent);
                             finish();
