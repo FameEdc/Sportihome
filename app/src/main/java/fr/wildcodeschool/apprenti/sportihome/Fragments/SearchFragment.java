@@ -8,9 +8,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -28,30 +32,22 @@ public class SearchFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager mViewPager;
     public static int int_items = 2;
-    View mView;
-    LogInModel mLogIn;
+    private View mView;
+    private LogInModel mLogIn;
     private int[] tabIcons = {
             R.drawable.ic_tabhost,
             R.drawable.ic_tabspot
-
     };
 
-
-    public SearchFragment() {
-
-    }
+    public SearchFragment() {}
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        //mLogIn = (LogInModel) getArguments().getSerializable("login");
+        mLogIn = (LogInModel) getArguments().getSerializable("login");
 
         mView = inflater.inflate(R.layout.fragment_search, null);
-
-        if (mLogIn.isSuccess()){
-            Toast.makeText(mView.getContext(), "Utilisateur connecté", Toast.LENGTH_LONG).show();
-        }
 
         tabLayout = (TabLayout) mView.findViewById(R.id.tabs);
         mViewPager = (ViewPager) mView.findViewById(R.id.viewpager);
