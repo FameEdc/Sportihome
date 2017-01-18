@@ -2,8 +2,10 @@ package fr.wildcodeschool.apprenti.sportihome.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -292,8 +294,6 @@ public class LogInActivity extends FragmentActivity {
 
         @Override
         protected void onPostExecute(String[] result) {
-            //Log.i("RES : ", result[1]);
-
             if(result != null){
                 switch (result[0]){
                     case "200":
@@ -302,10 +302,13 @@ public class LogInActivity extends FragmentActivity {
                         
                         if (monLog.isSuccess()){
                             //Connexion Ok - Go page Search
+                            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(LogInActivity.this);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("id", monLog.getUser().get_id());
+                            editor.putString("token", monLog.getToken());
+                            editor.commit();
+
                             Intent intent = new Intent(LogInActivity.this,MainActivity.class);
-                            Bundle mBundle = new Bundle();
-                            mBundle.putSerializable("login",monLog);
-                            intent.putExtras(mBundle);
                             startActivity(intent);
                             finish();
                         }

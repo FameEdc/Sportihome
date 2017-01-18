@@ -16,10 +16,9 @@
             android:name=".Activities.SpotActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.LogInActivity"
+            android:name=".Activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +35,7 @@
             android:name=".Activities.ForgotPasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.LogInActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.PlaceActivity"

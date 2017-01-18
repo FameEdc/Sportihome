@@ -8,6 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <RelativeLayout
+        android:background="@color/opaque_black"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_centerVertical="true"
@@ -51,8 +58,8 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:text="Pas encore Sportinaute ? Inscrit toi !"
-            android:background="@color/opaque_black"
             android:layout_width="match_parent"
+            android:background="@color/transparent"
             android:layout_height="20dp" />
 
         <Button
@@ -61,8 +68,8 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:text="Mot de passe oublié ?"
-            android:background="@color/opaque_black"
             android:layout_width="match_parent"
+            android:background="@color/transparent"
             android:layout_height="20dp" />
 
 

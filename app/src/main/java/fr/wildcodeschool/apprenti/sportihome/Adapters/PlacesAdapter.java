@@ -6,6 +6,7 @@ package fr.wildcodeschool.apprenti.sportihome.Adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,6 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
         user = maPlace.getOwner().get_id();
 
         if (maPlace.getOwner().getAvatar() != null){
-
             avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/"+maPlace.getOwner().getAvatar();
             avatarUrl = avatarUrl.replace(" ","%20");
             Picasso.with(context).load(avatarUrl).fit().centerCrop().into(imgAvatar);
@@ -74,11 +74,19 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
             }
         }
 
-        //Price
-        if (maPlace.getHome().getPrice().getLowSeason() != 0){
-            TextView txtPrice = (TextView) rowView.findViewById(R.id.price);
-            int price = maPlace.getHome().getPrice().getLowSeason();
-            txtPrice.setText(price+" €");
+        if (maPlace.getHome() != null){
+            if (maPlace.getHome().getPrice() != null){
+                //Price
+                if (maPlace.getHome().getPrice().getLowSeason() != 0){
+                    TextView txtPrice = (TextView) rowView.findViewById(R.id.price);
+                    int price = maPlace.getHome().getPrice().getLowSeason();
+                    txtPrice.setText(price+" €");
+                }
+            }else{
+                Log.e("ERROR","not Price");
+            }
+        }else{
+            Log.e("ERROR","not Home");
         }
 
         //Picture

@@ -15,7 +15,6 @@
 
 
         <TextView
-            android:text="Vincent Rampillon"
             android:id="@+id/name_user"
             android:layout_width="wrap_content"
             android:textSize="15dp"
@@ -26,208 +25,19 @@
             android:layout_centerHorizontal="true" />
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/relativeLayout"
             android:layout_alignParentTop="true"
-            android:layout_alignEnd="@+id/name_user"
             android:layout_marginTop="22dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:src="@drawable/default_avatar"
-                android:layout_marginLeft="10dp"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:layout_centerHorizontal="true"/>
 
-        </RelativeLayout>
-
-        <RelativeLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout3"
-            android:layout_below="@+id/relativeLayout2"
-            android:layout_alignParentStart="true">
-
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/a_propos"
-                android:text="A propos de moi"
-                android:textSize="17dp"
-                android:layout_marginTop="17dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/description_user"
-                android:text="Plusieurs pistes au départ du foyer de ski de fond, avec la vue sur le Sancy et la possibilités d'aller jusqu'à Super Besse. Plutôt calme et bien entretenu !"
-                android:layout_below="@+id/a_propos"
-                android:layout_alignParentStart="true" />
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relativeLayout3"
-            android:layout_alignParentStart="true"
-            android:id="@+id/relativeLayout4">
-
-            <TextView
-                android:paddingLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/email_fix"
-                android:text="Email"
-                android:gravity="left"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:gravity="center"
-                android:textSize="17dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/email_user"
-                android:text="fakeadresse@gmail.com"
-                android:layout_marginEnd="29dp"
-                android:layout_alignBaseline="@+id/email_fix"
-                android:layout_alignBottom="@+id/email_fix"
-                android:layout_alignEnd="@+id/email_fix" />
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:background="@color/lightgrey"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout5"
-            android:layout_below="@+id/relativeLayout4"
-            android:layout_alignParentStart="true">
-
-            <TextView
-                android:paddingLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/phone_fix"
-                android:text="Téléphone"
-                android:gravity="left"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:gravity="center"
-                android:textSize="17dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/phone_user"
-                android:text="06.00.00.00.00"
-                android:layout_alignBaseline="@+id/phone_fix"
-                android:layout_alignBottom="@+id/phone_fix"
-                android:layout_alignEnd="@+id/phone_fix"
-                android:layout_marginEnd="101dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout7"
-            android:layout_below="@+id/relativeLayout5"
-            android:layout_alignParentStart="true">
-
-            <TextView
-                android:paddingLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/mobile_fix"
-                android:text="Portable"
-                android:gravity="left"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:gravity="center"
-                android:textSize="17dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mobile_user"
-                android:text="06.00.00.00.00"
-                android:layout_marginEnd="100dp"
-                android:layout_alignBaseline="@+id/mobile_fix"
-                android:layout_alignBottom="@+id/mobile_fix"
-                android:layout_alignEnd="@+id/mobile_fix" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:background="@color/lightgrey"
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout8"
-            android:layout_below="@+id/relativeLayout7"
-            android:layout_alignParentStart="true">
-
-            <TextView
-                android:paddingLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/address_fix"
-                android:text="Adresse"
-                android:gravity="left"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:gravity="center"
-                android:textSize="17dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/address_user"
-                android:text="13 rue Jean Casthillon"
-                android:layout_marginEnd="48dp"
-                android:layout_alignBaseline="@+id/address_fix"
-                android:layout_alignBottom="@+id/address_fix"
-                android:layout_alignEnd="@+id/address_fix" />
-        </RelativeLayout>
-
-        <RelativeLayout
-
-            android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout9"
-            android:layout_below="@+id/relativeLayout8"
-            android:layout_alignParentStart="true">
-
-            <TextView
-                android:paddingLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/birthday_fix"
-                android:text="Anniversaire"
-                android:gravity="left"
-                android:textSize="17dp"/>
-
-            <TextView
-                android:gravity="center"
-                android:textSize="17dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/birthday_user"
-                android:text="25/11/1995"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="125dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -337,6 +147,195 @@
                 android:layout_toEndOf="@+id/stay_share"
                 android:layout_marginStart="14dp" />
         </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout3"
+            android:layout_below="@+id/relativeLayout2"
+            android:layout_alignParentStart="true">
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/a_propos"
+                android:text="A propos de moi"
+                android:textSize="17dp"
+                android:layout_marginTop="17dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:gravity="center"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/description_user"
+                android:layout_below="@+id/a_propos"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayout3"
+            android:layout_alignParentStart="true"
+            android:id="@+id/relativeLayout4">
+
+            <TextView
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email_fix"
+                android:text="Email"
+                android:gravity="left"
+                android:textSize="17dp"/>
+
+            <TextView
+                android:gravity="center"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/email_user"
+                android:layout_marginEnd="29dp"
+                android:layout_alignBaseline="@+id/email_fix"
+                android:layout_alignBottom="@+id/email_fix"
+                android:layout_alignEnd="@+id/email_fix" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:background="@color/lightgrey"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout5"
+            android:layout_below="@+id/relativeLayout4"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/phone_fix"
+                android:text="Téléphone"
+                android:gravity="left"
+                android:textSize="17dp"/>
+
+            <TextView
+                android:gravity="center"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/phone_user"
+                android:layout_alignBaseline="@+id/phone_fix"
+                android:layout_alignBottom="@+id/phone_fix"
+                android:layout_alignEnd="@+id/phone_fix"
+                android:layout_marginEnd="101dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout7"
+            android:layout_below="@+id/relativeLayout5"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mobile_fix"
+                android:text="Portable"
+                android:gravity="left"
+                android:textSize="17dp"/>
+
+            <TextView
+                android:gravity="center"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mobile_user"
+                android:layout_marginEnd="100dp"
+                android:layout_alignBaseline="@+id/mobile_fix"
+                android:layout_alignBottom="@+id/mobile_fix"
+                android:layout_alignEnd="@+id/mobile_fix" />
+        </RelativeLayout>
+
+        <!--<RelativeLayout
+            android:background="@color/lightgrey"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout8"
+            android:layout_below="@+id/relativeLayout7"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/address_fix"
+                android:text="Adresse"
+                android:gravity="left"
+                android:textSize="17dp"/>
+
+            <TextView
+                android:gravity="center"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/address_user"
+                android:layout_marginEnd="48dp"
+                android:layout_alignBaseline="@+id/address_fix"
+                android:layout_alignBottom="@+id/address_fix"
+                android:layout_alignEnd="@+id/address_fix" />
+        </RelativeLayout>-->
+
+        <RelativeLayout
+
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout9"
+            android:layout_below="@+id/relativeLayout7"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/birthday_fix"
+                android:text="Anniversaire"
+                android:gravity="left"
+                android:textSize="17dp"/>
+
+            <TextView
+                android:gravity="center"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/birthday_user"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="125dp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/logout"
+            android:text="Se déconnecter"
+            android:textColor="@color/white"
+            android:layout_below="@+id/relativeLayout9"
+            android:background="@color/red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
