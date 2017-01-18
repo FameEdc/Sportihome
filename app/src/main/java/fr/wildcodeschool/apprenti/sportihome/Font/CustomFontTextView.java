@@ -16,6 +16,11 @@ public class CustomFontTextView extends TextView {
 
     public static final String ANDROID_SCHEMA = "http://schemas.android.com/apk/res/android";
 
+    public CustomFontTextView(Context context) {
+        super(context);
+        applyCustomFont(context,null);
+    }
+
     public CustomFontTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
 

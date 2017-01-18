@@ -900,11 +900,15 @@ public class ParserJSON extends AppCompatActivity{
                 if (!price.isNull("highSeason") && price.has("highSeason")){
                     int php_highSeason = price.getInt("highSeason");
                     mPrice.setHightSeason(php_highSeason);
+                }else{
+                    mPrice.setHightSeason(0);
                 }
 
                 if (!price.isNull("lowSeason") && price.has("lowSeason")){
                     int php_lowSeason = price.getInt("lowSeason");
                     mPrice.setLowSeason(php_lowSeason);
+                }else{
+                    mPrice.setLowSeason(0);
                 }
 
                 return mPrice;
