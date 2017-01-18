@@ -63,6 +63,52 @@
         <item>Sportihome</item>
     </string-array>
 
+    <string-array name="query_suggestions">
+        <item>alpinisme</item>
+        <item>apnee</item>
+        <item>basketball</item>
+        <item>bmx</item>
+        <item>canoe kayak</item>
+        <item>cyclisme</item>
+        <item>dance</item>
+        <item>equitation</item>
+        <item>escalade</item>
+        <item>fitness</item>
+        <item>football</item>
+        <item>golf</item>
+        <item>handball</item>
+        <item>jetski</item>
+        <item>kitesurf</item>
+        <item>motocross</item>
+        <item>musculation</item>
+        <item>natation</item>
+        <item>parachutisme</item>
+        <item>parapente</item>
+        <item>peche</item>
+        <item>plongee</item>
+        <item>quad</item>
+        <item>rafting</item>
+        <item>randonnee</item>
+        <item>roller</item>
+        <item>running_trail</item>
+        <item>skateboard</item>
+        <item>ski</item>
+        <item>ski de fond</item>
+        <item>snowboard</item>
+        <item>speleologie</item>
+        <item>sport de combat</item>
+        <item>squash</item>
+        <item>stand up paddle</item>
+        <item>surf</item>
+        <item>tennis</item>
+        <item>voile</item>
+        <item>volleyball</item>
+        <item>vtt</item>
+        <item>wakeboard</item>
+        <item>windsurf</item>
+        <item>wingsuit</item>
+    </string-array>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
