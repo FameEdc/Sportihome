@@ -17,17 +17,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
+import fr.wildcodeschool.apprenti.sportihome.Adapters.SpotCommentsAdapter;
 import fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView;
 import fr.wildcodeschool.apprenti.sportihome.HttpHandler;
 import fr.wildcodeschool.apprenti.sportihome.Model.SpotModel;
 import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
-import fr.wildcodeschool.apprenti.sportihome.Adapters.SpotCommentsAdapter;
 import me.relex.circleindicator.CircleIndicator;
 
 /**
@@ -42,6 +52,8 @@ public class SpotActivity extends FragmentActivity {
     ViewPager viewPager;
     private boolean autoScroll=true;
     private int nbrPictures=0;
+    private SupportMapFragment map;
+    private float hue = 151;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +67,7 @@ public class SpotActivity extends FragmentActivity {
         new GetSpot().execute();
     }
 
-    private class GetSpot extends AsyncTask<Void, Void, Void> {
+    private class GetSpot extends AsyncTask<Void, Void, Void> implements OnMapReadyCallback {
 
         private int counti = 0;
 
@@ -88,6 +100,9 @@ public class SpotActivity extends FragmentActivity {
             final Context context = SpotActivity.this.getBaseContext();
 
             //CHECK & LOAD DATAS
+
+            map = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+            map.getMapAsync(this);
 
             //Avatar
             ImageView avatar = (ImageView)findViewById(R.id.img_avatar);
@@ -258,6 +273,43 @@ public class SpotActivity extends FragmentActivity {
 
             }
 
+        }
+
+        @Override
+        public void onMapReady(GoogleMap map) {
+            double[] latitudeLongitude = mSpot.getLoc().getCoordinates();
+            double lat = latitudeLongitude[1];
+            double lng = latitudeLongitude[0];
+
+            LatLng latLng = new LatLng(lat, lng);
+            map.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).title(mSpot.getName()).icon(BitmapDescriptorFactory.defaultMarker(hue)));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+            noScrollMap();
+        }
+
+        public void noScrollMap(){
+            final ScrollView mScrollView = (ScrollView) findViewById(R.id.activity_place);
+            ImageView transparentImageView = (ImageView) findViewById(R.id.transparent_image);
+
+            transparentImageView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    int action = event.getAction();
+                    switch (action){
+                        case MotionEvent.ACTION_DOWN:
+                            mScrollView.requestDisallowInterceptTouchEvent(true);
+                            return false;
+                        case MotionEvent.ACTION_UP:
+                            mScrollView.requestDisallowInterceptTouchEvent(false);
+                            return true;
+                        case MotionEvent.ACTION_MOVE:
+                            mScrollView.requestDisallowInterceptTouchEvent(true);
+                            return false;
+                        default:
+                            return true;
+                    }
+                }
+            });
         }
     }
     private String getStringResourceByName(String aString,Context context) {

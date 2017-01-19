@@ -294,6 +294,7 @@ Déclaration CNIL N° xxxxx (demande en cours)"</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>
