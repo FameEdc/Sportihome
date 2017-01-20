@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Fragment fragment = getHomeFragment();
+                Fragment fragment = getHomeFragment(navItemIndex);
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
                         android.R.anim.fade_out);
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         invalidateOptionsMenu();
     }
 
-    private Fragment getHomeFragment() {
+    protected Fragment getHomeFragment(int navItemIndex) {
         Bundle bundle = new Bundle();
         SearchFragment searchFragment = new SearchFragment();
         switch (navItemIndex) {

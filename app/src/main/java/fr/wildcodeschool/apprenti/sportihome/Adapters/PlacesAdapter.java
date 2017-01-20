@@ -24,10 +24,10 @@ import fr.wildcodeschool.apprenti.sportihome.R;
 
 public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
 
-    private final Activity activity;
+    private final Context activity;
     private final ArrayList<PlaceModel> mesPlaces;
 
-    public PlacesAdapter(Activity activity, ArrayList<PlaceModel> mesPlaces) {
+    public PlacesAdapter(Context activity, ArrayList<PlaceModel> mesPlaces) {
         super(activity, R.layout.fragment_search, mesPlaces);
 
         this.activity=activity;
@@ -35,8 +35,7 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
     }
 
     public View getView(int position, View view, ViewGroup parent) {
-
-        LayoutInflater inflater = activity.getLayoutInflater();
+        LayoutInflater inflater = LayoutInflater.from(activity);
         View rowView = inflater.inflate(R.layout.places_list_item, null,true);
         final PlaceModel maPlace = mesPlaces.get(position);
         final Context context = rowView.getContext();
@@ -125,13 +124,8 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
         if (mesPlaces.get(position).getHobbies() != null){
             CustomFontTextView txtSports = (CustomFontTextView) rowView.findViewById(R.id.sports);
             String[] hobbies = mesPlaces.get(position).getHobbies();
-            String strHobbies="";
 
-            for (int i=0 ; i < hobbies.length ; i++){
-                String stringName = "img_"+hobbies[i];
-                stringName = stringName.replace("-","_");
-                strHobbies += getStringResourceByName(stringName, context);
-            }
+            String strHobbies = getHobbiesString(hobbies);
             txtSports.setText(strHobbies);
         }
 
@@ -161,6 +155,16 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
         });
 
         return rowView;
+    }
+
+    protected String getHobbiesString(String[] hobbies) {
+        String strHobbies="";
+        for (int i=0 ; i < hobbies.length ; i++){
+            String stringName = "img_"+hobbies[i];
+            stringName = stringName.replace("-","_");
+            strHobbies += getStringResourceByName(stringName, activity);
+        }
+        return strHobbies;
     }
 
     public void addListItemsToAdapter(ArrayList<PlaceModel> list){
