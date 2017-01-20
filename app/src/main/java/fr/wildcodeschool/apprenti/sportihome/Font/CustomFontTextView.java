@@ -8,10 +8,6 @@ import android.widget.TextView;
 
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by Alban and Benjamin on 23/11/16.
- */
-
 public class CustomFontTextView extends TextView {
 
     public static final String ANDROID_SCHEMA = "http://schemas.android.com/apk/res/android";

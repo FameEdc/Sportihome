@@ -73,7 +73,7 @@ public class SearchFragment extends Fragment {
 
         // Generate sample data
 
-        sportsNameList = getResources().getStringArray(R.array.query_suggestions);
+        /*sportsNameList = getResources().getStringArray(R.array.query_suggestions);
 
         // Locate the ListView in listview_main.xml
         list = (ListView) mView.findViewById(R.id.listview);
@@ -120,7 +120,7 @@ public class SearchFragment extends Fragment {
                 adapter.filter(text);
                 return false;
             }
-        });
+        }); */
 
         tabLayout = (TabLayout) mView.findViewById(R.id.tabs);
         mViewPager = (ViewPager) mView.findViewById(R.id.viewpager);

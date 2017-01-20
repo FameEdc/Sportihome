@@ -293,9 +293,51 @@ https://www.online.net/
 
 Déclaration CNIL N° xxxxx (demande en cours)"</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+    AIzaSyD82W_RERXvEuevrZxs2rAOFUZocWTZ8lc
+    </string>
+
+    <string name="title_how">"Comment ça marche ?"</string>
+
+    <string name="title_travel">"Côté voyageur"</string>
+
+    <string name="textVoyageur">"   Vous aimez faire du sport et voulez découvrir d’autres terrains de jeu sans perdre de temps à trouver les hébergements au plus près des spots.
+
+    Explorez tous les hébergements et spots adaptés à vos envies sportives.
+
+    Réservez chez un hôte ayant les mêmes affinités sportives que vous et qui pourra vous faire découvrir ses spots et expériences.
+
+    Votre séjour vous a plu, partagez vos avis avec les autres sportinautes en laissant un commentaire sur l'hébergement et le spot."</string>
+
+    <string name="title_host">"Côté hôte"</string>
+
+    <string name="textHote">"   Vous êtes sportif ou sportif friendly et vous souhaitez louer votre hébergement à des sportifs qui vous ressemblent ?
+
+    Publiez gratuitement votre annonce d' hébergement dans la rubrique « Devenir hôte ».
+
+    Augmentez votre visibilité et donnez encore plus envie de venir chez vous en ajoutant un ou plusieurs spots à proximité de votre hébergement.
+
+    Vous recevrez des demandes de réservations via notre messagerie."</string>
+
+    <string name="title_partage">"Qu'êtes-vous prêts à partager ?"</string>
+
+    <string name="textPartage">"    Le concept de sportihome repose sur trois notions de partage fondamentales : Stay, Share, Play, (héberger, partager, et jouer ensemble). Mais nous avons tous des personnalités et des envies différentes en matière d’interaction avec les autres, que l’on soit hôte ou voyageur.
+
+    Voilà pourquoi nous vous offrons la possibilité d’exprimer vos attentes en matière de partage grâce aux logos SSP "Stay, Share, Play" dans vos pages de profils et d'annonces d'hébergements."</string>
+
+    <string name="textStay">"Stay : Vous voulez simplement proposer un hébergement ou être hébergé chez un hôte pratiquant les mêmes sports que vous."</string>
+    <string name="textShare">"Share : Vous aimez partager des bons plans sur des pratiques locales, échanger des conseils et aller à la rencontre d'autres passionnés comme vous."</string>
+    <string name="textPlay">"Play : Vous êtes partant pour partager des sorties sportives avec vos vacanciers ou vos hôtes si l'occasion se présente."</string>
+
+    <string name="title_cout">"Combien ça coûte ?"</string>
+
+    <string name="textCoût">"   Sportihome est actuellement en phase de lancement "bêta" et vous offre durant cette période son service de mise en relation à titre gratuit et sans commission !
+
+    A partir de début 2017 nous étendrons nos services en ligne à la gestion des réservations, l'assurance, la sécurisation de vos transactions et plus encore, moyennant des frais de service."</string>
+
+
 
 
 </resources>

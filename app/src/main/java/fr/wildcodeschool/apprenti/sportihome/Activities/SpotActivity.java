@@ -40,9 +40,7 @@ import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
 import me.relex.circleindicator.CircleIndicator;
 
-/**
- * Created by apprenti on 02/12/16.
- */
+
 
 public class SpotActivity extends FragmentActivity {
     private String url;

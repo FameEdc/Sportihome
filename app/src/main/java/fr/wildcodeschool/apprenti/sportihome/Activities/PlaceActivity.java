@@ -1,9 +1,5 @@
 package fr.wildcodeschool.apprenti.sportihome.Activities;
 
-/**
- * Created by edwin on 02/12/2016.
- */
-
 
 import android.app.ProgressDialog;
 import android.content.Context;

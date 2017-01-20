@@ -1,13 +1,5 @@
 package fr.wildcodeschool.apprenti.sportihome.Model;
 
-import fr.wildcodeschool.apprenti.sportihome.Model.CommentModel;
-import fr.wildcodeschool.apprenti.sportihome.Model.FacebookModel;
-import fr.wildcodeschool.apprenti.sportihome.Model.IdentityModel;
-import fr.wildcodeschool.apprenti.sportihome.Model.RateModel;
-
-/**
- * Created by Alban on 24/11/16.
- */
 
 public class UserModel {
     private String _id;

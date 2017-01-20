@@ -3,16 +3,6 @@ package fr.wildcodeschool.apprenti.sportihome.Model;
 
 import java.util.ArrayList;
 
-import fr.wildcodeschool.apprenti.sportihome.Model.AddressModel;
-import fr.wildcodeschool.apprenti.sportihome.Model.OwnerModel;
-import fr.wildcodeschool.apprenti.sportihome.Model.SpotCommentModel;
-import fr.wildcodeschool.apprenti.sportihome.Model.SpotRatingModel;
-
-/**
- * Created by Alban on 24/11/16.
- * This is the Spot Model
- */
-
 public class SpotModel {
 
     private String _id;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
 
@@ -16,26 +17,18 @@
             android:icon="@drawable/ic_spot"
             android:title="Les Spots" />
 
-        <item
-            android:id="@+id/nav_invite"
-            android:icon="@drawable/add_contacts"
-            android:title="Invites tes amis !" />
-
-
     </group>
 
-
     <item android:title="Découvrir">
-
         <menu>
             <item
                 android:id="@+id/nav_howItsWork"
                 android:icon="@drawable/ic_settings"
                 android:title="Comment ça marche ?" />
-
         </menu>
-
     </item>
+
+
 
     <item android:title="Société">
         <menu>

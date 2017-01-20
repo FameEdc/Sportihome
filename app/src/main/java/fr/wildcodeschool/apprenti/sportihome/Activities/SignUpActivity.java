@@ -25,9 +25,7 @@ import javax.net.ssl.HttpsURLConnection;
 import fr.wildcodeschool.apprenti.sportihome.Model.IdentityModel;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by chantome on 12/01/2017.
- */
+
 
 public class SignUpActivity extends AppCompatActivity{
 

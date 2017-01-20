@@ -23,10 +23,6 @@ import fr.wildcodeschool.apprenti.sportihome.Model.SpotCommentModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.SpotModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.SpotRatingModel;
 
-/**
- * Created by chantome on 30/11/2016.
- */
-
 public class ParserJSON extends AppCompatActivity{
 
     private final static String TAG = ParserJSON.class.getSimpleName();

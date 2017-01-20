@@ -26,10 +26,6 @@ import fr.wildcodeschool.apprenti.sportihome.Model.PlaceModel;
 import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by edwin on 24/12/16.
- */
-
 public class PlacesFragment extends Fragment {
 
     private ProgressDialog ppDialog;

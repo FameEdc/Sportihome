@@ -10,9 +10,6 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by chantome on 16/01/2017.
- */
 
 public class CheckMailActivity extends AppCompatActivity {
     @Override

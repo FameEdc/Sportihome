@@ -16,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
 
@@ -26,16 +25,12 @@ import fr.wildcodeschool.apprenti.sportihome.Model.SpotModel;
 import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by edwin on 28/12/16.
- */
 
 public class SpotsFragment extends Fragment {
 
     private ProgressDialog  psDialog;
     private final String urlSpots = "https://sportihome.com/api/spots/";
     private ArrayList<SpotModel> spotsList;
-    private Button btn_profil;
     ArrayList<SpotModel> spotsData;
     int minItems = 10;
     private ListView spots;

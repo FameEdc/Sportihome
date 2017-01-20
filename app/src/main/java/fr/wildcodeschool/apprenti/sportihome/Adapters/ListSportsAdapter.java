@@ -18,9 +18,7 @@ import fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView;
 import fr.wildcodeschool.apprenti.sportihome.R;
 import fr.wildcodeschool.apprenti.sportihome.SportNames;
 
-/**
- * Created by chantome on 17/01/2017.
- */
+
 
 public class ListSportsAdapter extends BaseAdapter {
 

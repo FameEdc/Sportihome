@@ -1,8 +1,6 @@
 package fr.wildcodeschool.apprenti.sportihome.Adapters;
 
-/**
- * Created by chantome on 24/11/2016.
- */
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

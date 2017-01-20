@@ -22,13 +22,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import javax.net.ssl.HttpsURLConnection;
-import fr.wildcodeschool.apprenti.sportihome.Model.LogInModel;
-import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by chantome on 15/01/2017.
- */
+
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 

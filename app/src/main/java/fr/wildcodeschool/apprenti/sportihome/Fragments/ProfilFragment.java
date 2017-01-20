@@ -1,7 +1,6 @@
 package fr.wildcodeschool.apprenti.sportihome.Fragments;
 
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,12 +8,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,18 +27,12 @@ import java.net.URL;
 import de.hdodenhof.circleimageview.CircleImageView;
 import fr.wildcodeschool.apprenti.sportihome.Activities.LogInActivity;
 import fr.wildcodeschool.apprenti.sportihome.Activities.MainActivity;
-import fr.wildcodeschool.apprenti.sportihome.Activities.ProfilActivity;
 import fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView;
 import fr.wildcodeschool.apprenti.sportihome.HttpHandler;
-import fr.wildcodeschool.apprenti.sportihome.Model.LogInModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.OwnerModel;
 import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-
-/**
- * Created by edwin on 28/12/16.
- */
 
 public class ProfilFragment extends Fragment {
 
@@ -217,18 +206,7 @@ public class ProfilFragment extends Fragment {
                             }
                         }
 
-                        String name = "";
-                        TextView txt_name = (TextView)view.findViewById(R.id.name_user);
-                        //User FirstName
-                        if (mOwner.getIdentity().getFirstName() != null){
-                            name += mOwner.getIdentity().getFirstName();
-                            txt_name.setText(name);
-                        }
-                        //User LastName
-                        if (mOwner.getIdentity().getLastName() != null){
-                            name += " "+mOwner.getIdentity().getLastName();
-                            txt_name.setText(name);
-                        }
+
 
                         //Sports Podium
                         if (mOwner.getHobbies() != null){
@@ -284,6 +262,19 @@ public class ProfilFragment extends Fragment {
 
                         //isIdentity ?
                         if (mOwner.getIdentity() != null){
+
+                            String name = "";
+                            TextView txt_name = (TextView)view.findViewById(R.id.name_user);
+                            //User FirstName
+                            if (mOwner.getIdentity().getFirstName() != null){
+                                name += mOwner.getIdentity().getFirstName();
+                                txt_name.setText(name);
+                            }
+                            //User LastName
+                            if (mOwner.getIdentity().getLastName() != null){
+                                name += " "+mOwner.getIdentity().getLastName();
+                                txt_name.setText(name);
+                            }
 
                             //About
                             if (mOwner.getIdentity().getAbout() != null){

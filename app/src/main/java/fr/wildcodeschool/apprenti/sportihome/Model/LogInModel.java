@@ -2,9 +2,6 @@ package fr.wildcodeschool.apprenti.sportihome.Model;
 
 import java.io.Serializable;
 
-/**
- * Created by chantome on 11/01/2017.
- */
 
 public class LogInModel implements Serializable {
 
