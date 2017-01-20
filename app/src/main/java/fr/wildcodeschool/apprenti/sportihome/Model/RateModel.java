@@ -1,9 +1,5 @@
 package fr.wildcodeschool.apprenti.sportihome.Model;
 
-/**
- * Created by chantome on 23/11/2016.
- */
-
 public class RateModel {
     private int valueForMoney=0;
     private int location=0;

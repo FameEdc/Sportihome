@@ -1,11 +1,5 @@
 package fr.wildcodeschool.apprenti.sportihome.Model;
 
-import fr.wildcodeschool.apprenti.sportihome.Model.OwnerModel;
-
-/**
- * Created by chantome on 23/11/2016.
- */
-
 public class SpotCommentModel {
     private String _id;
     private String date;

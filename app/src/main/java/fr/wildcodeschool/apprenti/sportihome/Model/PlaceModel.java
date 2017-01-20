@@ -2,10 +2,6 @@ package fr.wildcodeschool.apprenti.sportihome.Model;
 
 import java.util.ArrayList;
 
-/**
- * Created by chantome on 23/11/2016.
- */
-
 public class PlaceModel {
     private String _id;
     private boolean isActive;

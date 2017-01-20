@@ -2,9 +2,6 @@ package fr.wildcodeschool.apprenti.sportihome.Model;
 
 import java.io.Serializable;
 
-/**
- * Created by chantome on 23/11/2016.
- */
 
 public class OwnerModel implements Serializable {
     private String _id;

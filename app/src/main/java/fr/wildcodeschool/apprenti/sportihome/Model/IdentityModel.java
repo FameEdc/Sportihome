@@ -2,9 +2,6 @@ package fr.wildcodeschool.apprenti.sportihome.Model;
 
 import java.io.Serializable;
 
-/**
- * Created by chantome on 23/11/2016.
- */
 
 public class IdentityModel implements Serializable {
     private String firstName;

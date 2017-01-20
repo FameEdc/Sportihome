@@ -17,9 +17,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import fr.wildcodeschool.apprenti.sportihome.Model.SpotCommentModel;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by chantome on 04/01/2017.
- */
 
 public class SpotCommentsAdapter extends ArrayAdapter<SpotCommentModel> {
     private final Activity activity;

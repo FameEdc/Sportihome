@@ -39,13 +39,10 @@ import fr.wildcodeschool.apprenti.sportihome.Model.LogInModel;
 import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by chantome on 09/01/2017.
- */
+
 
 public class LogInActivity extends FragmentActivity {
 
-    private TextView content;
     private EditText editEmail, editPassword;
     private String email, password,sport;
     private Button connect,signup,forgotPassword;

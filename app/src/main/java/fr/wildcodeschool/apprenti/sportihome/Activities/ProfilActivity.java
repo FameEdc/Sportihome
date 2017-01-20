@@ -13,7 +13,6 @@ import fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView;
 import fr.wildcodeschool.apprenti.sportihome.HttpHandler;
 import fr.wildcodeschool.apprenti.sportihome.Model.LogInModel;
 import fr.wildcodeschool.apprenti.sportihome.Model.OwnerModel;
-import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
 public class ProfilActivity extends AppCompatActivity {

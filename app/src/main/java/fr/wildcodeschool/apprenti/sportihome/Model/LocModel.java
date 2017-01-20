@@ -1,9 +1,5 @@
 package fr.wildcodeschool.apprenti.sportihome.Model;
 
-/**
- * Created by chantome on 09/01/2017.
- */
-
 public class LocModel {
     private String type;
     private double[] coordinates;

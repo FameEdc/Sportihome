@@ -29,15 +29,11 @@ import java.net.URL;
 import de.hdodenhof.circleimageview.CircleImageView;
 import fr.wildcodeschool.apprenti.sportihome.Fragments.ProfilFragment;
 import fr.wildcodeschool.apprenti.sportihome.Fragments.SearchFragment;
-import fr.wildcodeschool.apprenti.sportihome.Fragments.SpotsFragment;
-import fr.wildcodeschool.apprenti.sportihome.HttpHandler;
 import fr.wildcodeschool.apprenti.sportihome.Model.OwnerModel;
 import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
 
-/**
- * Created by edwin on 28/12/16.
- */
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -200,6 +196,11 @@ public class MainActivity extends AppCompatActivity {
                         navItemIndex = 2;
                         CURRENT_TAG = TAG_PROFIL;
                         break;
+
+                    case R.id.nav_howItsWork:
+                        startActivity(new Intent(MainActivity.this, HowItsWorkActivity.class));
+                        mDrawer.closeDrawers();
+                        return true;
 
                     case R.id.nav_about:
                         startActivity(new Intent(MainActivity.this, AboutActivity.class));

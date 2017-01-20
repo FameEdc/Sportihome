@@ -1,8 +1,5 @@
 package fr.wildcodeschool.apprenti.sportihome.Model;
 
-/**
- * Created by chantome on 23/11/2016.
- */
 
 public class AddressModel {
     private String postal_code;
