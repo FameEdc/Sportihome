@@ -1,7 +1,6 @@
 package fr.wildcodeschool.apprenti.sportihome.Adapters;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -53,7 +52,6 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
 
         }else{
             //sinon c'est que l'avatar viens soit de facebook soit de google
-
             if (maPlace.getOwner().getGoogle() != null){
                 if (maPlace.getOwner().getGoogle().getAvatar() != null){
                     //avatar google
@@ -91,7 +89,7 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
             ImageView imgPlace = (ImageView) rowView.findViewById(R.id.place_img);
             String picture = maPlace.getFirstPicture();
             String pictureUrl = "https://sportihome.com/uploads/places/"+maPlace.get_id()+"/thumb/"+picture;
-            Picasso.with(context).load(pictureUrl).fit().centerCrop().into(imgPlace);
+            Picasso.with(context).load(pictureUrl).placeholder(R.drawable.new_home).fit().centerCrop().into(imgPlace);
         }
 
         //Engagement
@@ -115,7 +113,12 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
         if (mesPlaces.get(position).getName() != null){
             TextView txtName = (TextView) rowView.findViewById(R.id.name);
             String name = mesPlaces.get(position).getName();
-            txtName.setText(name);
+            if (name.length() > 23){
+                name = name.substring(0,23);
+                txtName.setText(firstLetterCaps(name)+"...");
+            }else{
+                txtName.setText(firstLetterCaps(name));
+            }
         }
 
         //Hobbies
@@ -178,5 +181,12 @@ public class PlacesAdapter extends ArrayAdapter<PlaceModel> {
         String packageName = context.getPackageName();
         int resId = context.getResources().getIdentifier(aString, "string", packageName);
         return context.getString(resId);
+    }
+
+    static public String firstLetterCaps ( String data )
+    {
+        String firstLetter = data.substring(0,1).toUpperCase();
+        String restLetters = data.substring(1).toLowerCase();
+        return firstLetter + restLetters;
     }
 }

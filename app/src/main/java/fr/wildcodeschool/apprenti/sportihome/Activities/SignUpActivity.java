@@ -57,10 +57,14 @@ public class SignUpActivity extends AppCompatActivity{
                         && !editPassword.getText().toString().isEmpty()
                         && !editConfirm.getText().toString().isEmpty()
                         ){
-                    if (editPassword.getText().toString().equals(editConfirm.getText().toString())){
-                        new SignUpActivity.SendPostRequest().execute();
+                    if (editPassword.getText().length() < 8){
+                        editPassword.setError("Mot de passe trop court");
                     }else{
-                        editConfirm.setError("erreur de confirmation de mot de passe");
+                        if (editPassword.getText().toString().equals(editConfirm.getText().toString())){
+                            new SignUpActivity.SendPostRequest().execute();
+                        }else{
+                            editConfirm.setError("Erreur de confirmation de mot de passe");
+                        }
                     }
                 }
                 if(editEmail.getText().toString().isEmpty()){
@@ -106,14 +110,14 @@ public class SignUpActivity extends AppCompatActivity{
 
                 URL url = new URL("https://sportihome.com/api/users");
 
-                IdentityModel mIdentity = new IdentityModel();
-                mIdentity.setFirstName(firstname);
-                mIdentity.setLastName(name);
+                JSONObject mIdentity = new JSONObject();
+                mIdentity.put("firstName",firstname);
+                mIdentity.put("lastName",name);
 
                 JSONObject postDataParams = new JSONObject();
+                postDataParams.put("email", email);
                 postDataParams.put("identity",mIdentity);
                 postDataParams.put("password", password);
-                postDataParams.put("email", email);
                 postDataParams.put("passwordConfirm", confirm);
                 Log.e("params",postDataParams.toString());
 

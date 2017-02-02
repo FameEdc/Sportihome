@@ -74,14 +74,19 @@ public class SpotsAdapter extends ArrayAdapter<SpotModel> {
             ImageView imgSpot = (ImageView) rowView.findViewById(R.id.spot_img);
             String picture = monSpot.getFirstPicture();
             String pictureUrl = "https://sportihome.com/uploads/spots/"+monSpot.get_id()+"/thumb/"+picture;
-            Picasso.with(context).load(pictureUrl).fit().centerCrop().into(imgSpot);
+            Picasso.with(context).load(pictureUrl).placeholder(R.drawable.new_spot).fit().centerCrop().into(imgSpot);
         }
 
         //Name
         if (monSpot.getName() != null){
             TextView txtName = (TextView) rowView.findViewById(R.id.name);
             String name = monSpot.getName();
-            txtName.setText(name);
+            if (name.length() > 23){
+                name = name.substring(0,23);
+                txtName.setText(firstLetterCaps(name)+"...");
+            }else{
+                txtName.setText(firstLetterCaps(name));
+            }
         }
 
         //Hobby
@@ -136,6 +141,13 @@ public class SpotsAdapter extends ArrayAdapter<SpotModel> {
         String packageName = context.getPackageName();
         int resId = context.getResources().getIdentifier(aString, "string", packageName);
         return context.getString(resId);
+    }
+
+    static public String firstLetterCaps ( String data )
+    {
+        String firstLetter = data.substring(0,1).toUpperCase();
+        String restLetters = data.substring(1).toLowerCase();
+        return firstLetter + restLetters;
     }
 
 }

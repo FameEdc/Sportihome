@@ -295,10 +295,6 @@ Déclaration CNIL N° xxxxx (demande en cours)"</string>
 
     <string name="title_activity_maps">Map</string>
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
-    AIzaSyD82W_RERXvEuevrZxs2rAOFUZocWTZ8lc
-    </string>
-
     <string name="title_how">"Comment ça marche ?"</string>
 
     <string name="title_travel">"Côté voyageur"</string>

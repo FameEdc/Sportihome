@@ -208,6 +208,7 @@
 
                         <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                             android:id="@+id/imgProperty"
+                            android:text="9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:font="@string/sportihome_ux_font"

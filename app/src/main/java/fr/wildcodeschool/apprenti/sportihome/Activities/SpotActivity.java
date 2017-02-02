@@ -187,14 +187,14 @@ public class SpotActivity extends FragmentActivity {
             if(mSpot.getOwner().getIdentity().getFirstName() != null){
                 TextView txtName = (TextView)findViewById(R.id.name_user);
                 String userName = mSpot.getOwner().getIdentity().getFirstName();
-                txtName.setText(userName);
+                txtName.setText(firstLetterCaps(userName));
             }
 
             //Spot Name
             if(mSpot.getName() != null){
                 TextView txtSpotName = (TextView)findViewById(R.id.title_spot);
                 String name = mSpot.getName();
-                txtSpotName.setText(name);
+                txtSpotName.setText(firstLetterCaps(name));
             }
 
             //Hobby
@@ -310,10 +310,18 @@ public class SpotActivity extends FragmentActivity {
             });
         }
     }
+
     private String getStringResourceByName(String aString,Context context) {
         String packageName = context.getPackageName();
         int resId = context.getResources().getIdentifier(aString, "string", packageName);
         return context.getString(resId);
+    }
+
+    static public String firstLetterCaps ( String data )
+    {
+        String firstLetter = data.substring(0,1).toUpperCase();
+        String restLetters = data.substring(1).toLowerCase();
+        return firstLetter + restLetters;
     }
 
     public static class ImageFragmentPagerAdapter extends FragmentPagerAdapter {
@@ -378,6 +386,8 @@ public class SpotActivity extends FragmentActivity {
             return swipeFragment;
 
         }
+
+
     }
 
 }

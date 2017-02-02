@@ -152,6 +152,171 @@ public class ListSportsAdapter extends BaseAdapter {
                 hobby = view.getTag().toString().replace("checkbox_","");
                 if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
                 break;
+            //=======================
+            case "checkbox_cyclisme":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_dance":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_equitation":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_escalade":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_fitness":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_football":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_golf":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_handball":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_jetski":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_kitesurf":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_motocross":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_musculation":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_natation":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_parachutisme":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_parapente":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_peche":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_plongee":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_quad":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_randonnee":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_roller":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_running_trail":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_skateboard":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_ski":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_ski_de_fond":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_snowboard":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_speleologie":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_sport_de_combat":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_squash":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_stand_up_paddle":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_surf":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_tennis":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_voile":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_volleyball":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_wakeboard":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_windsurf":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_wingsuit":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_yoga":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_marker":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_home":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_door":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
+            case "checkbox_private":
+                hobby = view.getTag().toString().replace("checkbox_","");
+                if(checked){addSport(mesSports,hobby);}else{removeSport(mesSports,hobby);}
+                break;
         }
     }
 

@@ -197,14 +197,14 @@ public class PlaceActivity extends FragmentActivity {
             if (maPlace.getOwner().getIdentity().getFirstName() != null){
                 TextView txtOwnerName = (TextView) findViewById(R.id.name_user);
                 String userName = maPlace.getOwner().getIdentity().getFirstName();
-                txtOwnerName.setText(userName);
+                txtOwnerName.setText(firstLetterCaps(userName));
             }
 
             //Place name
             if (maPlace.getName() != null){
                 TextView txtName = (TextView) findViewById(R.id.title_place);
                 String name = maPlace.getName();
-                txtName.setText(name);
+                txtName.setText(firstLetterCaps(name));
             }
 
             //Address
@@ -274,6 +274,14 @@ public class PlaceActivity extends FragmentActivity {
                         break;
                     case "Appartement":
                         imgProperty.setText("m");
+                        txtProperty.setText(propertyType);
+                        break;
+                    case "Chambre":
+                        imgProperty.setText("9");
+                        txtProperty.setText(propertyType);
+                        break;
+                    case "Insolite":
+                        imgProperty.setText("g");
                         txtProperty.setText(propertyType);
                         break;
                 }
@@ -445,6 +453,11 @@ public class PlaceActivity extends FragmentActivity {
         return context.getString(resId);
     }
 
-
+    static public String firstLetterCaps ( String data )
+    {
+        String firstLetter = data.substring(0,1).toUpperCase();
+        String restLetters = data.substring(1).toLowerCase();
+        return firstLetter + restLetters;
+    }
 
 }

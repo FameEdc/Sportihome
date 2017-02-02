@@ -21,7 +21,6 @@
 
             <ImageView
                 android:id="@+id/place_img"
-                android:background="#AAA"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
 
@@ -52,7 +51,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:padding="5dp"
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -67,7 +65,6 @@
             <TextView
                 android:id="@+id/name"
                 android:maxLines="1"
-                android:maxLength="23"
                 android:ellipsize="end"
                 android:textStyle="bold"
                 android:layout_toEndOf="@+id/sas"
@@ -78,11 +75,12 @@
                 android:layout_below="@+id/name"
                 android:layout_toEndOf="@+id/sas"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <fr.wildcodeschool.apprenti.sportihome.Font.CustomFontTextView
                     android:id="@+id/sports"
-                    android:textSize="30dp"
+                    android:textSize="30sp"
+                    android:text="ooo"
                     app:font="@string/sports_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

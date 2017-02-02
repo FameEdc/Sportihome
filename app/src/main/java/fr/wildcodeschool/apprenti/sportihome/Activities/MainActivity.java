@@ -29,11 +29,10 @@ import java.net.URL;
 import de.hdodenhof.circleimageview.CircleImageView;
 import fr.wildcodeschool.apprenti.sportihome.Fragments.ProfilFragment;
 import fr.wildcodeschool.apprenti.sportihome.Fragments.SearchFragment;
+import fr.wildcodeschool.apprenti.sportihome.HttpHandler;
 import fr.wildcodeschool.apprenti.sportihome.Model.OwnerModel;
 import fr.wildcodeschool.apprenti.sportihome.ParserJSON;
 import fr.wildcodeschool.apprenti.sportihome.R;
-
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     Bundle sIS;
     OwnerModel mOwner;
     String log_token,log_id;
+    String avatarUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,23 +137,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpNavigationView() {
 
-        //Set Header
-        if (mOwner != null){
+        Log.e("LOGID",log_id);
 
+        //Set Header
+        if(mOwner != null){
             Context context = getBaseContext();
 
             //Avatar
             CircleImageView imgAvatar = (CircleImageView) navigationView.findViewById(R.id.profile_image);
-            String user,avatarUrl;
+
             //on verifie d'abord si c'est un avatar du site
-            user = mOwner.get_id();
-            if (mOwner.getAvatar() != null){
-                avatarUrl = "https://sportihome.com/uploads/users/"+user+"/thumb/"+mOwner.getAvatar();
+            if (mOwner.getAvatar() != null && log_id != null){
+                avatarUrl = "https://sportihome.com/uploads/users/"+log_id+"/thumb/"+mOwner.getAvatar();
                 avatarUrl = avatarUrl.replace(" ","%20");
-                Picasso.with(context).load(avatarUrl).fit().centerCrop().into(imgAvatar);
+                Picasso.with(context).load(avatarUrl).placeholder(R.drawable.default_avatar).fit().centerCrop().into(imgAvatar);
             }else{
                 //sinon c'est que l'avatar viens soit de facebook soit de google
-
                 if (mOwner.getGoogle() != null){
                     if (mOwner.getGoogle().getAvatar() != null){
                         //avatar google
@@ -171,11 +170,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            TextView pseudo = (TextView) navigationView.findViewById(R.id.pseudo);
-            pseudo.setText(mOwner.getIdentity().getFirstName()+" "+mOwner.getIdentity().getLastName());
-
+            if(mOwner.getIdentity() != null){
+                if (mOwner.getIdentity().getFirstName() != null && mOwner.getIdentity().getLastName() != null){
+                    TextView pseudo = (TextView) navigationView.findViewById(R.id.pseudo);
+                    pseudo.setText(mOwner.getIdentity().getFirstName()+" "+mOwner.getIdentity().getLastName());
+                }
+            }
         }
-
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -340,13 +341,11 @@ public class MainActivity extends AppCompatActivity {
             if(result != null){
                 switch (result[0]){
                     case "200":
-                        //CONNECTER !!!
-
+                        Toast.makeText(getApplicationContext(), "Connecté", Toast.LENGTH_SHORT).show();
+                        Log.i("OWNER","On appel sendpostUser");
                         new SendPostOwner().execute();
-
                         break;
                     case "401":
-                        Toast.makeText(getApplicationContext(), result[1], Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this,LogInActivity.class);
                         startActivity(intent);
                         finish();
@@ -372,6 +371,9 @@ public class MainActivity extends AppCompatActivity {
                 // read the response
                 String[] response = new String[2];
                 response[0] = String.valueOf(client.getResponseCode());
+                HttpHandler sh = new HttpHandler();
+                String jsonStr = sh.makeServiceCall("https://sportihome.com/api/users/"+log_id);
+                response[1] = jsonStr;
 
                 return response;
 
@@ -410,6 +412,7 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case "401":
+                        Log.i("OWNER","get fail");
                         Toast.makeText(getApplicationContext(), result[1], Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this,LogInActivity.class);
                         startActivity(intent);
